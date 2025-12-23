@@ -106,114 +106,113 @@ const INITIAL_DATA = {
                     ]
                 },
                 {
-    id: 2,
-    level_id: 1,
-    title_fr: "Une journée au jardin",
-    title_ar: "يوم في الحديقة",
+                        id: 2,
+                        level_id: 1,
+                        title_fr: "Une journée au jardin",
+                        title_ar: "يوم في الحديقة",
 
-    text_fr: "Aujourd'hui, il fait beau. Thomas va au jardin avec son petit chien. Il voit de grandes fleurs et un grand arbre. Il joue au ballon avec ses amis.",
-    text_ar: "اليوم، الجو جميل. توماس يذهب إلى الحديقة مع كلبه الصغير. يرى زهوراً كبيرة وشجرة كبيرة. يلعب بالكرة مع أصدقائه.",
+                        text_fr: "Aujourd'hui, il fait beau. Thomas va au jardin avec son petit chien. Il voit de grandes fleurs et un grand arbre. Il joue au ballon avec ses amis.",
+                        text_ar: "اليوم، الجو جميل. توماس يذهب إلى الحديقة مع كلبه الصغير. يرى زهوراً كبيرة وشجرة كبيرة. يلعب بالكرة مع أصدقائه.",
 
-    vocabulary: [
-      { fr: "Aujourd'hui", ar: "اليوم" },
-      { fr: "Beau", ar: "جميل" },
-      { fr: "jardin", ar: "حديقة" },
-      { fr: "Chien", ar: "كلب" },
-      { fr: "Petit", ar: "صغير" },
-      { fr: "Voir", ar: "رأى" },
-      { fr: "Fleurs", ar: "زهور" },
-      { fr: "Arbre", ar: "شجرة" },
-      { fr: "Jouer", ar: "لعب" },
-      { fr: "Ballon", ar: "كرة" },
-      { fr: "Amis", ar: "أصدقاء" },
-      { fr: "Grand", ar: "كبير" }
-    ],
+                        vocabulary: [
+                        { fr: "Aujourd'hui", ar: "اليوم" },
+                        { fr: "Beau", ar: "جميل" },
+                        { fr: "jardin", ar: "حديقة" },
+                        { fr: "Chien", ar: "كلب" },
+                        { fr: "Petit", ar: "صغير" },
+                        { fr: "Voir", ar: "رأى" },
+                        { fr: "Fleurs", ar: "زهور" },
+                        { fr: "Arbre", ar: "شجرة" },
+                        { fr: "Jouer", ar: "لعب" },
+                        { fr: "Ballon", ar: "كرة" },
+                        { fr: "Amis", ar: "أصدقاء" },
+                        { fr: "Grand", ar: "كبير" }
+                        ],
 
-    comprehension: [
-      {
-        question: "Avec qui Thomas va-t-il au jardin ?",
-        options: ["Son chat", "Son chien", "Son frère"],
-        correctIndex: 1
-      },
-      {
-        question: "Que voit-il dans le jardin ?",
-        options: ["Des voitures", "Des fleurs", "Des maisons"],
-        correctIndex: 1
-      }
-    ],
+                        comprehension: [
+                        {
+                            q: "Avec qui Thomas va-t-il au jardin ?",options: ["Son chat", "Son chien", "Son frère"],
+                            correct: 1
+                        },
+                        {
+                            q: "Que voit-il dans le jardin ?",
+                            options: ["Des voitures", "Des fleurs", "Des maisons"],
+                            correct: 1
+                        }
+                        ],
 
-    grammar: [
-      {
-        text: "Aujourd'hui, ..... fait beau.",
-        missing: "il",
-        options: ["il", "elle", "ils"],
-        rule_fr: "On utilise le pronom impersonnel 'il' pour parler de la météo.",
-        rule_ar: "نستخدم الضمير غير الشخصي 'il' للتحدث عن الطقس."
-      },
-      {
-        text: "Thomas ..... au jardin.",
-        missing: "va",
-        options: ["vais", "vas", "va"],
-        rule_fr: "Le verbe 'aller' à la 3ème personne du singulier est 'va'.",
-        rule_ar: "فعل 'aller' مع المفرد الغائب يكون 'va'."
-      },
-      {
-        text: "Il va ..... jardin.",
-        missing: "au",
-        options: ["à la", "au", "aux"],
-        rule_fr: "'Au' = à + le devant un nom masculin.",
-        rule_ar: "'Au' هو دمج 'à + le' مع الاسم المذكر."
-      },
-      {
-        text: "Il va avec ..... petit chien.",
-        missing: "son",
-        options: ["mon", "ton", "son"],
-        rule_fr: "'Son' est l'adjectif possessif à la 3ème personne.",
-        rule_ar: "'Son' صفة ملكية للشخص الثالث."
-      },
-      {
-        text: "Thomas a un ..... chien.",
-        missing: "petit",
-        options: ["petit", "petite", "petits"],
-        rule_fr: "Accord avec le masculin singulier.",
-        rule_ar: "تطابق مع المذكر المفرد."
-      },
-      {
-        text: "Il voit ..... grandes fleurs.",
-        missing: "de",
-        options: ["des", "de", "les"],
-        rule_fr: "'Des' devient 'de' devant un adjectif.",
-        rule_ar: "'Des' تتحول إلى 'de' قبل الصفة."
-      },
-      {
-        text: "Il voit un grand .....",
-        missing: "arbre",
-        options: ["arbre", "arbres", "arbrisseau"],
-        rule_fr: "'Un' impose le singulier.",
-        rule_ar: "'Un' تدل على المفرد."
-      },
-      {
-        text: "Il ..... au ballon.",
-        missing: "joue",
-        options: ["joue", "joues", "jouent"],
-        rule_fr: "Avec 'il', le verbe se termine par -e.",
-        rule_ar: "مع 'Il' ينتهي الفعل بـ -e."
-      },
-      {
-        text: "Il joue avec ..... amis.",
-        missing: "ses",
-        options: ["son", "sa", "ses"],
-        rule_fr: "'Ses' est le possessif pluriel.",
-        rule_ar: "'Ses' صفة ملكية للجمع."
-      },
-      {
-        text: "Les fleurs sont .....",
-        missing: "grandes",
-        options: ["grand", "grande", "grandes"],
-        rule_fr: "Féminin pluriel.",
-        rule_ar: "مؤنث جمع."
-      }
-    ]
-  },
-                            ]
+                        grammar: [
+                        {
+                            text: "Aujourd'hui, ..... fait beau.",
+                            missing: "il",
+                            options: ["il", "elle", "ils"],
+                            rule_fr: "On utilise le pronom impersonnel 'il' pour parler de la météo.",
+                            rule_ar: "نستخدم الضمير غير الشخصي 'il' للتحدث عن الطقس."
+                        },
+                        {
+                            text: "Thomas ..... au jardin.",
+                            missing: "va",
+                            options: ["vais", "vas", "va"],
+                            rule_fr: "Le verbe 'aller' à la 3ème personne du singulier est 'va'.",
+                            rule_ar: "فعل 'aller' مع المفرد الغائب يكون 'va'."
+                        },
+                        {
+                            text: "Il va ..... jardin.",
+                            missing: "au",
+                            options: ["à la", "au", "aux"],
+                            rule_fr: "'Au' = à + le devant un nom masculin.",
+                            rule_ar: "'Au' هو دمج 'à + le' مع الاسم المذكر."
+                        },
+                        {
+                            text: "Il va avec ..... petit chien.",
+                            missing: "son",
+                            options: ["mon", "ton", "son"],
+                            rule_fr: "'Son' est l'adjectif possessif à la 3ème personne.",
+                            rule_ar: "'Son' صفة ملكية للشخص الثالث."
+                        },
+                        {
+                            text: "Thomas a un ..... chien.",
+                            missing: "petit",
+                            options: ["petit", "petite", "petits"],
+                            rule_fr: "Accord avec le masculin singulier.",
+                            rule_ar: "تطابق مع المذكر المفرد."
+                        },
+                        {
+                            text: "Il voit ..... grandes fleurs.",
+                            missing: "de",
+                            options: ["des", "de", "les"],
+                            rule_fr: "'Des' devient 'de' devant un adjectif.",
+                            rule_ar: "'Des' تتحول إلى 'de' قبل الصفة."
+                        },
+                        {
+                            text: "Il voit un grand .....",
+                            missing: "arbre",
+                            options: ["arbre", "arbres", "arbrisseau"],
+                            rule_fr: "'Un' impose le singulier.",
+                            rule_ar: "'Un' تدل على المفرد."
+                        },
+                        {
+                            text: "Il ..... au ballon.",
+                            missing: "joue",
+                            options: ["joue", "joues", "jouent"],
+                            rule_fr: "Avec 'il', le verbe se termine par -e.",
+                            rule_ar: "مع 'Il' ينتهي الفعل بـ -e."
+                        },
+                        {
+                            text: "Il joue avec ..... amis.",
+                            missing: "ses",
+                            options: ["son", "sa", "ses"],
+                            rule_fr: "'Ses' est le possessif pluriel.",
+                            rule_ar: "'Ses' صفة ملكية للجمع."
+                        },
+                        {
+                            text: "Les fleurs sont .....",
+                            missing: "grandes",
+                            options: ["grand", "grande", "grandes"],
+                            rule_fr: "Féminin pluriel.",
+                            rule_ar: "مؤنث جمع."
+                        }
+                        ]
+                    },
+             ]
         };

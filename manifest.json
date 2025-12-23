@@ -1,0 +1,22 @@
+{
+  "short_name": "fr_fr",
+  "name": "Mon Application apprendre fr",
+  "description": "Une application pour apprendre le fr",
+  "icons": [
+    {
+      "src": "",
+      "type": "",
+      "sizes": ""
+    },
+    {
+      "src": "",
+      "type": "",
+      "sizes": ""
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#0078d4"
+}
