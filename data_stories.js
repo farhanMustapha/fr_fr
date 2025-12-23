@@ -9,7 +9,7 @@ const INITIAL_DATA = {
                 {
                     id: 1,
                     level_id: 1,
-                    title_fr: "Le petit déjeuner de Sarah",
+                    title_fr: "1-Le petit déjeuner de Sarah",
                     title_ar: "فطور سارة",
                     text_fr: "Le matin, Sarah mange une pomme rouge. Elle boit un jus d'orange frais avec son frère. Ils sont très heureux avant d'aller à l'école.",
                     text_ar: "في الصباح، سارة تأكل تفاحة حمراء. تشرب عصير برتقال طازج مع أخيها. هما سعيدان جداً قبل الذهاب إلى المدرسة.",
@@ -108,7 +108,7 @@ const INITIAL_DATA = {
                 {
                         id: 2,
                         level_id: 1,
-                        title_fr: "Une journée au jardin",
+                        title_fr: "2-Une journée au jardin",
                         title_ar: "يوم في الحديقة",
 
                         text_fr: "Aujourd'hui, il fait beau. Thomas va au jardin avec son petit chien. Il voit de grandes fleurs et un grand arbre. Il joue au ballon avec ses amis.",
@@ -126,7 +126,10 @@ const INITIAL_DATA = {
                         { fr: "Jouer", ar: "لعب" },
                         { fr: "Ballon", ar: "كرة" },
                         { fr: "Amis", ar: "أصدقاء" },
-                        { fr: "Grand", ar: "كبير" }
+                        { fr: "Grand", ar: "كبير" },
+                        { fr: "Petite", ar: "صغير" },
+                        { fr: "Belle", ar: "جميل" },
+                        { fr: "Grande", ar: "كبير" },
                         ],
 
                         comprehension: [
@@ -214,5 +217,117 @@ const INITIAL_DATA = {
                         }
                         ]
                     },
+                    {
+                    id: 3,
+                    level_id: 1,
+                    title_fr: "3-Sarah prépare un gâteau",
+                    title_ar: "سارة تحضر كعكة",
+
+                    text_fr: "Aujourd'hui, Sarah doit préparer un gâteau. Pour cela, il faut des œufs. Comme elle n'en a plus, elle va au marché. Ensuite, elle rentre à la maison et elle s'y installe pour cuisiner.",
+                    text_ar: "اليوم، يجب على سارة تحضير كعكة. ولذلك، يلزم وجود بيض. بما أنه لم يعد لديها منه، تذهب إلى السوق. بعد ذلك، تعود إلى المنزل وتستقر هناك للطبخ.",
+
+                    vocabulary: [
+                        { fr: "Doit", ar: "يجب" },
+                        { fr: "Préparer", ar: "تحضير" },
+                        { fr: "Gâteau", ar: "كعكة" },
+                        { fr: "Il faut", ar: "يجب / يلزم" },
+                        { fr: "Oeufs", ar: "بيض" },
+                        { fr: "En", ar: "منه (ضمير تعويضي)" },
+                        { fr: "Marché", ar: "سوق" },
+                        { fr: "Ensuite", ar: "بعد ذلك" },
+                        { fr: "Maison", ar: "منزل" },
+                        { fr: "Y", ar: "هناك (ضمير تعويضي للمكان)" },
+                        { fr: "S'installer", ar: "يستقر / يجلس" },
+                        { fr: "Cuisiner", ar: "طبخ" }
+                    ],
+
+                    comprehension: [
+                        {
+                            q: "Que doit faire Sarah ?",
+                            options: ["Lire un livre", "Préparer un gâteau", "Dormir"],
+                            correct: 1
+                        },
+                        {
+                            q: "Où va-t-elle pour acheter des œufs ?",
+                            options: ["Au cinéma", "Au parc", "Au marché"],
+                            correct: 2
+                        }
+                    ],
+
+                    grammar: [
+                        {
+                            text: "Sarah ..... préparer un gâteau.",
+                            missing: "doit",
+                            options: ["dois", "doit", "doivent"],
+                            rule_fr: "Le verbe 'devoir' à la 3ème personne du singulier est 'doit'.",
+                            rule_ar: "فعل 'devoir' مع المفرد الغائب يكون 'doit'."
+                        },
+                        {
+                            text: "Pour cuisiner, il ..... des œufs.",
+                            missing: "faut",
+                            options: ["faut", "fais", "faut-il"],
+                            rule_fr: "'Il faut' est une expression impersonnelle pour exprimer la nécessité.",
+                            rule_ar: "'Il faut' تعبير غير شخصي للتعبير عن الضرورة."
+                        },
+                        {
+                            text: "Elle a besoin d'œufs, elle ..... achète.",
+                            missing: "en",
+                            options: ["le", "la", "en"],
+                            rule_fr: "On utilise 'en' pour remplacer une quantité ou un nom précédé de 'de'.",
+                            rule_ar: "نستخدم 'en' لتعويض كمية أو اسم مسبوق بـ 'de'."
+                        },
+                        {
+                            text: "Elle va à la maison et elle ..... reste.",
+                            missing: "y",
+                            options: ["y", "en", "le"],
+                            rule_fr: "Le pronom 'y' remplace un lieu (à la maison).",
+                            rule_ar: "الضمير 'y' يعوض مكاناً (في المنزل)."
+                        },
+                        {
+                            text: "Tu ..... finir tes devoirs.",
+                            missing: "dois",
+                            options: ["dois", "doit", "devons"],
+                            rule_fr: "Avec 'tu', le verbe devoir se termine par -s.",
+                            rule_ar: "مع 'tu'، ينتهي فعل 'devoir' بـ -s."
+                        },
+                        {
+                            text: "Il n'y a plus de lait, j'..... achète.",
+                            missing: "en",
+                            options: ["y", "en", "les"],
+                            rule_fr: "Ici 'en' remplace 'du lait'.",
+                            rule_ar: "هنا 'en' تعوض 'du lait'."
+                        },
+                        {
+                            text: "Est-ce que tu vas au marché ? Oui, j'..... vais.",
+                            missing: "y",
+                            options: ["y", "en", "le"],
+                            rule_fr: "'Y' remplace 'au marché'.",
+                            rule_ar: "'Y' تعوض 'au marché' (إلى السوق)."
+                        },
+                        {
+                            text: "Il ..... travailler pour réussir.",
+                            missing: "faut",
+                            options: ["faut", "doit", "va"],
+                            rule_fr: "On utilise 'il faut' suivi d'un infinitif.",
+                            rule_ar: "نستخدم 'il faut' متبوعاً بمصدر الفعل."
+                        },
+                        {
+                            text: "Nous ..... partir maintenant.",
+                            missing: "devons",
+                            options: ["dois", "devons", "doivent"],
+                            rule_fr: "Conjugaison de devoir avec 'nous'.",
+                            rule_ar: "تصريف 'devoir' مع 'nous'."
+                        },
+                        {
+                            text: "Des pommes ? J'..... ai beaucoup.",
+                            missing: "en",
+                            options: ["les", "en", "y"],
+                            rule_fr: "'En' exprime la quantité ici.",
+                            rule_ar: "'En' تعبر عن الكمية هنا."
+                        }
+                    ]
+
+
+                    }
              ]
         };
