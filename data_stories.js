@@ -328,6 +328,149 @@ const INITIAL_DATA = {
                     ]
 
 
-                    }
+                    },
+                    //-------------
+                    {
+  id: 4,
+  level_id: 1,
+  title_fr: "4-Le sac de Lina",
+  title_ar: "حقيبة لينا",
+
+  text_fr: "Lina a un sac bleu. Dans son sac, il y a un livre et un stylo. Elle prend le sac pour aller à l'école.",
+  text_ar: "لينا لديها حقيبة زرقاء. في حقيبتها يوجد كتاب وقلم. تأخذ الحقيبة للذهاب إلى المدرسة.",
+
+  vocabulary: [
+    { fr: "Sac", ar: "حقيبة" },
+    { fr: "Bleu", ar: "أزرق" },
+    { fr: "Livre", ar: "كتاب" },
+    { fr: "Stylo", ar: "قلم" },
+    { fr: "Prendre", ar: "أخذ" },
+    { fr: "Aller", ar: "ذهب" }
+  ],
+
+  comprehension: [
+    { q: "De quelle couleur est le sac ?", options: ["Rouge", "Bleu", "Vert"], correct: 1 },
+    { q: "Que contient le sac ?", options: ["Un ballon", "Un livre et un stylo", "Des fruits"], correct: 1 }
+  ],
+
+  grammar: [
+    {
+      text: "Lina a ..... sac bleu.",
+      missing: "un",
+      options: ["un", "une", "des"],
+      rule_fr: `
+"Un" est l’article indéfini masculin singulier.
+➡️ Sac = nom masculin
+➡️ On utilise "un" quand on parle de quelque chose de non précis.
+Exemples :
+- un sac
+- un livre
+Exception : devant une voyelle → "un" reste inchangé.
+      `,
+      rule_ar: `
+"Un" هي أداة تنكير للمذكر المفرد.
+➡️ sac اسم مذكر
+تُستعمل عندما لا نحدد الشيء.
+أمثلة:
+- un sac
+- un livre
+      `
+    },
+    {
+      text: "..... son sac, il y a un livre.",
+      missing: "Dans",
+      options: ["Dans", "Sur", "Avec"],
+      rule_fr: `
+"Dans" indique l’intérieur d’un objet ou d’un lieu.
+Exemples :
+- Dans la maison
+- Dans le sac
+⚠️ Ne pas confondre avec "sur" (au-dessus).
+      `,
+      rule_ar: `
+"Dans" تعني داخل شيء.
+أمثلة:
+- داخل البيت
+- داخل الحقيبة
+      `
+    }
+  ]
+},
+{
+  id: 11,
+  level_id: 2,
+  title_fr: "1-Le week-end de Karim",
+  title_ar: "عطلة كريم",
+
+  text_fr: "Samedi, Karim est allé au cinéma avec ses amis. Ils ont regardé un film intéressant et ont mangé du pop-corn.",
+  text_ar: "يوم السبت، ذهب كريم إلى السينما مع أصدقائه. شاهدوا فيلماً ممتعاً وأكلوا فشاراً.",
+  vocabulary: [
+    { fr: "Samedi", ar: "يوم السبت" },
+    { fr: "Cinéma", ar: "سينما" },
+    { fr: "Regarder", ar: "شاهد" },
+    { fr: "Film", ar: "فيلم" },
+    { fr: "Intéressant", ar: "ممتع" },
+    { fr: "Pop-corn", ar: "فشار" }
+  ],
+  comprehension: [
+    { q: "Où est allé Karim ?", options: ["Au parc", "Au cinéma", "Au musée"], correct: 1 },
+    { q: "Qu'ont-ils mangé ?", options: ["Des bonbons", "Du pop-corn", "Des fruits"], correct: 1 }
+  ],
+  grammar: [
+    {
+      text: "Karim est ..... au cinéma.",
+      missing: "allé",
+      options: ["aller", "allé", "allée"],
+      rule_fr: `
+Le passé composé avec "être" :
+être + participe passé.
+➡️ Aller se conjugue avec "être".
+Accord :
+- Karim (masculin singulier) → allé
+Exemples :
+- Elle est allée
+- Ils sont allés
+      `,
+      rule_ar: `
+الماضي المركب مع être:
+être + اسم المفعول
+الفعل aller يأتي مع être
+ويُطابق الفاعل:
+- كريم → allé
+      `
+    }
+  ]
+},
+{
+  id: 21,
+  level_id: 3,
+  title_fr: "1-Un projet important",
+  title_ar: "مشروع مهم",
+
+  text_fr: "Si Marc avait plus de temps, il terminerait son projet plus rapidement, ce qui améliorerait ses résultats.",
+  text_ar: "لو كان لدى مارك وقت أكثر، لأنهِى مشروعه بسرعة أكبر، مما سيحسن نتائجه.",
+
+  grammar: [
+    {
+      text: "Si Marc ..... plus de temps, il terminerait le projet.",
+      missing: "avait",
+      options: ["a", "avait", "aurait"],
+      rule_fr: `
+Structure du conditionnel :
+Si + imparfait → conditionnel présent
+Exemples :
+- Si j'avais de l'argent, je voyagerais.
+⚠️ Jamais : si + conditionnel
+      `,
+      rule_ar: `
+قاعدة الشرط:
+Si + imparfait ثم conditionnel
+ممنوع استعمال conditionnel بعد si
+      `
+    }
+  ]
+}
+
+
              ]
         };
