@@ -6,6 +6,8 @@ const INITIAL_DATA = {
                 { id: 3, title_fr: 'Avancé', title_ar: 'متقدم', icon: 'fa-mountain', color: 'bg-purple-500' }
             ],
             stories: [
+                
+
                 {
                     id: 1,
                     level_id: 1,
@@ -467,6 +469,92 @@ Exemples :
 Si + imparfait ثم conditionnel
 ممنوع استعمال conditionnel بعد si
       `
+    }
+  ]
+},
+{
+  id: 0,
+  level_id: 1,
+  title_fr: "5-Pourquoi Amine dit « je parle »",
+  title_ar: "لماذا يقول أمين « je parle »",
+  text_fr: "Amine apprend le français. Chaque matin, il parle avec ses amis. Il regarde des vidéos et écoute la radio. Un jour, Amine remarque quelque chose. Il dit : je parle, je regarde, j’écoute. Il comprend alors une règle simple : quand on parle de ce qu’on fait maintenant, on utilise le présent. Les verbes comme parler, regarder et écouter finissent par -er. Avec je, on enlève -er et on ajoute -e. Amine pratique tous les jours, et le français devient plus facile.",
+  text_ar: "أمين يتعلم اللغة الفرنسية. كل صباح، يتكلم مع أصدقائه. يشاهد فيديوهات ويستمع إلى الراديو. في يوم من الأيام، لاحظ أمين شيئًا. قال: je parle، je regarde، j’écoute. ففهم قاعدة بسيطة: عندما نتحدث عما نفعله الآن، نستخدم الحاضر. الأفعال مثل parler وregarder وécouter تنتهي بـ -er. مع je نحذف -er ونضيف -e. يتدرّب أمين كل يوم، وتصبح الفرنسية أسهل.",
+
+  vocabulary: [
+    { fr: "Apprendre", ar: "يتعلم" },
+    { fr: "Parler", ar: "يتكلم" },
+    { fr: "Regarder", ar: "يشاهد" },
+    { fr: "Écouter", ar: "يستمع" },
+    { fr: "Matin", ar: "صباح" },
+    { fr: "Règle", ar: "قاعدة" },
+    { fr: "Présent", ar: "المضارع" },
+    { fr: "Verbe", ar: "فعل" },
+    { fr: "Maintenant", ar: "الآن" },
+    { fr: "Pratiquer", ar: "يتدرّب" },
+    { fr: "Facile", ar: "سهل" },
+    { fr: "Amis", ar: "أصدقاء" },
+    { fr: "Radio", ar: "راديو" },
+    { fr: "Remarque", ar: "لاحظ" },
+    { fr: "Quelque chose", ar: "شيئًا" },
+    { fr: "Alors", ar: "إذاً" },
+    { fr: "Simple", ar: "بسيطة" },
+    { fr: "Tous les jours", ar: "كل يوم" },
+    { fr: "Devient (devenir)", ar: "تصبح" },
+    { fr: "Finissent (finir)", ar: "تنتهي" }
+  ],
+
+  comprehension: [
+    {
+      q: "Qu’est-ce qu’Amine apprend ?",
+      options: ["L’anglais", "Le français", "L’arabe"],
+      correct: 1
+    },
+    {
+      q: "Quand utilise-t-on le présent ?",
+      options: [
+        "Pour parler du passé",
+        "Pour parler du futur",
+        "Pour parler de maintenant"
+      ],
+      correct: 2
+    }
+  ],
+
+  grammar: [
+    {
+      text: "Chaque matin, Amine ..... avec ses amis.",
+      missing: "parle",
+      options: ["parle", "parles", "parlent"],
+      rule_fr: "Avec le sujet 'Il', le verbe du 1er groupe au présent se termine par -e.",
+      rule_ar: "مع الضمير 'Il'، فعل المجموعة الأولى في الحاضر ينتهي بـ -e."
+    },
+    {
+      text: "Il ..... des vidéos.",
+      missing: "regarde",
+      options: ["regarde", "regardes", "regardent"],
+      rule_fr: "Le verbe 'regarder' au présent avec 'Il' prend la terminaison -e.",
+      rule_ar: "فعل 'regarder' في الحاضر مع 'Il' يأخذ النهاية -e."
+    },
+    {
+      text: "Il ..... la radio.",
+      missing: "écoute",
+      options: ["écoute", "écoutes", "écoutent"],
+      rule_fr: "Pour les verbes en -er, on enlève -er et on ajoute -e avec 'Il'.",
+      rule_ar: "في الأفعال المنتهية بـ -er نحذف -er ونضيف -e مع 'Il'."
+    },
+    {
+      text: "Je ..... français.",
+      missing: "parle",
+      options: ["parle", "parles", "parlent"],
+      rule_fr: "Avec 'Je', les verbes du 1er groupe au présent se terminent par -e.",
+      rule_ar: "مع 'Je' أفعال المجموعة الأولى في الحاضر تنتهي بـ -e."
+    },
+    {
+      text: "Les verbes ..... par -er.",
+      missing: "finissent",
+      options: ["finis", "finissent", "finissez"],
+      rule_fr: "Avec 'Les verbes' (pluriel), le verbe 'finir' se conjugue 'finissent'.",
+      rule_ar: "مع الجمع 'Les verbes' يُصرف الفعل 'finir' إلى 'finissent'."
     }
   ]
 }
