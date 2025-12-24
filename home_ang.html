@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Learning - Anglais Technique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="router.navigate('home')">
+                    <div class="bg-blue-700 p-2 rounded-lg text-white">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">SAP<span class="text-blue-600">English</span></span>
+                </div>
+                <div class="flex space-x-4">
+                    <button id="btn-user" class="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-blue-100 text-blue-700"><a href="index.html">Français</a></button>
+                    <button onclick="router.setRole('admin')" id="btn-admin" class="px-4 py-2 rounded-full text-sm font-medium transition-colors text-gray-600 hover:bg-gray-100">Admin</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="app-container" class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
+        </main>
+
+    <div id="modal-container" class="fixed inset-0 bg-black/60 hidden z-[60] flex items-center justify-center p-4">
+        <div id="modal-content" class="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
+            </div>
+    </div>
+
+    <script src="./data_stories_ang.js"></script>
+    <script>
+        
+
+        let state = JSON.parse(localStorage.getItem('sap_learn_data')) || INITIAL_DATA;
+        let currentRole = 'user';
+
+        function saveData() { localStorage.setItem('sap_learn_data', JSON.stringify(state)); }
+
+        const router = {
+            currentView: 'home',
+            params: {},
+            navigate(view, params = {}) {
+                this.currentView = view;
+                this.params = params;
+                this.render();
+                window.scrollTo(0,0);
+            },
+            setRole(role) {
+                currentRole = role;
+                document.getElementById('btn-user').className = role === 'user' ? 'px-4 py-2 rounded-full text-sm font-medium transition-colors bg-blue-100 text-blue-700' : 'px-4 py-2 rounded-full text-sm font-medium transition-colors text-gray-600 hover:bg-gray-100';
+                document.getElementById('btn-admin').className = role === 'admin' ? 'px-4 py-2 rounded-full text-sm font-medium transition-colors bg-blue-100 text-blue-700' : 'px-4 py-2 rounded-full text-sm font-medium transition-colors text-gray-600 hover:bg-gray-100';
+                this.navigate('home');
+            },
+            render() {
+                const container = document.getElementById('app-container');
+                currentRole === 'admin' ? renderAdmin(container, this.currentView, this.params) : renderUser(container, this.currentView, this.params);
+            }
+        };
+
+        function renderUser(container, view, params) {
+            switch(view) {
+                case 'home':
+                    container.innerHTML = `
+                        <div class="text-center mb-10">
+                            <h1 class="text-4xl font-bold text-gray-900 mb-2">Maîtrisez SAP en Anglais 🚀</h1>
+                            <p class="text-gray-600">Choisissez un domaine pour explorer les concepts et le vocabulaire.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            ${state.levels.map(level => `
+                                <div onclick="router.navigate('stories', {levelId: ${level.id}})" class="glass-card p-8 rounded-3xl cursor-pointer btn-hover flex flex-col items-center text-center">
+                                    <div class="${level.color} w-20 h-20 rounded-2xl flex items-center justify-center text-white text-3xl mb-4 shadow-lg">
+                                        <i class="fas ${level.icon}"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-gray-800">${level.title_en}</h3>
+                                    <span class="text-sm text-blue-600 font-medium">${level.title_fr}</span>
+                                </div>
+                            `).join('')}
+                        </div>`;
+                    break;
+                case 'stories':
+                    const stories = state.stories.filter(s => s.level_id === params.levelId);
+                    container.innerHTML = `
+                        <div class="mb-6 flex items-center gap-4">
+                            <button onclick="router.navigate('home')" class="p-2 hover:bg-gray-200 rounded-full"><i class="fas fa-arrow-left"></i></button>
+                            <h2 class="text-2xl font-bold">Leçons disponibles</h2>
+                        </div>
+                        <div class="space-y-4">
+                            ${stories.map(s => `
+                                <div onclick="router.navigate('read', {storyId: ${s.id}})" class="bg-white p-6 rounded-2xl shadow-sm border hover:border-blue-400 cursor-pointer flex justify-between items-center group">
+                                    <div><h3 class="text-xl font-semibold">${s.title_en}</h3><p class="text-gray-500">${s.title_fr}</p></div>
+                                    <i class="fas fa-chevron-right text-gray-300 group-hover:text-blue-500"></i>
+                                </div>
+                            `).join('')}
+                        </div>`;
+                    break;
+                case 'read':
+                    const story = state.stories.find(s => s.id === params.storyId);
+                    container.innerHTML = `
+                        <button onclick="router.navigate('stories', {levelId: ${story.level_id}})" class="mb-4 text-gray-600 hover:text-blue-600"><i class="fas fa-arrow-left"></i> Retour</button>
+                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                            <div class="p-8 lg:p-12">
+                                <h1 class="text-3xl font-bold text-center mb-8">${story.title_en}</h1>
+                                <div class="text-xl leading-relaxed text-gray-800 space-y-8">
+                                    <div class="p-6 bg-slate-50 rounded-2xl border-l-4 border-blue-500">${story.text_en}</div>
+                                    <div id="translation" class="hidden p-6 bg-blue-50 rounded-2xl border-l-4 border-blue-200 italic text-blue-900">
+                                        ${story.text_fr}
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <button onclick="document.getElementById('translation').classList.toggle('hidden')" class="px-6 py-2 bg-blue-100 text-blue-700 rounded-xl font-bold hover:bg-blue-200 transition-colors">
+                                            <i class="fas fa-language mr-2"></i> Traduire en Français
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-6 grid grid-cols-1 md:grid-cols-3 gap-4 border-t">
+                                <button onclick="router.navigate('vocab', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md flex flex-col items-center">
+                                    <i class="fas fa-spell-check text-blue-500 text-xl mb-2"></i><span class="font-bold">Vocabulaire</span>
+                                </button>
+                                <button onclick="router.navigate('quiz_comp', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md flex flex-col items-center">
+                                    <i class="fas fa-question-circle text-orange-500 text-xl mb-2"></i><span class="font-bold">Compréhension</span>
+                                </button>
+                                <button onclick="router.navigate('quiz_gram', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md flex flex-col items-center">
+                                    <i class="fas fa-graduation-cap text-purple-500 text-xl mb-2"></i><span class="font-bold">Grammaire</span>
+                                </button>
+                            </div>
+                        </div>`;
+                    break;
+                case 'vocab': renderVocabGame(container, params.storyId); break;
+                case 'quiz_comp': renderQuiz(container, params.storyId, 'comprehension'); break;
+                case 'quiz_gram': renderQuiz(container, params.storyId, 'grammar'); break;
+            }
+        }
+
+        // --- GAME LOGIC ---
+        function renderVocabGame(container, storyId) {
+            const story = state.stories.find(s => s.id === storyId);
+            const vocab = story.vocabulary;
+            let currentIdx = 0;
+            
+            function showQuestion() {
+                const word = vocab[currentIdx];
+                let options = [word.fr, ...vocab.filter(v => v.fr !== word.fr).sort(() => 0.5 - Math.random()).slice(0, 2).map(v => v.fr)].sort(() => 0.5 - Math.random());
+                container.innerHTML = `
+                    <div class="max-w-md mx-auto">
+                        <div class="mb-6 flex justify-between items-center">
+                            <button onclick="router.navigate('read', {storyId: ${storyId}})" class="text-gray-500">Quitter</button>
+                            <span class="font-bold text-blue-600">${currentIdx + 1} / ${vocab.length}</span>
+                        </div>
+                        <div class="bg-white p-10 rounded-3xl shadow-xl text-center mb-8">
+                            <p class="text-gray-400 uppercase text-xs mb-2">Traduire l'expression SAP</p>
+                            <h2 class="text-3xl font-bold">${word.en}</h2>
+                        </div>
+                        <div class="space-y-4">
+                            ${options.map(opt => `<button onclick="checkVocab('${opt}', '${word.fr}', ${storyId})" class="w-full p-5 bg-white border-2 rounded-2xl text-lg font-bold hover:bg-blue-50 hover:border-blue-500 transition-all">${opt}</button>`).join('')}
+                        </div>
+                    </div>`;
+            }
+            window.checkVocab = (sel, cor, sId) => {
+                if(sel === cor) {
+                    currentIdx++;
+                    currentIdx >= vocab.length ? showSuccess("Vocabulaire maîtrisé !", sId) : showQuestion();
+                } else { showError("Mauvaise traduction, réessayez !"); }
+            };
+            showQuestion();
+        }
+
+        function renderQuiz(container, storyId, type) {
+            const story = state.stories.find(s => s.id === storyId);
+            const questions = story[type];
+            let currentIdx = 0;
+
+            function showQuestion() {
+                const q = questions[currentIdx];
+                container.innerHTML = `
+                    <div class="max-w-2xl mx-auto">
+                        <div class="mb-6 flex justify-between items-center">
+                            <button onclick="router.navigate('read', {storyId: ${storyId}})" class="text-gray-500">Quitter</button>
+                            <span class="font-bold text-blue-600">${currentIdx + 1} / ${questions.length}</span>
+                        </div>
+                        <div class="bg-white p-8 rounded-3xl shadow-xl mb-8 relative">
+                            <h2 class="text-2xl font-bold mb-4">${type === 'grammar' ? q.text : q.q}</h2>
+                            ${type === 'grammar' ? `<button onclick="showHelp('${q.rule_en.replace(/'/g, "\\'")}', '${q.rule_fr.replace(/'/g, "\\'")}')" class="text-purple-600 bg-purple-50 px-3 py-1 rounded-full text-sm font-bold"><i class="fas fa-lightbulb"></i> Aide</button>` : ''}
+                        </div>
+                        <div class="space-y-4">
+                            ${q.options.map((opt, idx) => `<button onclick="checkQuiz(${idx}, ${type === 'grammar' ? `'${q.missing}'` : q.correct}, ${storyId}, '${type}')" class="w-full p-5 bg-white border-2 rounded-2xl text-left font-bold flex justify-between"><span>${opt}</span><i class="fas fa-chevron-right opacity-20"></i></button>`).join('')}
+                        </div>
+                    </div>`;
+            }
+            window.checkQuiz = (idx, cor, sId, qType) => {
+                const isCorrect = qType === 'grammar' ? questions[currentIdx].options[idx] === cor : idx === cor;
+                if(isCorrect) {
+                    currentIdx++;
+                    currentIdx >= questions.length ? showSuccess("Exercice terminé avec succès !", sId) : showQuestion();
+                } else { showError("Erreur, vérifiez la règle ou le texte."); }
+            };
+            showQuestion();
+        }
+
+        // --- UTILS ---
+        function showModal(content) { const m = document.getElementById('modal-container'); document.getElementById('modal-content').innerHTML = content; m.classList.remove('hidden'); }
+        function closeModal() { document.getElementById('modal-container').classList.add('hidden'); }
+        function showSuccess(msg, sId) { showModal(`<div class="p-8 text-center"><div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"><i class="fas fa-check"></i></div><h2 class="text-2xl font-bold mb-2">Bravo !</h2><p class="mb-6 text-gray-500">${msg}</p><button onclick="closeModal(); router.navigate('read', {storyId: ${sId}})" class="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold">Continuer</button></div>`); }
+        function showError(msg) { showModal(`<div class="p-8 text-center text-red-600"><i class="fas fa-times-circle text-5xl mb-4"></i><p class="font-bold text-xl">${msg}</p><button onclick="closeModal()" class="mt-6 px-6 py-2 bg-gray-100 text-gray-800 rounded-xl">Réessayer</button></div>`); }
+        function showHelp(en, fr) { showModal(`<div class="p-8"><h2 class="text-2xl font-bold mb-6">Règle Linguistique</h2><div class="space-y-4"><div class="p-4 bg-blue-50 rounded-xl"><p class="text-xs font-bold text-blue-500">ENGLISH</p><p class="text-lg">${en}</p></div><div class="p-4 bg-purple-50 rounded-xl"><p class="text-xs font-bold text-purple-500">FRANÇAIS</p><p class="text-lg italic">${fr}</p></div></div><button onclick="closeModal()" class="w-full mt-8 py-4 bg-gray-900 text-white rounded-2xl font-bold">Compris !</button></div>`); }
+
+        function renderAdmin(c) { c.innerHTML = `<div class="p-10 text-center"><h1 class="text-2xl font-bold">Mode Administration</h1><p class="text-gray-500">Ceci permettrait de modifier les questions SAP.</p><button onclick="router.setRole('user')" class="mt-4 text-blue-600">Retour au mode apprenant</button></div>`; }
+
+        window.onload = () => router.render();
+    </script>
+</body>
+</html>
