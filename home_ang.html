@@ -60,7 +60,24 @@
     <script>
         
 
-        let state = JSON.parse(localStorage.getItem('sap_learn_data')) || INITIAL_DATA;
+        //let state = JSON.parse(localStorage.getItem('sap_learn_data')) || INITIAL_DATA;
+        //le code en bas remplce celui en haut 
+        // --- REMPLACEMENT SÉCURISÉ DU STATE ---
+            let state;
+
+            try {
+                // On tente de lire la sauvegarde
+                const savedData = localStorage.getItem('sap_learn_data');
+                
+                // Si savedData existe, on le transforme en objet, sinon on prend INITIAL_DATA
+                state = savedData ? JSON.parse(savedData) : INITIAL_DATA;
+            } catch (error) {
+                // Si le téléphone bloque le stockage (WebView Android), on force INITIAL_DATA
+                console.warn("Accès LocalStorage refusé par le navigateur mobile.");
+                state = INITIAL_DATA; 
+            }
+            // --- FIN DU REMPLACEMENT ---
+        // end of de modif 
         let currentRole = 'user';
 
         function saveData() { localStorage.setItem('sap_learn_data', JSON.stringify(state)); }
