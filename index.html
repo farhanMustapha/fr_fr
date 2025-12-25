@@ -641,14 +641,15 @@ Si + imparfait ثم conditionnel
         //end of data 
         
         //let state = JSON.parse(localStorage.getItem('fr_easy_data')) || INITIAL_DATA;
+        //ce code en bas remplace celui en haut 
         let state;
-try {
-    const savedData = localStorage.getItem('fr_easy_data');
-    state = savedData ? JSON.parse(savedData) : INITIAL_DATA;
-} catch (e) {
-    console.error("LocalStorage non supporté");
-    state = INITIAL_DATA; // On utilise les données par défaut si le stockage plante
-}
+            try {
+                const savedData = localStorage.getItem('fr_easy_data');
+                state = savedData ? JSON.parse(savedData) : INITIAL_DATA;
+            } catch (e) {
+                console.error("LocalStorage non supporté");
+                state = INITIAL_DATA; // On utilise les données par défaut si le stockage plante
+            }
 
         //modif new 
         let currentRole = 'user'; 
