@@ -333,6 +333,41 @@ const INITIAL_DATA = {
 
 
                     },
+                    {
+  id: 4,
+  level_id: 1,
+  title_fr: "Yassine est sûr de son choix",
+  title_ar: "ياسين متأكد من اختياره",
+
+  text_fr: "Yassine veut acheter un téléphone. Il lit les informations sur le site. Après cela, il est sûr de son choix. Sa sœur, elle, n'est pas encore sûre. Elle préfère vérifier encore une fois.",
+  text_ar: "يريد ياسين شراء هاتف. يقرأ المعلومات في الموقع. بعد ذلك، هو متأكد من اختياره. أخته ليست متأكدة بعد. تفضل أن تتحقق مرة أخرى.",
+
+  vocabulary: [
+    { fr: "Sûr", ar: "متأكد (مذكر)" },
+    { fr: "Sûre", ar: "متأكدة (مؤنث)" },
+    { fr: "Choix", ar: "اختيار" },
+    { fr: "Site", ar: "موقع" },
+    { fr: "Vérifier", ar: "يتحقق" },
+    { fr: "Encore", ar: "مرة أخرى" }
+  ],
+
+  grammar: [
+    {
+      text: "Yassine est ..... de son choix.",
+      missing: "sûr",
+      options: ["sûr", "sûre"],
+      rule_fr: "'Sûr' s’utilise avec un sujet masculin.",
+      rule_ar: "'sûr' تُستعمل مع المذكر."
+    },
+    {
+      text: "Sa sœur n'est pas encore ..... .",
+      missing: "sûre",
+      options: ["sûr", "sûre"],
+      rule_fr: "'Sûre' est la forme féminine de 'sûr'.",
+      rule_ar: "'sûre' هي الصيغة المؤنثة لـ 'sûr'."
+    }
+  ]
+},
                     //-------------
                     {
   id: 4,
