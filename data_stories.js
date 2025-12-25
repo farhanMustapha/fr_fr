@@ -333,41 +333,7 @@ const INITIAL_DATA = {
 
 
                     },
-                    {
-  id: 4,
-  level_id: 1,
-  title_fr: "Yassine est sûr de son choix",
-  title_ar: "ياسين متأكد من اختياره",
-
-  text_fr: "Yassine veut acheter un téléphone. Il lit les informations sur le site. Après cela, il est sûr de son choix. Sa sœur, elle, n'est pas encore sûre. Elle préfère vérifier encore une fois.",
-  text_ar: "يريد ياسين شراء هاتف. يقرأ المعلومات في الموقع. بعد ذلك، هو متأكد من اختياره. أخته ليست متأكدة بعد. تفضل أن تتحقق مرة أخرى.",
-
-  vocabulary: [
-    { fr: "Sûr", ar: "متأكد (مذكر)" },
-    { fr: "Sûre", ar: "متأكدة (مؤنث)" },
-    { fr: "Choix", ar: "اختيار" },
-    { fr: "Site", ar: "موقع" },
-    { fr: "Vérifier", ar: "يتحقق" },
-    { fr: "Encore", ar: "مرة أخرى" }
-  ],
-
-  grammar: [
-    {
-      text: "Yassine est ..... de son choix.",
-      missing: "sûr",
-      options: ["sûr", "sûre"],
-      rule_fr: "'Sûr' s’utilise avec un sujet masculin.",
-      rule_ar: "'sûr' تُستعمل مع المذكر."
-    },
-    {
-      text: "Sa sœur n'est pas encore ..... .",
-      missing: "sûre",
-      options: ["sûr", "sûre"],
-      rule_fr: "'Sûre' est la forme féminine de 'sûr'.",
-      rule_ar: "'sûre' هي الصيغة المؤنثة لـ 'sûr'."
-    }
-  ]
-},
+                    
                     //-------------
                     {
   id: 4,
@@ -658,7 +624,80 @@ Si + imparfait ثم conditionnel
             rule_ar: "تستخدم 'Ceux' قبل 'au' أو 'du' ou 'qui/que' للجمع المذكر."
         }
     ]
+},
+{
+  id: 4,
+  level_id: 1,
+  title_fr: "7-Samir et Amina au magasin",
+  title_ar: "سمير وأمينة في المتجر",
+
+  text_fr: "Samir et Amina vont au magasin. Samir veut acheter une montre. Il regarde le prix et la qualité. Après réflexion, il est sûr de son choix. Amina regarde aussi une montre, mais elle hésite encore. Elle n’est pas sûre et préfère demander l’avis du vendeur.",
+  text_ar: "يذهب سمير وأمينة إلى المتجر. يريد سمير شراء ساعة. ينظر إلى السعر والجودة. بعد التفكير، هو متأكد من اختياره. تنظر أمينة أيضاً إلى ساعة، لكنها ما زالت مترددة. هي غير متأكدة وتفضل أن تسأل البائع.",
+
+  vocabulary: [
+    { fr: "Magasin", ar: "متجر" },
+    { fr: "Montre", ar: "ساعة" },
+    { fr: "Choix", ar: "اختيار" },
+    { fr: "Sûr", ar: "متأكد (مذكر)" },
+    { fr: "Sûre", ar: "متأكدة (مؤنث)" },
+    { fr: "Hésiter", ar: "يتردد" },
+    { fr: "Vendeur", ar: "بائع" },
+    { fr: "Prix", ar: "سعر" },
+    { fr: "Qualité", ar: "جودة" },
+    { fr: "Réflexion", ar: "تفكير" },
+    { fr: "Avis", ar: "رأي" },
+    { fr: "Acheter", ar: "شراء" },
+    { fr: "Regarder", ar: "ينظر" },
+    { fr: "Préférer", ar: "يفضل" },
+    { fr: "Demander", ar: "يسأل" },
+    { fr: "Encore", ar: "ما زال" },
+    { fr: "Après", ar: "بعد" },
+    { fr : "aussi", ar: "أيضاً" },
+    { fr : "vendre", ar: "باع" },
+    { fr : "vendeuse", ar: "بائعة" },
+    { fr : "vendeur", ar: "بائع" }
+  ],
+
+  comprehension: [
+    {
+      q: "Où vont Samir et Amina ?",
+      options: ["À l’école", "Au magasin", "À la maison"],
+      correct: 1
+    },
+    {
+      q: "Qu’est-ce que Samir veut acheter ?",
+      options: ["Un téléphone", "Une montre", "Un livre"],
+      correct: 1
+    },
+    {
+      q: "Pourquoi Amina n’est-elle pas sûre ?",
+      options: [
+        "Parce qu’elle hésite encore",
+        "Parce qu’elle n’aime pas la montre",
+        "Parce qu’elle part"
+      ],
+      correct: 0
+    }
+  ],
+
+  grammar: [
+    {
+      text: "Samir est ..... de son choix.",
+      missing: "sûr",
+      options: ["sûr", "sûre"],
+      rule_fr: "‘Sûr’ s’utilise avec un sujet masculin.",
+      rule_ar: "تُستعمل ‘sûr’ مع المذكر."
+    },
+    {
+      text: "Amina n’est pas ..... .",
+      missing: "sûre",
+      options: ["sûr", "sûre"],
+      rule_fr: "‘Sûre’ est la forme féminine de ‘sûr’.",
+      rule_ar: "‘sûre’ هي الصيغة المؤنثة لـ ‘sûr’."
+    }
+  ]
 }
+
 
 
              ]
