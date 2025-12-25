@@ -336,343 +336,328 @@ const INITIAL_DATA = {
                     
                     //-------------
                     {
-  id: 4,
-  level_id: 1,
-  title_fr: "4-Le sac de Lina",
-  title_ar: "حقيبة لينا",
+                    id: 4,
+                    level_id: 1,
+                    title_fr: "4-Le sac de Lina",
+                    title_ar: "حقيبة لينا",
 
-  text_fr: "Lina a un sac bleu. Dans son sac, il y a un livre et un stylo. Elle prend le sac pour aller à l'école.",
-  text_ar: "لينا لديها حقيبة زرقاء. في حقيبتها يوجد كتاب وقلم. تأخذ الحقيبة للذهاب إلى المدرسة.",
+                    text_fr: "Lina a un sac bleu. Dans son sac, il y a un livre et un stylo. Elle prend le sac pour aller à l'école.",
+                    text_ar: "لينا لديها حقيبة زرقاء. في حقيبتها يوجد كتاب وقلم. تأخذ الحقيبة للذهاب إلى المدرسة.",
 
-  vocabulary: [
-    { fr: "Sac", ar: "حقيبة" },
-    { fr: "Bleu", ar: "أزرق" },
-    { fr: "Livre", ar: "كتاب" },
-    { fr: "Stylo", ar: "قلم" },
-    { fr: "Prendre", ar: "أخذ" },
-    { fr: "Aller", ar: "ذهب" }
-  ],
+                    vocabulary: [
+                        { fr: "Sac", ar: "حقيبة" },
+                        { fr: "Bleu", ar: "أزرق" },
+                        { fr: "Livre", ar: "كتاب" },
+                        { fr: "Stylo", ar: "قلم" },
+                        { fr: "Prendre", ar: "أخذ" },
+                        { fr: "Aller", ar: "ذهب" }
+                    ],
 
-  comprehension: [
-    { q: "De quelle couleur est le sac ?", options: ["Rouge", "Bleu", "Vert"], correct: 1 },
-    { q: "Que contient le sac ?", options: ["Un ballon", "Un livre et un stylo", "Des fruits"], correct: 1 }
-  ],
+                    comprehension: [
+                        { q: "De quelle couleur est le sac ?", options: ["Rouge", "Bleu", "Vert"], correct: 1 },
+                        { q: "Que contient le sac ?", options: ["Un ballon", "Un livre et un stylo", "Des fruits"], correct: 1 }
+                    ],
 
- grammar: [
-  {
-    text: "Lina a ..... sac bleu.",
-    missing: "un",
-    options: ["un", "une", "des"],
-    rule_fr: "\"Un\" est l’article indéfini masculin singulier.\n➡️ Sac = nom masculin\n➡️ On utilise \"un\" quand on parle de quelque chose de non précis.\nExemples :\n- un sac\n- un livre\nException : devant une voyelle → \"un\" reste inchangé.",
-    rule_ar: "\"Un\" هي أداة تنكير للمذكر المفرد.\n➡️ sac اسم مذكر\nتُستعمل عندما لا نحدد الشيء.\nأمثلة:\n- un sac\n- un livre"
-  },
-  {
-    text: "..... son sac, il y a un livre.",
-    missing: "Dans",
-    options: ["Dans", "Sur", "Avec"],
-    rule_fr: "\"Dans\" indique l’intérieur d’un objet ou d’un lieu.\nExemples :\n- Dans la maison\n- Dans le sac\n⚠️ Ne pas confondre avec \"sur\" (au-dessus).",
-    rule_ar: "\"Dans\" تعني داخل شيء.\nأمثلة:\n- داخل البيت\n- داخل الحقيبة"
-  }
-]
-},
-{
-  id: 5,
-  level_id: 2,
-  title_fr: "1-Le week-end de Karim",
-  title_ar: "عطلة كريم",
+                    grammar: [
+                    {
+                        text: "Lina a ..... sac bleu.",
+                        missing: "un",
+                        options: ["un", "une", "des"],
+                        rule_fr: "\"Un\" est l’article indéfini masculin singulier.\n➡️ Sac = nom masculin\n➡️ On utilise \"un\" quand on parle de quelque chose de non précis.\nExemples :\n- un sac\n- un livre\nException : devant une voyelle → \"un\" reste inchangé.",
+                        rule_ar: "\"Un\" هي أداة تنكير للمذكر المفرد.\n➡️ sac اسم مذكر\nتُستعمل عندما لا نحدد الشيء.\nأمثلة:\n- un sac\n- un livre"
+                    },
+                    {
+                        text: "..... son sac, il y a un livre.",
+                        missing: "Dans",
+                        options: ["Dans", "Sur", "Avec"],
+                        rule_fr: "\"Dans\" indique l’intérieur d’un objet ou d’un lieu.\nExemples :\n- Dans la maison\n- Dans le sac\n⚠️ Ne pas confondre avec \"sur\" (au-dessus).",
+                        rule_ar: "\"Dans\" تعني داخل شيء.\nأمثلة:\n- داخل البيت\n- داخل الحقيبة"
+                    }
+                    ]
+                    },
+                    {
+                    id: 5,
+                    level_id: 2,
+                    title_fr: "1-Le week-end de Karim",
+                    title_ar: "عطلة كريم",
 
-  text_fr: "Samedi, Karim est allé au cinéma avec ses amis. Ils ont regardé un film intéressant et ont mangé du pop-corn.",
-  text_ar: "يوم السبت، ذهب كريم إلى السينما مع أصدقائه. شاهدوا فيلماً ممتعاً وأكلوا فشاراً.",
-  vocabulary: [
-    { fr: "Samedi", ar: "يوم السبت" },
-    { fr: "Cinéma", ar: "سينما" },
-    { fr: "Regarder", ar: "شاهد" },
-    { fr: "Film", ar: "فيلم" },
-    { fr: "Intéressant", ar: "ممتع" },
-    { fr: "Pop-corn", ar: "فشار" }
-  ],
-  comprehension: [
-    { q: "Où est allé Karim ?", options: ["Au parc", "Au cinéma", "Au musée"], correct: 1 },
-    { q: "Qu'ont-ils mangé ?", options: ["Des bonbons", "Du pop-corn", "Des fruits"], correct: 1 }
-  ],
-  grammar: [
-    {
-      text: "Karim est ..... au cinéma.",
-      missing: "allé",
-      options: ["aller", "allé", "allée"],
-      rule_fr: `
-Le passé composé avec "être" :
-être + participe passé.
-➡️ Aller se conjugue avec "être".
-Accord :
-- Karim (masculin singulier) → allé
-Exemples :
-- Elle est allée
-- Ils sont allés
-      `,
-      rule_ar: `
-الماضي المركب مع être:
-être + اسم المفعول
-الفعل aller يأتي مع être
-ويُطابق الفاعل:
-- كريم → allé
-      `
-    }
-  ]
-},
-{
-  id: 6,
-  level_id: 3,
-  title_fr: "1-Un projet important",
-  title_ar: "مشروع مهم",
+                    text_fr: "Samedi, Karim est allé au cinéma avec ses amis. Ils ont regardé un film intéressant et ont mangé du pop-corn.",
+                    text_ar: "يوم السبت، ذهب كريم إلى السينما مع أصدقائه. شاهدوا فيلماً ممتعاً وأكلوا فشاراً.",
+                    vocabulary: [
+                        { fr: "Samedi", ar: "يوم السبت" },
+                        { fr: "Cinéma", ar: "سينما" },
+                        { fr: "Regarder", ar: "شاهد" },
+                        { fr: "Film", ar: "فيلم" },
+                        { fr: "Intéressant", ar: "ممتع" },
+                        { fr: "Pop-corn", ar: "فشار" }
+                    ],
+                    comprehension: [
+                        { q: "Où est allé Karim ?", options: ["Au parc", "Au cinéma", "Au musée"], correct: 1 },
+                        { q: "Qu'ont-ils mangé ?", options: ["Des bonbons", "Du pop-corn", "Des fruits"], correct: 1 }
+                    ],
+                    grammar: [
+                        {
+                        text: "Karim est ..... au cinéma.",
+                        missing: "allé",
+                        options: ["aller", "allé", "allée"],
+                        rule_fr: "Le passé composé avec \"être\" :\nêtre + participe passé.\n➡️ Aller se conjugue avec \"être\".\nAccord :\n- Karim (masculin singulier) → allé\nExemples :\n- Elle est allée\n- Ils sont allés",
+                        rule_ar: "الماضي المركب مع être:\nêtre + اسم المفعول\nالفعل aller يأتي مع être\nويُطابق الفاعل:\n- كريم → allé"
+                        }
+                    ]
+                    },
+                    {
+                    id: 6,
+                    level_id: 3,
+                    title_fr: "1-Un projet important",
+                    title_ar: "مشروع مهم",
 
-  text_fr: "Si Marc avait plus de temps, il terminerait son projet plus rapidement, ce qui améliorerait ses résultats.",
-  text_ar: "لو كان لدى مارك وقت أكثر، لأنهِى مشروعه بسرعة أكبر، مما سيحسن نتائجه.",
+                    text_fr: "Si Marc avait plus de temps, il terminerait son projet plus rapidement, ce qui améliorerait ses résultats.",
+                    text_ar: "لو كان لدى مارك وقت أكثر، لأنهِى مشروعه بسرعة أكبر، مما سيحسن نتائجه.",
 
-  vocabulary: [
-    { fr: "Projet", ar: "مشروع" },
-    { fr: "Terminer", ar: "أنهى" },
-    { fr: "Rapidement", ar: "بسرعة" },
-    { fr: "Améliorer", ar: "حسن" },
-    { fr: "Résultats", ar: "نتائج" },
-    { fr: "Si", ar: "لو / إذا" },
-    { fr: "Plus de", ar: "أكثر من" },
-    { fr: "Temps", ar: "وقت" }
-    ],
-    comprehension: [
-    ],
-  grammar: [
-  {
-    text: "Si Marc ..... plus de temps, il terminerait le projet.",
-    missing: "avait",
-    options: ["a", "avait", "aurait"],
-    rule_fr: "Structure du conditionnel :\nSi + imparfait → conditionnel présent\nExemples :\n- Si j'avais de l'argent, je voyagerais.\n⚠️ Jamais : si + conditionnel",
-    rule_ar: "قاعدة الشرط:\nSi + imparfait ثم conditionnel\nممنوع استعمال conditionnel بعد si"
-  }
-]
-},
-{
-  id: 7,
-  level_id: 1,
-  title_fr: "7-Pourquoi Amine dit « je parle »",
-  title_ar: "لماذا يقول أمين « je parle »",
-  text_fr: "Amine apprend le français. Chaque matin, il parle avec ses amis. Il regarde des vidéos et écoute la radio. Un jour, Amine remarque quelque chose. Il dit : je parle, je regarde, j’écoute. Il comprend alors une règle simple : quand on parle de ce qu’on fait maintenant, on utilise le présent. Les verbes comme parler, regarder et écouter finissent par -er. Avec je, on enlève -er et on ajoute -e. Amine pratique tous les jours, et le français devient plus facile.",
-  text_ar: "أمين يتعلم اللغة الفرنسية. كل صباح، يتكلم مع أصدقائه. يشاهد فيديوهات ويستمع إلى الراديو. في يوم من الأيام، لاحظ أمين شيئًا. قال: je parle، je regarde، j’écoute. ففهم قاعدة بسيطة: عندما نتحدث عما نفعله الآن، نستخدم الحاضر. الأفعال مثل parler وregarder وécouter تنتهي بـ -er. مع je نحذف -er ونضيف -e. يتدرّب أمين كل يوم، وتصبح الفرنسية أسهل.",
+                    vocabulary: [
+                        { fr: "Projet", ar: "مشروع" },
+                        { fr: "Terminer", ar: "أنهى" },
+                        { fr: "Rapidement", ar: "بسرعة" },
+                        { fr: "Améliorer", ar: "حسن" },
+                        { fr: "Résultats", ar: "نتائج" },
+                        { fr: "Si", ar: "لو / إذا" },
+                        { fr: "Plus de", ar: "أكثر من" },
+                        { fr: "Temps", ar: "وقت" }
+                        ],
+                        comprehension: [
+                        ],
+                    grammar: [
+                    {
+                        text: "Si Marc ..... plus de temps, il terminerait le projet.",
+                        missing: "avait",
+                        options: ["a", "avait", "aurait"],
+                        rule_fr: "Structure du conditionnel :\nSi + imparfait → conditionnel présent\nExemples :\n- Si j'avais de l'argent, je voyagerais.\n⚠️ Jamais : si + conditionnel",
+                        rule_ar: "قاعدة الشرط:\nSi + imparfait ثم conditionnel\nممنوع استعمال conditionnel بعد si"
+                    }
+                    ]
+                    },
+                    {
+                    id: 7,
+                    level_id: 1,
+                    title_fr: "7-Pourquoi Amine dit « je parle »",
+                    title_ar: "لماذا يقول أمين « je parle »",
+                    text_fr: "Amine apprend le français. Chaque matin, il parle avec ses amis. Il regarde des vidéos et écoute la radio. Un jour, Amine remarque quelque chose. Il dit : je parle, je regarde, j’écoute. Il comprend alors une règle simple : quand on parle de ce qu’on fait maintenant, on utilise le présent. Les verbes comme parler, regarder et écouter finissent par -er. Avec je, on enlève -er et on ajoute -e. Amine pratique tous les jours, et le français devient plus facile.",
+                    text_ar: "أمين يتعلم اللغة الفرنسية. كل صباح، يتكلم مع أصدقائه. يشاهد فيديوهات ويستمع إلى الراديو. في يوم من الأيام، لاحظ أمين شيئًا. قال: je parle، je regarde، j’écoute. ففهم قاعدة بسيطة: عندما نتحدث عما نفعله الآن، نستخدم الحاضر. الأفعال مثل parler وregarder وécouter تنتهي بـ -er. مع je نحذف -er ونضيف -e. يتدرّب أمين كل يوم، وتصبح الفرنسية أسهل.",
 
-  vocabulary: [
-    { fr: "Apprendre", ar: "يتعلم" },
-    { fr: "Parler", ar: "يتكلم" },
-    { fr: "Regarder", ar: "يشاهد" },
-    { fr: "Écouter", ar: "يستمع" },
-    { fr: "Matin", ar: "صباح" },
-    { fr: "Règle", ar: "قاعدة" },
-    { fr: "Présent", ar: "المضارع" },
-    { fr: "Verbe", ar: "فعل" },
-    { fr: "Maintenant", ar: "الآن" },
-    { fr: "Pratiquer", ar: "يتدرّب" },
-    { fr: "Facile", ar: "سهل" },
-    { fr: "Amis", ar: "أصدقاء" },
-    { fr: "Radio", ar: "راديو" },
-    { fr: "Remarque", ar: "لاحظ" },
-    { fr: "Quelque chose", ar: "شيئًا" },
-    { fr: "Alors", ar: "إذاً" },
-    { fr: "Simple", ar: "بسيطة" },
-    { fr: "Tous les jours", ar: "كل يوم" },
-    { fr: "Devient (devenir)", ar: "تصبح" },
-    { fr: "Finissent (finir)", ar: "تنتهي" }
-  ],
+                    vocabulary: [
+                        { fr: "Apprendre", ar: "يتعلم" },
+                        { fr: "Parler", ar: "يتكلم" },
+                        { fr: "Regarder", ar: "يشاهد" },
+                        { fr: "Écouter", ar: "يستمع" },
+                        { fr: "Matin", ar: "صباح" },
+                        { fr: "Règle", ar: "قاعدة" },
+                        { fr: "Présent", ar: "المضارع" },
+                        { fr: "Verbe", ar: "فعل" },
+                        { fr: "Maintenant", ar: "الآن" },
+                        { fr: "Pratiquer", ar: "يتدرّب" },
+                        { fr: "Facile", ar: "سهل" },
+                        { fr: "Amis", ar: "أصدقاء" },
+                        { fr: "Radio", ar: "راديو" },
+                        { fr: "Remarque", ar: "لاحظ" },
+                        { fr: "Quelque chose", ar: "شيئًا" },
+                        { fr: "Alors", ar: "إذاً" },
+                        { fr: "Simple", ar: "بسيطة" },
+                        { fr: "Tous les jours", ar: "كل يوم" },
+                        { fr: "Devient (devenir)", ar: "تصبح" },
+                        { fr: "Finissent (finir)", ar: "تنتهي" }
+                    ],
 
-  comprehension: [
-    {
-      q: "Qu’est-ce qu’Amine apprend ?",
-      options: ["L’anglais", "Le français", "L’arabe"],
-      correct: 1
-    },
-    {
-      q: "Quand utilise-t-on le présent ?",
-      options: [
-        "Pour parler du passé",
-        "Pour parler du futur",
-        "Pour parler de maintenant"
-      ],
-      correct: 2
-    }
-  ],
+                    comprehension: [
+                        {
+                        q: "Qu’est-ce qu’Amine apprend ?",
+                        options: ["L’anglais", "Le français", "L’arabe"],
+                        correct: 1
+                        },
+                        {
+                        q: "Quand utilise-t-on le présent ?",
+                        options: [
+                            "Pour parler du passé",
+                            "Pour parler du futur",
+                            "Pour parler de maintenant"
+                        ],
+                        correct: 2
+                        }
+                    ],
 
-  grammar: [
-    {
-      text: "Chaque matin, Amine ..... avec ses amis.",
-      missing: "parle",
-      options: ["parle", "parles", "parlent"],
-      rule_fr: "Avec le sujet 'Il', le verbe du 1er groupe au présent se termine par -e.",
-      rule_ar: "مع الضمير 'Il'، فعل المجموعة الأولى في الحاضر ينتهي بـ -e."
-    },
-    {
-      text: "Il ..... des vidéos.",
-      missing: "regarde",
-      options: ["regarde", "regardes", "regardent"],
-      rule_fr: "Le verbe 'regarder' au présent avec 'Il' prend la terminaison -e.",
-      rule_ar: "فعل 'regarder' في الحاضر مع 'Il' يأخذ النهاية -e."
-    },
-    {
-      text: "Il ..... la radio.",
-      missing: "écoute",
-      options: ["écoute", "écoutes", "écoutent"],
-      rule_fr: "Pour les verbes en -er, on enlève -er et on ajoute -e avec 'Il'.",
-      rule_ar: "في الأفعال المنتهية بـ -er نحذف -er ونضيف -e مع 'Il'."
-    },
-    {
-      text: "Je ..... français.",
-      missing: "parle",
-      options: ["parle", "parles", "parlent"],
-      rule_fr: "Avec 'Je', les verbes du 1er groupe au présent se terminent par -e.",
-      rule_ar: "مع 'Je' أفعال المجموعة الأولى في الحاضر تنتهي بـ -e."
-    },
-    {
-      text: "Les verbes ..... par -er.",
-      missing: "finissent",
-      options: ["finis", "finissent", "finissez"],
-      rule_fr: "Avec 'Les verbes' (pluriel), le verbe 'finir' se conjugue 'finissent'.",
-      rule_ar: "مع الجمع 'Les verbes' يُصرف الفعل 'finir' إلى 'finissent'."
-    }
-  ]
-},
- {
-    id: 8,
-    level_id: 1,
-    title_fr: "8-Le choix des jouets",
-    title_ar: "اختيار الألعاب",
+                    grammar: [
+                        {
+                        text: "Chaque matin, Amine ..... avec ses amis.",
+                        missing: "parle",
+                        options: ["parle", "parles", "parlent"],
+                        rule_fr: "Avec le sujet 'Il', le verbe du 1er groupe au présent se termine par -e.",
+                        rule_ar: "مع الضمير 'Il'، فعل المجموعة الأولى في الحاضر ينتهي بـ -e."
+                        },
+                        {
+                        text: "Il ..... des vidéos.",
+                        missing: "regarde",
+                        options: ["regarde", "regardes", "regardent"],
+                        rule_fr: "Le verbe 'regarder' au présent avec 'Il' prend la terminaison -e.",
+                        rule_ar: "فعل 'regarder' في الحاضر مع 'Il' يأخذ النهاية -e."
+                        },
+                        {
+                        text: "Il ..... la radio.",
+                        missing: "écoute",
+                        options: ["écoute", "écoutes", "écoutent"],
+                        rule_fr: "Pour les verbes en -er, on enlève -er et on ajoute -e avec 'Il'.",
+                        rule_ar: "في الأفعال المنتهية بـ -er نحذف -er ونضيف -e مع 'Il'."
+                        },
+                        {
+                        text: "Je ..... français.",
+                        missing: "parle",
+                        options: ["parle", "parles", "parlent"],
+                        rule_fr: "Avec 'Je', les verbes du 1er groupe au présent se terminent par -e.",
+                        rule_ar: "مع 'Je' أفعال المجموعة الأولى في الحاضر تنتهي بـ -e."
+                        },
+                        {
+                        text: "Les verbes ..... par -er.",
+                        missing: "finissent",
+                        options: ["finis", "finissent", "finissez"],
+                        rule_fr: "Avec 'Les verbes' (pluriel), le verbe 'finir' se conjugue 'finissent'.",
+                        rule_ar: "مع الجمع 'Les verbes' يُصرف الفعل 'finir' إلى 'finissent'."
+                        }
+                    ]
+                    },
+                    {
+                        id: 8,
+                        level_id: 1,
+                        title_fr: "8-Le choix des jouets",
+                        title_ar: "اختيار الألعاب",
 
-    text_fr: "Lucas regarde les ballons. Il aime ceux qui sont rouges. Le vendeur lui montre plusieurs modèles. Lucas préfère ceux-ci car ils brillent. Il laisse ceux-là sur l'étagère.",
-    text_ar: "لوكاس ينظر إلى الكرات. يحب تلك (الكرات) الحمراء. يظهر له البائع نماذج عديدة. يفضل لوكاس هذه (الكرات هنا) لأنها تلمع. ويترك تلك (الكرات هناك) على الرف.",
+                        text_fr: "Lucas regarde les ballons. Il aime ceux qui sont rouges. Le vendeur lui montre plusieurs modèles. Lucas préfère ceux-ci car ils brillent. Il laisse ceux-là sur l'étagère.",
+                        text_ar: "لوكاس ينظر إلى الكرات. يحب تلك (الكرات) الحمراء. يظهر له البائع نماذج عديدة. يفضل لوكاس هذه (الكرات هنا) لأنها تلمع. ويترك تلك (الكرات هناك) على الرف.",
 
-    vocabulary: [
-        { fr: "Regarder", ar: "نظر" },
-        { fr: "Ballons", ar: "كرات / بالونات" },
-        { fr: "Ceux", ar: "الذين / تلك (للمذكر الجمع)" },
-        { fr: "Ceux-ci", ar: "هؤلاء / هذه (للقريب)" },
-        { fr: "Ceux-là", ar: "أولئك / تلك (للبعيد)" },
-        { fr: "Vendeur", ar: "بائع" },
-        { fr: "Briller", ar: "لمع" },
-        { fr: "Étagère", ar: "رف" }
-    ],
+                        vocabulary: [
+                            { fr: "Regarder", ar: "نظر" },
+                            { fr: "Ballons", ar: "كرات / بالونات" },
+                            { fr: "Ceux", ar: "الذين / تلك (للمذكر الجمع)" },
+                            { fr: "Ceux-ci", ar: "هؤلاء / هذه (للقريب)" },
+                            { fr: "Ceux-là", ar: "أولئك / تلك (للبعيد)" },
+                            { fr: "Vendeur", ar: "بائع" },
+                            { fr: "Briller", ar: "لمع" },
+                            { fr: "Étagère", ar: "رف" }
+                        ],
 
-    comprehension: [
-        {
-            q: "Quels ballons Lucas aime-t-il ?",
-            options: ["Ceux qui sont bleus", "Ceux qui sont rouges", "Ceux qui sont petits"],
-            correct: 1
-        },
-        {
-            q: "Pourquoi choisit-il ceux-ci ?",
-            options: ["Parce qu'ils brillent", "Parce qu'ils sont moins chers", "Parce qu'ils sont gros"],
-            correct: 0
-        }
-    ],
+                        comprehension: [
+                            {
+                                q: "Quels ballons Lucas aime-t-il ?",
+                                options: ["Ceux qui sont bleus", "Ceux qui sont rouges", "Ceux qui sont petits"],
+                                correct: 1
+                            },
+                            {
+                                q: "Pourquoi choisit-il ceux-ci ?",
+                                options: ["Parce qu'ils brillent", "Parce qu'ils sont moins chers", "Parce qu'ils sont gros"],
+                                correct: 0
+                            }
+                        ],
 
-    grammar: [
-        {
-            text: "Il n'aime pas tous les ballons, seulement ..... qui sont rouges.",
-            missing: "ceux",
-            options: ["celui", "ceux", "celles"],
-            rule_fr: "'Ceux' remplace un nom masculin pluriel (les ballons) suivi d'un complément.",
-            rule_ar: "نستخدم 'Ceux' لتعويض اسم مذكر جمع (الكرات) متبوع بتكملة."
-        },
-        {
-            text: "Regarde ces deux ballons : je préfère ..... (proche de moi).",
-            missing: "ceux-ci",
-            options: ["ceux-ci", "ceux-là", "celui-ci"],
-            rule_fr: "On utilise '-ci' pour désigner les objets les plus proches.",
-            rule_ar: "نستخدم الكسرة '-ci' للإشارة إلى الأشياء الأقرب للمتحدث."
-        },
-        {
-            text: "Il y a des livres ici, et il y a ..... sur la table là-bas.",
-            missing: "ceux-là",
-            options: ["ceux-ci", "ceux-là", "celui-là"],
-            rule_fr: "On utilise '-là' pour désigner les objets plus éloignés.",
-            rule_ar: "نستخدم '-là' للإشارة إلى الأشياء البعيدة."
-        },
-        {
-            text: "Parmi tous ces gâteaux, je choisis ..... au chocolat.",
-            missing: "ceux",
-            options: ["celui", "ceux", "ce"],
-            rule_fr: "'Ceux' s'utilise devant 'au', 'du' ou 'qui/que'.",
-            rule_ar: "تستخدم 'Ceux' قبل 'au' أو 'du' ou 'qui/que' للجمع المذكر."
-        }
-    ]
-},
-{
-  id: 9,
-  level_id: 1,
-  title_fr: "9-Samir et Amina au magasin",
-  title_ar: "سمير وأمينة في المتجر",
+                        grammar: [
+                            {
+                                text: "Il n'aime pas tous les ballons, seulement ..... qui sont rouges.",
+                                missing: "ceux",
+                                options: ["celui", "ceux", "celles"],
+                                rule_fr: "'Ceux' remplace un nom masculin pluriel (les ballons) suivi d'un complément.",
+                                rule_ar: "نستخدم 'Ceux' لتعويض اسم مذكر جمع (الكرات) متبوع بتكملة."
+                            },
+                            {
+                                text: "Regarde ces deux ballons : je préfère ..... (proche de moi).",
+                                missing: "ceux-ci",
+                                options: ["ceux-ci", "ceux-là", "celui-ci"],
+                                rule_fr: "On utilise '-ci' pour désigner les objets les plus proches.",
+                                rule_ar: "نستخدم الكسرة '-ci' للإشارة إلى الأشياء الأقرب للمتحدث."
+                            },
+                            {
+                                text: "Il y a des livres ici, et il y a ..... sur la table là-bas.",
+                                missing: "ceux-là",
+                                options: ["ceux-ci", "ceux-là", "celui-là"],
+                                rule_fr: "On utilise '-là' pour désigner les objets plus éloignés.",
+                                rule_ar: "نستخدم '-là' للإشارة إلى الأشياء البعيدة."
+                            },
+                            {
+                                text: "Parmi tous ces gâteaux, je choisis ..... au chocolat.",
+                                missing: "ceux",
+                                options: ["celui", "ceux", "ce"],
+                                rule_fr: "'Ceux' s'utilise devant 'au', 'du' ou 'qui/que'.",
+                                rule_ar: "تستخدم 'Ceux' قبل 'au' أو 'du' ou 'qui/que' للجمع المذكر."
+                            }
+                        ]
+                    },
+                    {
+                    id: 9,
+                    level_id: 1,
+                    title_fr: "9-Samir et Amina au magasin",
+                    title_ar: "سمير وأمينة في المتجر",
 
-  text_fr: "Samir et Amina vont au magasin. Samir veut acheter une montre. Il regarde le prix et la qualité. Après réflexion, il est sûr de son choix. Amina regarde aussi une montre, mais elle hésite encore. Elle n’est pas sûre et préfère demander l’avis du vendeur.",
-  text_ar: "يذهب سمير وأمينة إلى المتجر. يريد سمير شراء ساعة. ينظر إلى السعر والجودة. بعد التفكير، هو متأكد من اختياره. تنظر أمينة أيضاً إلى ساعة، لكنها ما زالت مترددة. هي غير متأكدة وتفضل أن تسأل البائع.",
+                    text_fr: "Samir et Amina vont au magasin. Samir veut acheter une montre. Il regarde le prix et la qualité. Après réflexion, il est sûr de son choix. Amina regarde aussi une montre, mais elle hésite encore. Elle n’est pas sûre et préfère demander l’avis du vendeur.",
+                    text_ar: "يذهب سمير وأمينة إلى المتجر. يريد سمير شراء ساعة. ينظر إلى السعر والجودة. بعد التفكير، هو متأكد من اختياره. تنظر أمينة أيضاً إلى ساعة، لكنها ما زالت مترددة. هي غير متأكدة وتفضل أن تسأل البائع.",
 
-  vocabulary: [
-    { fr: "Magasin", ar: "متجر" },
-    { fr: "Montre", ar: "ساعة" },
-    { fr: "Choix", ar: "اختيار" },
-    { fr: "Sûr", ar: "متأكد (مذكر)" },
-    { fr: "Sûre", ar: "متأكدة (مؤنث)" },
-    { fr: "Hésiter", ar: "يتردد" },
-    { fr: "Vendeur", ar: "بائع" },
-    { fr: "Prix", ar: "سعر" },
-    { fr: "Qualité", ar: "جودة" },
-    { fr: "Réflexion", ar: "تفكير" },
-    { fr: "Avis", ar: "رأي" },
-    { fr: "Acheter", ar: "شراء" },
-    { fr: "Regarder", ar: "ينظر" },
-    { fr: "Préférer", ar: "يفضل" },
-    { fr: "Demander", ar: "يسأل" },
-    { fr: "Encore", ar: "ما زال" },
-    { fr: "Après", ar: "بعد" },
-    { fr : "aussi", ar: "أيضاً" },
-    { fr : "vendre", ar: "باع" },
-    { fr : "vendeuse", ar: "بائعة" },
-    { fr : "vendeur", ar: "بائع" }
-  ],
+                    vocabulary: [
+                        { fr: "Magasin", ar: "متجر" },
+                        { fr: "Montre", ar: "ساعة" },
+                        { fr: "Choix", ar: "اختيار" },
+                        { fr: "Sûr", ar: "متأكد (مذكر)" },
+                        { fr: "Sûre", ar: "متأكدة (مؤنث)" },
+                        { fr: "Hésiter", ar: "يتردد" },
+                        { fr: "Vendeur", ar: "بائع" },
+                        { fr: "Prix", ar: "سعر" },
+                        { fr: "Qualité", ar: "جودة" },
+                        { fr: "Réflexion", ar: "تفكير" },
+                        { fr: "Avis", ar: "رأي" },
+                        { fr: "Acheter", ar: "شراء" },
+                        { fr: "Regarder", ar: "ينظر" },
+                        { fr: "Préférer", ar: "يفضل" },
+                        { fr: "Demander", ar: "يسأل" },
+                        { fr: "Encore", ar: "ما زال" },
+                        { fr: "Après", ar: "بعد" },
+                        { fr : "aussi", ar: "أيضاً" },
+                        { fr : "vendre", ar: "باع" },
+                        { fr : "vendeuse", ar: "بائعة" },
+                        { fr : "vendeur", ar: "بائع" }
+                    ],
 
-  comprehension: [
-    {
-      q: "Où vont Samir et Amina ?",
-      options: ["À l’école", "Au magasin", "À la maison"],
-      correct: 1
-    },
-    {
-      q: "Qu’est-ce que Samir veut acheter ?",
-      options: ["Un téléphone", "Une montre", "Un livre"],
-      correct: 1
-    },
-    {
-      q: "Pourquoi Amina n’est-elle pas sûre ?",
-      options: [
-        "Parce qu’elle hésite encore",
-        "Parce qu’elle n’aime pas la montre",
-        "Parce qu’elle part"
-      ],
-      correct: 0
-    }
-  ],
+                    comprehension: [
+                        {
+                        q: "Où vont Samir et Amina ?",
+                        options: ["À l’école", "Au magasin", "À la maison"],
+                        correct: 1
+                        },
+                        {
+                        q: "Qu’est-ce que Samir veut acheter ?",
+                        options: ["Un téléphone", "Une montre", "Un livre"],
+                        correct: 1
+                        },
+                        {
+                        q: "Pourquoi Amina n’est-elle pas sûre ?",
+                        options: [
+                            "Parce qu’elle hésite encore",
+                            "Parce qu’elle n’aime pas la montre",
+                            "Parce qu’elle part"
+                        ],
+                        correct: 0
+                        }
+                    ],
 
-  grammar: [
-    {
-      text: "Samir est ..... de son choix.",
-      missing: "sûr",
-      options: ["sûr", "sûre"],
-      rule_fr: "‘Sûr’ s’utilise avec un sujet masculin.",
-      rule_ar: "تُستعمل ‘sûr’ مع المذكر."
-    },
-    {
-      text: "Amina n’est pas ..... .",
-      missing: "sûre",
-      options: ["sûr", "sûre"],
-      rule_fr: "‘Sûre’ est la forme féminine de ‘sûr’.",
-      rule_ar: "‘sûre’ هي الصيغة المؤنثة لـ ‘sûr’."
-    }
-  ]
-}
+                    grammar: [
+                        {
+                        text: "Samir est ..... de son choix.",
+                        missing: "sûr",
+                        options: ["sûr", "sûre"],
+                        rule_fr: "‘Sûr’ s’utilise avec un sujet masculin.",
+                        rule_ar: "تُستعمل ‘sûr’ مع المذكر."
+                        },
+                        {
+                        text: "Amina n’est pas ..... .",
+                        missing: "sûre",
+                        options: ["sûr", "sûre"],
+                        rule_fr: "‘Sûre’ est la forme féminine de ‘sûr’.",
+                        rule_ar: "‘sûre’ هي الصيغة المؤنثة لـ ‘sûr’."
+                        }
+                    ]
+                    }
 
 
 
