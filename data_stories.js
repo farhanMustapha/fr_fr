@@ -656,7 +656,77 @@ const INITIAL_DATA = {
                         rule_ar: "‘sûre’ هي الصيغة المؤنثة لـ ‘sûr’."
                         }
                     ]
-                    }
+                    },
+                    {
+    id: 10,
+    level_id: 1,
+    title_fr: "10-Une décision importante chez PCM",
+    title_ar: "قرار مهم في شركة PCM",
+
+    text_fr: "Dans l'entreprise, il faut valider les factures. Hier, il a fallu beaucoup de temps pour finir le rapport. Le comptable dit : 'Il faudra être plus rapide demain'. Pour réussir, il faudrait automatiser le processus avec SAP.",
+    text_ar: "في الشركة، يجب (il faut) تفعيل الفواتير. بالأمس، استغرق الأمر (il a fallu) الكثير من الوقت لإنهاء التقرير. يقول المحاسب: 'سوف يلزم (il faudra) أن نكون أسرع غداً'. للنجاح، قد يلزم (il faudrait) أتمتة العملية باستخدام SAP.",
+
+    vocabulary: [
+        { fr: "Entreprise", ar: "شركة" },
+        { fr: "Facture", ar: "فاتورة" },
+        { fr: "Comptable", ar: "محاسب" },
+        { fr: "Rapport", ar: "تقرير" },
+        { fr: "Temps", ar: "وقت" },
+        { fr: "Valider", ar: "تفعيل / تصديق" },
+        { fr: "Finir", ar: "إنهاء" },
+        { fr: "Réussir", ar: "نجاح" },
+        { fr: "Rapide", ar: "سريع" },
+        { fr: "Demain", ar: "غداً" },
+        { fr: "Processus", ar: "عملية" },
+        { fr: "Hier", ar: "أمس" },
+        { fr: "Il faut", ar: "يجب (حاضر)" },
+        { fr: "Il a fallu", ar: "وجب (ماضي)" },
+        { fr: "Il faudra", ar: "سوف يجب (مستقبل)" },
+        { fr: "Il faudrait", ar: "ينبغي (شرط)" }
+    ],
+
+    comprehension: [
+        {
+            q: "Que faut-il faire dans l'entreprise ?",
+            options: ["Acheter des montres", "Valider les factures", "Partir en vacances"],
+            correct: 1
+        },
+        {
+            q: "Quand a-t-il fallu beaucoup de temps ?",
+            options: ["Aujourd'hui", "Demain", "Hier"],
+            correct: 2
+        },
+        {
+            q: "Quelle est la solution proposée ?",
+            options: ["Dormir", "Automatiser avec SAP", "Changer de bureau"],
+            correct: 1
+        }
+    ],
+
+    grammar: [
+        {
+            text: "Demain, il ..... finir le travail.",
+            missing: "faudra",
+            options: ["fallait", "faudra"],
+            rule_fr: "On utilise le futur 'faudra' pour une obligation à venir.",
+            rule_ar: "نستخدم صيغة المستقبل 'faudra' للالتزام القادم."
+        },
+        {
+            text: "Hier, il ..... payer le fournisseur.",
+            missing: "a fallu",
+            options: ["faut", "a fallu"],
+            rule_fr: "Le passé composé 'a fallu' exprime une obligation terminée.",
+            rule_ar: "يعبر الماضي المركب 'a fallu' عن التزام انتهى."
+        },
+        {
+            text: "Pour améliorer SAP, il ..... configurer les règles.",
+            missing: "faudrait",
+            options: ["faudrait", "faut"],
+            rule_fr: "Le conditionnel 'faudrait' exprime un conseil ou une suggestion.",
+            rule_ar: "يعبر الصيغة الشرطية 'faudrait' عن نصيحة أو اقتراح."
+        }
+    ]
+}
 
 
 
