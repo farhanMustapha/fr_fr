@@ -424,8 +424,7 @@ const INITIAL_DATA = {
                         { fr: "Plus de", ar: "أكثر من" },
                         { fr: "Temps", ar: "وقت" }
                         ],
-                        comprehension: [
-                        ],
+                        
                     grammar: [
                     {
                         text: "Si Marc ..... plus de temps, il terminerait le projet.",
