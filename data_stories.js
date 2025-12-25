@@ -358,51 +358,25 @@ const INITIAL_DATA = {
     { q: "Que contient le sac ?", options: ["Un ballon", "Un livre et un stylo", "Des fruits"], correct: 1 }
   ],
 
-  grammar: [
-    {
-      text: "Lina a ..... sac bleu.",
-      missing: "un",
-      options: ["un", "une", "des"],
-      rule_fr: `
-"Un" est l’article indéfini masculin singulier.
-➡️ Sac = nom masculin
-➡️ On utilise "un" quand on parle de quelque chose de non précis.
-Exemples :
-- un sac
-- un livre
-Exception : devant une voyelle → "un" reste inchangé.
-      `,
-      rule_ar: `
-"Un" هي أداة تنكير للمذكر المفرد.
-➡️ sac اسم مذكر
-تُستعمل عندما لا نحدد الشيء.
-أمثلة:
-- un sac
-- un livre
-      `
-    },
-    {
-      text: "..... son sac, il y a un livre.",
-      missing: "Dans",
-      options: ["Dans", "Sur", "Avec"],
-      rule_fr: `
-"Dans" indique l’intérieur d’un objet ou d’un lieu.
-Exemples :
-- Dans la maison
-- Dans le sac
-⚠️ Ne pas confondre avec "sur" (au-dessus).
-      `,
-      rule_ar: `
-"Dans" تعني داخل شيء.
-أمثلة:
-- داخل البيت
-- داخل الحقيبة
-      `
-    }
-  ]
+ grammar: [
+  {
+    text: "Lina a ..... sac bleu.",
+    missing: "un",
+    options: ["un", "une", "des"],
+    rule_fr: "\"Un\" est l’article indéfini masculin singulier.\n➡️ Sac = nom masculin\n➡️ On utilise \"un\" quand on parle de quelque chose de non précis.\nExemples :\n- un sac\n- un livre\nException : devant une voyelle → \"un\" reste inchangé.",
+    rule_ar: "\"Un\" هي أداة تنكير للمذكر المفرد.\n➡️ sac اسم مذكر\nتُستعمل عندما لا نحدد الشيء.\nأمثلة:\n- un sac\n- un livre"
+  },
+  {
+    text: "..... son sac, il y a un livre.",
+    missing: "Dans",
+    options: ["Dans", "Sur", "Avec"],
+    rule_fr: "\"Dans\" indique l’intérieur d’un objet ou d’un lieu.\nExemples :\n- Dans la maison\n- Dans le sac\n⚠️ Ne pas confondre avec \"sur\" (au-dessus).",
+    rule_ar: "\"Dans\" تعني داخل شيء.\nأمثلة:\n- داخل البيت\n- داخل الحقيبة"
+  }
+]
 },
 {
-  id: 11,
+  id: 5,
   level_id: 2,
   title_fr: "1-Le week-end de Karim",
   title_ar: "عطلة كريم",
@@ -447,7 +421,7 @@ Exemples :
   ]
 },
 {
-  id: 21,
+  id: 6,
   level_id: 3,
   title_fr: "1-Un projet important",
   title_ar: "مشروع مهم",
@@ -455,30 +429,32 @@ Exemples :
   text_fr: "Si Marc avait plus de temps, il terminerait son projet plus rapidement, ce qui améliorerait ses résultats.",
   text_ar: "لو كان لدى مارك وقت أكثر، لأنهِى مشروعه بسرعة أكبر، مما سيحسن نتائجه.",
 
+  vocabulary: [
+    { fr: "Projet", ar: "مشروع" },
+    { fr: "Terminer", ar: "أنهى" },
+    { fr: "Rapidement", ar: "بسرعة" },
+    { fr: "Améliorer", ar: "حسن" },
+    { fr: "Résultats", ar: "نتائج" },
+    { fr: "Si", ar: "لو / إذا" },
+    { fr: "Plus de", ar: "أكثر من" },
+    { fr: "Temps", ar: "وقت" }
+    ],
+    comprehension: [
+    ],
   grammar: [
-    {
-      text: "Si Marc ..... plus de temps, il terminerait le projet.",
-      missing: "avait",
-      options: ["a", "avait", "aurait"],
-      rule_fr: `
-Structure du conditionnel :
-Si + imparfait → conditionnel présent
-Exemples :
-- Si j'avais de l'argent, je voyagerais.
-⚠️ Jamais : si + conditionnel
-      `,
-      rule_ar: `
-قاعدة الشرط:
-Si + imparfait ثم conditionnel
-ممنوع استعمال conditionnel بعد si
-      `
-    }
-  ]
+  {
+    text: "Si Marc ..... plus de temps, il terminerait le projet.",
+    missing: "avait",
+    options: ["a", "avait", "aurait"],
+    rule_fr: "Structure du conditionnel :\nSi + imparfait → conditionnel présent\nExemples :\n- Si j'avais de l'argent, je voyagerais.\n⚠️ Jamais : si + conditionnel",
+    rule_ar: "قاعدة الشرط:\nSi + imparfait ثم conditionnel\nممنوع استعمال conditionnel بعد si"
+  }
+]
 },
 {
-  id: 0,
+  id: 7,
   level_id: 1,
-  title_fr: "5-Pourquoi Amine dit « je parle »",
+  title_fr: "7-Pourquoi Amine dit « je parle »",
   title_ar: "لماذا يقول أمين « je parle »",
   text_fr: "Amine apprend le français. Chaque matin, il parle avec ses amis. Il regarde des vidéos et écoute la radio. Un jour, Amine remarque quelque chose. Il dit : je parle, je regarde, j’écoute. Il comprend alors une règle simple : quand on parle de ce qu’on fait maintenant, on utilise le présent. Les verbes comme parler, regarder et écouter finissent par -er. Avec je, on enlève -er et on ajoute -e. Amine pratique tous les jours, et le français devient plus facile.",
   text_ar: "أمين يتعلم اللغة الفرنسية. كل صباح، يتكلم مع أصدقائه. يشاهد فيديوهات ويستمع إلى الراديو. في يوم من الأيام، لاحظ أمين شيئًا. قال: je parle، je regarde، j’écoute. ففهم قاعدة بسيطة: عندما نتحدث عما نفعله الآن، نستخدم الحاضر. الأفعال مثل parler وregarder وécouter تنتهي بـ -er. مع je نحذف -er ونضيف -e. يتدرّب أمين كل يوم، وتصبح الفرنسية أسهل.",
@@ -562,9 +538,9 @@ Si + imparfait ثم conditionnel
   ]
 },
  {
-    id: 3,
+    id: 8,
     level_id: 1,
-    title_fr: "6-Le choix des jouets",
+    title_fr: "8-Le choix des jouets",
     title_ar: "اختيار الألعاب",
 
     text_fr: "Lucas regarde les ballons. Il aime ceux qui sont rouges. Le vendeur lui montre plusieurs modèles. Lucas préfère ceux-ci car ils brillent. Il laisse ceux-là sur l'étagère.",
@@ -626,9 +602,9 @@ Si + imparfait ثم conditionnel
     ]
 },
 {
-  id: 8,
+  id: 9,
   level_id: 1,
-  title_fr: "7-Samir et Amina au magasin",
+  title_fr: "9-Samir et Amina au magasin",
   title_ar: "سمير وأمينة في المتجر",
 
   text_fr: "Samir et Amina vont au magasin. Samir veut acheter une montre. Il regarde le prix et la qualité. Après réflexion, il est sûr de son choix. Amina regarde aussi une montre, mais elle hésite encore. Elle n’est pas sûre et préfère demander l’avis du vendeur.",
