@@ -10,7 +10,7 @@ const INITIAL_DATA = {
               {
     id: 3,
     level_id: 1,
-    title_fr: "3-Le choix des jouets",
+    title_fr: "6-Le choix des jouets",
     title_ar: "اختيار الألعاب",
 
     text_fr: "Lucas regarde les ballons. Il aime ceux qui sont rouges. Le vendeur lui montre plusieurs modèles. Lucas préfère ceux-ci car ils brillent. Il laisse ceux-là sur l'étagère.",
