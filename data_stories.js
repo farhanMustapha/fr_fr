@@ -7,70 +7,7 @@ const INITIAL_DATA = {
             ],
             stories: [
 
-              {
-    id: 3,
-    level_id: 1,
-    title_fr: "6-Le choix des jouets",
-    title_ar: "اختيار الألعاب",
-
-    text_fr: "Lucas regarde les ballons. Il aime ceux qui sont rouges. Le vendeur lui montre plusieurs modèles. Lucas préfère ceux-ci car ils brillent. Il laisse ceux-là sur l'étagère.",
-    text_ar: "لوكاس ينظر إلى الكرات. يحب تلك (الكرات) الحمراء. يظهر له البائع نماذج عديدة. يفضل لوكاس هذه (الكرات هنا) لأنها تلمع. ويترك تلك (الكرات هناك) على الرف.",
-
-    vocabulary: [
-        { fr: "Regarder", ar: "نظر" },
-        { fr: "Ballons", ar: "كرات / بالونات" },
-        { fr: "Ceux", ar: "الذين / تلك (للمذكر الجمع)" },
-        { fr: "Ceux-ci", ar: "هؤلاء / هذه (للقريب)" },
-        { fr: "Ceux-là", ar: "أولئك / تلك (للبعيد)" },
-        { fr: "Vendeur", ar: "بائع" },
-        { fr: "Briller", ar: "لمع" },
-        { fr: "Étagère", ar: "رف" }
-    ],
-
-    comprehension: [
-        {
-            q: "Quels ballons Lucas aime-t-il ?",
-            options: ["Ceux qui sont bleus", "Ceux qui sont rouges", "Ceux qui sont petits"],
-            correct: 1
-        },
-        {
-            q: "Pourquoi choisit-il ceux-ci ?",
-            options: ["Parce qu'ils brillent", "Parce qu'ils sont moins chers", "Parce qu'ils sont gros"],
-            correct: 0
-        }
-    ],
-
-    grammar: [
-        {
-            text: "Il n'aime pas tous les ballons, seulement ..... qui sont rouges.",
-            missing: "ceux",
-            options: ["celui", "ceux", "celles"],
-            rule_fr: "'Ceux' remplace un nom masculin pluriel (les ballons) suivi d'un complément.",
-            rule_ar: "نستخدم 'Ceux' لتعويض اسم مذكر جمع (الكرات) متبوع بتكملة."
-        },
-        {
-            text: "Regarde ces deux ballons : je préfère ..... (proche de moi).",
-            missing: "ceux-ci",
-            options: ["ceux-ci", "ceux-là", "celui-ci"],
-            rule_fr: "On utilise '-ci' pour désigner les objets les plus proches.",
-            rule_ar: "نستخدم الكسرة '-ci' للإشارة إلى الأشياء الأقرب للمتحدث."
-        },
-        {
-            text: "Il y a des livres ici, et il y a ..... sur la table là-bas.",
-            missing: "ceux-là",
-            options: ["ceux-ci", "ceux-là", "celui-là"],
-            rule_fr: "On utilise '-là' pour désigner les objets plus éloignés.",
-            rule_ar: "نستخدم '-là' للإشارة إلى الأشياء البعيدة."
-        },
-        {
-            text: "Parmi tous ces gâteaux, je choisis ..... au chocolat.",
-            missing: "ceux",
-            options: ["celui", "ceux", "ce"],
-            rule_fr: "'Ceux' s'utilise devant 'au', 'du' ou 'qui/que'.",
-            rule_ar: "تستخدم 'Ceux' قبل 'au' أو 'du' ou 'qui/que' للجمع المذكر."
-        }
-    ]
-},
+             
                 
 
                 {
@@ -622,6 +559,70 @@ Si + imparfait ثم conditionnel
       rule_ar: "مع الجمع 'Les verbes' يُصرف الفعل 'finir' إلى 'finissent'."
     }
   ]
+},
+ {
+    id: 3,
+    level_id: 1,
+    title_fr: "6-Le choix des jouets",
+    title_ar: "اختيار الألعاب",
+
+    text_fr: "Lucas regarde les ballons. Il aime ceux qui sont rouges. Le vendeur lui montre plusieurs modèles. Lucas préfère ceux-ci car ils brillent. Il laisse ceux-là sur l'étagère.",
+    text_ar: "لوكاس ينظر إلى الكرات. يحب تلك (الكرات) الحمراء. يظهر له البائع نماذج عديدة. يفضل لوكاس هذه (الكرات هنا) لأنها تلمع. ويترك تلك (الكرات هناك) على الرف.",
+
+    vocabulary: [
+        { fr: "Regarder", ar: "نظر" },
+        { fr: "Ballons", ar: "كرات / بالونات" },
+        { fr: "Ceux", ar: "الذين / تلك (للمذكر الجمع)" },
+        { fr: "Ceux-ci", ar: "هؤلاء / هذه (للقريب)" },
+        { fr: "Ceux-là", ar: "أولئك / تلك (للبعيد)" },
+        { fr: "Vendeur", ar: "بائع" },
+        { fr: "Briller", ar: "لمع" },
+        { fr: "Étagère", ar: "رف" }
+    ],
+
+    comprehension: [
+        {
+            q: "Quels ballons Lucas aime-t-il ?",
+            options: ["Ceux qui sont bleus", "Ceux qui sont rouges", "Ceux qui sont petits"],
+            correct: 1
+        },
+        {
+            q: "Pourquoi choisit-il ceux-ci ?",
+            options: ["Parce qu'ils brillent", "Parce qu'ils sont moins chers", "Parce qu'ils sont gros"],
+            correct: 0
+        }
+    ],
+
+    grammar: [
+        {
+            text: "Il n'aime pas tous les ballons, seulement ..... qui sont rouges.",
+            missing: "ceux",
+            options: ["celui", "ceux", "celles"],
+            rule_fr: "'Ceux' remplace un nom masculin pluriel (les ballons) suivi d'un complément.",
+            rule_ar: "نستخدم 'Ceux' لتعويض اسم مذكر جمع (الكرات) متبوع بتكملة."
+        },
+        {
+            text: "Regarde ces deux ballons : je préfère ..... (proche de moi).",
+            missing: "ceux-ci",
+            options: ["ceux-ci", "ceux-là", "celui-ci"],
+            rule_fr: "On utilise '-ci' pour désigner les objets les plus proches.",
+            rule_ar: "نستخدم الكسرة '-ci' للإشارة إلى الأشياء الأقرب للمتحدث."
+        },
+        {
+            text: "Il y a des livres ici, et il y a ..... sur la table là-bas.",
+            missing: "ceux-là",
+            options: ["ceux-ci", "ceux-là", "celui-là"],
+            rule_fr: "On utilise '-là' pour désigner les objets plus éloignés.",
+            rule_ar: "نستخدم '-là' للإشارة إلى الأشياء البعيدة."
+        },
+        {
+            text: "Parmi tous ces gâteaux, je choisis ..... au chocolat.",
+            missing: "ceux",
+            options: ["celui", "ceux", "ce"],
+            rule_fr: "'Ceux' s'utilise devant 'au', 'du' ou 'qui/que'.",
+            rule_ar: "تستخدم 'Ceux' قبل 'au' أو 'du' ou 'qui/que' للجمع المذكر."
+        }
+    ]
 }
 
 
