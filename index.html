@@ -23,17 +23,17 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .tab-active {
-            border-bottom: 3px solid #3b82f6;
-            color: #3b82f6;
-        }
-
         .btn-hover {
             transition: all 0.3s ease;
         }
-        .btn-hover:hover {
+        .btn-hover:hover:not(.locked) {
             transform: translateY(-2px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .locked {
+            opacity: 0.6;
+            cursor: not-allowed !important;
+            filter: grayscale(0.5);
         }
     </style>
 </head>
@@ -50,17 +50,17 @@
                     <span class="text-xl font-bold text-gray-800">Français<span class="text-blue-600">Facile</span></span>
                 </div>
                 <div class="flex space-x-4">
-                    <!--<button onclick="router.setRole('user')" id="btn-user" class="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-blue-100 text-blue-700">Apprenant</button>-->
-                    <button id="btn-user" class="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-blue-100 text-blue-700"><a href="home_ang.html">Anglais</a></button>
-                    <!-- <button onclick="router.setRole('admin')" id="btn-admin" class="px-4 py-2 rounded-full text-sm font-medium transition-colors text-gray-600 hover:bg-gray-100">Admin</button> -->
-                     
+                    <button id="btn-user" class="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-blue-100 text-blue-700">
+                        <i class="fas fa-graduation-cap mr-1"></i> 
+                        <a href="home_ang.html">Anglais</a>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
     <main id="app-container" class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
-        <!-- Content will be injected here -->
+        <!-- Content injected here -->
     </main>
 
     <!-- Modals -->
@@ -70,61 +70,71 @@
         </div>
     </div>
 
-    <script src="compteur.js"></script>
-    <script src="data_stories.js"></script> 
+    <script src="data_stories.js"></script>
     <script>
-        // --- DATA STRUCTURE & STORAGE ---
-     
-        //end of data 
+        // --- DATA STRUCTURE (Self-contained) ---
         
-        //let state = JSON.parse(localStorage.getItem('fr_easy_data')) || INITIAL_DATA;
-        //ce code en bas remplace celui en haut 
-        let state;
-            try {
-                const savedData = localStorage.getItem('fr_easy_data');
-                state = savedData ? JSON.parse(savedData) : INITIAL_DATA;
-            } catch (e) {
-                console.error("LocalStorage non supporté");
-                state = INITIAL_DATA; // On utilise les données par défaut si le stockage plante
-            }
 
-        //modif new 
+        // --- INITIALISATION DES DONNÉES ---
+        let state;
+        try {
+            const savedData = localStorage.getItem('fr_easy_data');
+            state = savedData ? JSON.parse(savedData) : INITIAL_DATA;
+            // Assurer que les propriétés existent après le chargement
+            if (!state.progress) state.progress = {};
+            if (!state.levels) state.levels = INITIAL_DATA.levels;
+            if (!state.stories) state.stories = INITIAL_DATA.stories;
+        } catch (e) {
+            state = JSON.parse(JSON.stringify(INITIAL_DATA));
+        }
+
         let currentRole = 'user'; 
 
         function saveData() {
             localStorage.setItem('fr_easy_data', JSON.stringify(state));
         }
 
-        // --- ROUTING & VIEW ENGINE ---
+        // --- LOGIQUE DE PROGRESSION ---
+        function isStoryUnlocked(storyId, levelId) {
+            const levelStories = state.stories.filter(s => s.level_id === levelId);
+            const storyIndex = levelStories.findIndex(s => s.id === storyId);
+            
+            // La première histoire est toujours ouverte
+            if (storyIndex === 0) return true;
+            
+            // Les suivantes dépendent de l'histoire précédente
+            const previousStory = levelStories[storyIndex - 1];
+            const prog = state.progress[previousStory.id];
+            
+            // Vérifier si tous les tests de l'histoire précédente sont faits
+            return prog && prog.vocab && prog.comp && prog.gram;
+        }
+
+        function updateProgress(storyId, type) {
+            if (!state.progress[storyId]) {
+                state.progress[storyId] = { vocab: false, comp: false, gram: false };
+            }
+            state.progress[storyId][type] = true;
+            saveData();
+        }
+
+        // --- ROUTING ---
         const router = {
             currentView: 'home',
             params: {},
-            
             navigate(view, params = {}) {
                 this.currentView = view;
                 this.params = params;
                 this.render();
                 window.scrollTo(0,0);
             },
-
-            setRole(role) {
-                currentRole = role;
-                document.getElementById('btn-user').className = role === 'user' ? 'px-4 py-2 rounded-full text-sm font-medium transition-colors bg-blue-100 text-blue-700' : 'px-4 py-2 rounded-full text-sm font-medium transition-colors text-gray-600 hover:bg-gray-100';
-                document.getElementById('btn-admin').className = role === 'admin' ? 'px-4 py-2 rounded-full text-sm font-medium transition-colors bg-blue-100 text-blue-700' : 'px-4 py-2 rounded-full text-sm font-medium transition-colors text-gray-600 hover:bg-gray-100';
-                this.navigate('home');
-            },
-
             render() {
                 const container = document.getElementById('app-container');
-                if (currentRole === 'admin') {
-                    renderAdmin(container, this.currentView, this.params);
-                } else {
-                    renderUser(container, this.currentView, this.params);
-                }
+                renderUser(container, this.currentView, this.params);
             }
         };
 
-        // --- USER VIEWS ---
+        // --- RENDU UTILISATEUR ---
         function renderUser(container, view, params) {
             switch(view) {
                 case 'home':
@@ -141,7 +151,7 @@
                                     </div>
                                     <h3 class="text-xl font-bold text-gray-800">${level.title_fr}</h3>
                                     <span class="text-lg text-blue-600 font-bold rtl" dir="rtl">${level.title_ar}</span>
-                                    <p class="mt-4 text-sm text-gray-500">${state.stories.filter(s => s.level_id === level.id).length} Histoires disponibles</p>
+                                    <p class="mt-4 text-sm text-gray-500">${state.stories.filter(s => s.level_id === level.id).length} Histoires</p>
                                 </div>
                             `).join('')}
                         </div>
@@ -159,41 +169,63 @@
                             <h2 class="text-2xl font-bold text-gray-800">${level.title_fr} / ${level.title_ar}</h2>
                         </div>
                         <div class="space-y-4">
-                            ${stories.length > 0 ? stories.map(story => `
-                                <div onclick="router.navigate('read', {storyId: ${story.id}})" class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-blue-300 transition-all cursor-pointer flex justify-between items-center group">
-                                    <div>
-                                        <h3 class="text-xl font-semibold text-gray-800">${story.title_fr}</h3>
-                                        <p class="text-gray-500 rtl" dir="rtl">${story.title_ar}</p>
+                            ${stories.length > 0 ? stories.map((story, idx) => {
+                                const unlocked = isStoryUnlocked(story.id, level.id);
+                                const prog = state.progress[story.id] || {vocab:false, comp:false, gram:false};
+                                const allDone = prog.vocab && prog.comp && prog.gram;
+
+                                return `
+                                    <div onclick="${unlocked ? `router.navigate('read', {storyId: ${story.id}})` : ''}" 
+                                         class="bg-white p-6 rounded-2xl shadow-sm border ${unlocked ? 'border-gray-100 hover:border-blue-300' : 'border-gray-200 locked'} transition-all cursor-pointer flex justify-between items-center group">
+                                        <div class="flex items-center gap-4">
+                                            <div class="w-10 h-10 rounded-full flex items-center justify-center ${unlocked ? (allDone ? 'bg-green-100 text-green-600' : 'bg-blue-50 text-blue-500') : 'bg-gray-100 text-gray-400'}">
+                                                ${unlocked ? (allDone ? '<i class="fas fa-check"></i>' : `<span>${idx + 1}</span>`) : '<i class="fas fa-lock text-sm"></i>'}
+                                            </div>
+                                            <div>
+                                                <h3 class="text-xl font-semibold text-gray-800">${story.title_fr}</h3>
+                                                <p class="text-gray-500 rtl" dir="rtl">${story.title_ar}</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            ${unlocked ? `
+                                                <div class="hidden sm:flex gap-1">
+                                                    <span class="w-2 h-2 rounded-full ${prog.vocab ? 'bg-green-400' : 'bg-gray-200'}" title="Vocabulaire"></span>
+                                                    <span class="w-2 h-2 rounded-full ${prog.comp ? 'bg-green-400' : 'bg-gray-200'}" title="Compréhension"></span>
+                                                    <span class="w-2 h-2 rounded-full ${prog.gram ? 'bg-green-400' : 'bg-gray-200'}" title="Grammaire"></span>
+                                                </div>
+                                                <i class="fas fa-chevron-right text-gray-300 group-hover:text-blue-500 transition-colors"></i>
+                                            ` : ''}
+                                        </div>
                                     </div>
-                                    <i class="fas fa-chevron-right text-gray-300 group-hover:text-blue-500 transition-colors"></i>
-                                </div>
-                            `).join('') : '<p class="text-center text-gray-500 py-10">Aucune histoire pour le moment.</p>'}
+                                `;
+                            }).join('') : `<p class="text-center py-10 text-gray-500">Aucune histoire disponible pour le moment.</p>`}
                         </div>
                     `;
                     break;
 
                 case 'read':
                     const story = state.stories.find(s => s.id === params.storyId);
+                    const p = state.progress[story.id] || {vocab:false, comp:false, gram:false};
                     container.innerHTML = `
                         <div class="mb-8 flex justify-between items-center">
                             <button onclick="router.navigate('stories', {levelId: ${story.level_id}})" class="flex items-center gap-2 text-gray-600 hover:text-blue-600">
                                 <i class="fas fa-arrow-left"></i> Retour
                             </button>
-                            <span class="px-4 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-widest">Lecture</span>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 ${p.vocab ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'} rounded-full text-[10px] font-bold uppercase">Vocab</span>
+                                <span class="px-3 py-1 ${p.comp ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'} rounded-full text-[10px] font-bold uppercase">Comp</span>
+                                <span class="px-3 py-1 ${p.gram ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'} rounded-full text-[10px] font-bold uppercase">Gram</span>
+                            </div>
                         </div>
                         
                         <div class="bg-white rounded-3xl shadow-xl overflow-hidden mb-8">
                             <div class="p-8 lg:p-12">
                                 <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">${story.title_fr}</h1>
                                 <div class="space-y-8">
-                                    <div class="text-xl leading-relaxed text-gray-800 ltr">
-                                        ${story.text_fr}
-                                    </div>
+                                    <div class="text-xl leading-relaxed text-gray-800 ltr">${story.text_fr}</div>
                                     <div id="translation" class="hidden animate-in slide-in-from-bottom duration-300">
                                         <hr class="mb-6">
-                                        <div class="text-xl leading-relaxed text-blue-800 rtl text-right" dir="rtl">
-                                            ${story.text_ar}
-                                        </div>
+                                        <div class="text-xl leading-relaxed text-blue-800 rtl text-right" dir="rtl">${story.text_ar}</div>
                                     </div>
                                     <div class="flex justify-center">
                                         <button onclick="toggleTranslation()" class="px-6 py-2 bg-blue-50 text-blue-600 rounded-xl font-medium hover:bg-blue-100 transition-colors">
@@ -203,63 +235,46 @@
                                 </div>
                             </div>
                             <div class="bg-gray-50 p-6 grid grid-cols-1 md:grid-cols-3 gap-4 border-t">
-                                <button onclick="router.navigate('vocab', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center">
-                                    <i class="fas fa-spell-check text-blue-500 text-xl mb-2"></i>
+                                <button onclick="router.navigate('vocab', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center border-2 ${p.vocab ? 'border-green-200' : 'border-transparent'}">
+                                    <i class="fas fa-spell-check ${p.vocab ? 'text-green-500' : 'text-blue-500'} text-xl mb-2"></i>
                                     <span class="font-semibold">Vocabulaire</span>
+                                    ${p.vocab ? '<span class="text-[10px] text-green-600 font-bold uppercase mt-1">Terminé</span>' : ''}
                                 </button>
-                                <button onclick="router.navigate('quiz_comp', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center">
-                                    <i class="fas fa-question-circle text-orange-500 text-xl mb-2"></i>
+                                <button onclick="router.navigate('quiz_comp', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center border-2 ${p.comp ? 'border-green-200' : 'border-transparent'}">
+                                    <i class="fas fa-question-circle ${p.comp ? 'text-green-500' : 'text-orange-500'} text-xl mb-2"></i>
                                     <span class="font-semibold">Compréhension</span>
+                                    ${p.comp ? '<span class="text-[10px] text-green-600 font-bold uppercase mt-1">Terminé</span>' : ''}
                                 </button>
-                                <button onclick="router.navigate('quiz_gram', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center">
-                                    <i class="fas fa-graduation-cap text-purple-500 text-xl mb-2"></i>
+                                <button onclick="router.navigate('quiz_gram', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center border-2 ${p.gram ? 'border-green-200' : 'border-transparent'}">
+                                    <i class="fas fa-graduation-cap ${p.gram ? 'text-green-500' : 'text-purple-500'} text-xl mb-2"></i>
                                     <span class="font-semibold">Grammaire</span>
+                                    ${p.gram ? '<span class="text-[10px] text-green-600 font-bold uppercase mt-1">Terminé</span>' : ''}
                                 </button>
                             </div>
                         </div>
                     `;
                     break;
 
-                case 'vocab':
-                    renderVocabGame(container, params.storyId);
-                    break;
-                case 'quiz_comp':
-                    renderQuiz(container, params.storyId, 'comprehension');
-                    break;
-                case 'quiz_gram':
-                    renderQuiz(container, params.storyId, 'grammar');
-                    break;
+                case 'vocab': renderVocabGame(container, params.storyId); break;
+                case 'quiz_comp': renderQuiz(container, params.storyId, 'comprehension'); break;
+                case 'quiz_gram': renderQuiz(container, params.storyId, 'grammar'); break;
             }
         }
 
-        // --- GAME LOGIC ---
+        // --- JEUX ET TESTS ---
         function toggleTranslation() {
-            const el = document.getElementById('translation');
-            el.classList.toggle('hidden');
+            document.getElementById('translation').classList.toggle('hidden');
         }
 
         function renderVocabGame(container, storyId) {
             const story = state.stories.find(s => s.id === storyId);
-            const vocab = story.vocabulary;
-            if(!vocab || vocab.length === 0) {
-                container.innerHTML = `<div class="text-center p-10"><p>Pas de vocabulaire disponible.</p><button onclick="router.navigate('read', {storyId: ${storyId}})" class="mt-4 text-blue-600 font-bold">Retour</button></div>`;
-                return;
-            }
+            const vocab = story.vocabulary || [];
+            if(vocab.length === 0) { router.navigate('read', {storyId}); return; }
 
             let currentIdx = 0;
-            let direction = 'fr-ar';
-            
             function showQuestion() {
                 const word = vocab[currentIdx];
-                const isFrToAr = direction === 'fr-ar';
-                const questionWord = isFrToAr ? word.fr : word.ar;
-                const correctAns = isFrToAr ? word.ar : word.fr;
-                
-                let options = [correctAns];
-                let otherWords = vocab.filter(v => (isFrToAr ? v.ar : v.fr) !== correctAns);
-                otherWords = otherWords.sort(() => 0.5 - Math.random()).slice(0, 2);
-                options.push(...otherWords.map(v => isFrToAr ? v.ar : v.fr));
-                options = options.sort(() => 0.5 - Math.random());
+                const options = [word.ar, ...vocab.filter(v => v.ar !== word.ar).sort(() => 0.5-Math.random()).slice(0,2).map(v => v.ar)].sort(() => 0.5-Math.random());
 
                 container.innerHTML = `
                     <div class="max-w-md mx-auto animate-in fade-in duration-500">
@@ -268,14 +283,12 @@
                             <span class="font-bold text-blue-600">${currentIdx + 1} / ${vocab.length}</span>
                         </div>
                         <div class="bg-white p-8 rounded-3xl shadow-xl text-center mb-8">
-                            <p class="text-gray-500 text-sm mb-2 uppercase tracking-widest">${isFrToAr ? 'Traduire en Arabe' : 'Traduire en Français'}</p>
-                            <h2 class="text-4xl font-bold ${!isFrToAr ? 'rtl' : 'ltr'}" ${!isFrToAr ? 'dir="rtl"' : ''}>${questionWord}</h2>
+                            <p class="text-gray-500 text-sm mb-2 uppercase tracking-widest">Traduire en Arabe</p>
+                            <h2 class="text-4xl font-bold">${word.fr}</h2>
                         </div>
                         <div class="space-y-4">
                             ${options.map(opt => `
-                                <button onclick="checkVocab('${opt}', '${correctAns}', ${storyId})" class="w-full p-5 bg-white border-2 border-gray-100 rounded-2xl text-xl font-semibold hover:border-blue-400 hover:bg-blue-50 transition-all text-center ${isFrToAr ? 'rtl' : 'ltr'}" ${isFrToAr ? 'dir="rtl"' : ''}>
-                                    ${opt}
-                                </button>
+                                <button onclick="checkVocab('${opt}', '${word.ar}', ${storyId})" class="w-full p-5 bg-white border-2 border-gray-100 rounded-2xl text-xl font-semibold hover:border-blue-400 transition-all rtl" dir="rtl">${opt}</button>
                             `).join('')}
                         </div>
                     </div>
@@ -286,29 +299,20 @@
                 if(selected === correct) {
                     currentIdx++;
                     if(currentIdx >= vocab.length) {
-                        showSuccess("Félicitations ! Vous avez appris tout le vocabulaire.", sId);
-                    } else {
-                        showQuestion();
-                    }
-                } else {
-                    showError("Oups ! Réessayez.");
-                }
+                        updateProgress(sId, 'vocab');
+                        showSuccess("Félicitations ! Vocabulaire maîtrisé.", sId);
+                    } else { showQuestion(); }
+                } else { showError("Réessayez !"); }
             };
-
             showQuestion();
         }
 
         function renderQuiz(container, storyId, type) {
             const story = state.stories.find(s => s.id === storyId);
-            const questions = story[type];
-            
-            if(!questions || questions.length === 0) {
-                container.innerHTML = `<div class="text-center p-10"><p>Pas d'exercices disponibles.</p><button onclick="router.navigate('read', {storyId: ${storyId}})" class="mt-4 text-blue-600 font-bold">Retour</button></div>`;
-                return;
-            }
+            const questions = story[type] || [];
+            if(questions.length === 0) { router.navigate('read', {storyId}); return; }
 
             let currentIdx = 0;
-
             function showQuestion() {
                 const q = questions[currentIdx];
                 container.innerHTML = `
@@ -320,18 +324,12 @@
                         <div class="bg-white p-8 rounded-3xl shadow-xl mb-8 relative">
                             <p class="text-gray-400 text-xs mb-4 uppercase tracking-widest">${type === 'grammar' ? 'Grammaire' : 'Compréhension'}</p>
                             <h2 class="text-2xl font-bold text-gray-800 mb-6">${type === 'grammar' ? q.text : q.q}</h2>
-                            
-                            ${type === 'grammar' ? `
-                                <button onclick="showHelp('${q.rule_fr.replace(/'/g, "\\'")}', '${q.rule_ar.replace(/'/g, "\\'")}')" class="absolute top-6 right-6 text-purple-500 hover:text-purple-700 bg-purple-50 px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1 transition-all">
-                                    <i class="fas fa-info-circle"></i> Aide / مساعدة
-                                </button>
-                            ` : ''}
+                            ${type === 'grammar' ? `<button onclick="showHelp('${q.rule_fr.replace(/'/g, "\\'")}', '${q.rule_ar.replace(/'/g, "\\'")}')" class="absolute top-6 right-6 text-purple-500 bg-purple-50 px-3 py-1 rounded-full text-sm font-bold"><i class="fas fa-info-circle mr-1"></i> Aide</button>` : ''}
                         </div>
                         <div class="grid grid-cols-1 gap-4">
                             ${q.options.map((opt, idx) => `
-                                <button onclick="checkQuiz(${idx}, ${type === 'grammar' ? `'${q.missing}'` : q.correct}, ${storyId}, '${type}')" class="w-full p-5 bg-white border-2 border-gray-100 rounded-2xl text-lg font-medium hover:border-blue-400 hover:bg-blue-50 transition-all text-left flex justify-between items-center">
-                                    <span>${opt}</span>
-                                    <i class="fas fa-chevron-right text-gray-200"></i>
+                                <button onclick="checkQuiz(${idx}, ${type === 'grammar' ? `'${q.missing}'` : q.correct}, ${storyId}, '${type}')" class="w-full p-5 bg-white border-2 border-gray-100 rounded-2xl text-lg font-medium hover:border-blue-400 transition-all text-left flex justify-between items-center">
+                                    <span>${opt}</span><i class="fas fa-chevron-right text-gray-200"></i>
                                 </button>
                             `).join('')}
                         </div>
@@ -341,233 +339,27 @@
 
             window.checkQuiz = (idx, correct, sId, qType) => {
                 const q = questions[currentIdx];
-                let isCorrect = false;
-                if(qType === 'grammar') {
-                    isCorrect = q.options[idx] === correct;
-                } else {
-                    isCorrect = idx === correct;
-                }
-
+                let isCorrect = (qType === 'grammar') ? (q.options[idx] === correct) : (idx === correct);
                 if(isCorrect) {
                     currentIdx++;
                     if(currentIdx >= questions.length) {
-                        showSuccess("Bravo ! Vous avez terminé cet exercice.", sId);
-                    } else {
-                        showQuestion();
-                    }
-                } else {
-                    showError("La réponse est incorrecte. Consultez l'aide si besoin.");
-                }
+                        updateProgress(sId, qType === 'grammar' ? 'gram' : 'comp');
+                        showSuccess("Exercice terminé avec succès !", sId);
+                    } else { showQuestion(); }
+                } else { showError("Incorrect. Consultez l'aide !"); }
             };
-
             showQuestion();
         }
 
-        // --- ADMIN VIEWS ---
-        function renderAdmin(container, view, params) {
-            container.innerHTML = `
-                <div class="flex justify-between items-center mb-10">
-                    <h1 class="text-3xl font-bold text-gray-900">Console Admin</h1>
-                    <button onclick="showAddLevel()" class="bg-blue-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-blue-700 transition-colors">
-                        + Nouveau Niveau
-                    </button>
-                </div>
-                
-                <div class="grid grid-cols-1 gap-8">
-                    ${state.levels.map(level => `
-                        <div class="bg-white rounded-3xl shadow-md border border-gray-100 overflow-hidden">
-                            <div class="p-6 bg-gray-50 border-b flex justify-between items-center">
-                                <div class="flex items-center gap-4">
-                                    <div class="${level.color} p-3 rounded-xl text-white">
-                                        <i class="fas ${level.icon}"></i>
-                                    </div>
-                                    <div>
-                                        <h2 class="text-xl font-bold text-gray-800">${level.title_fr} / ${level.title_ar}</h2>
-                                        <p class="text-sm text-gray-500">${state.stories.filter(s => s.level_id === level.id).length} Histoires</p>
-                                    </div>
-                                </div>
-                                <div class="flex gap-2">
-                                    <button onclick="addStory(${level.id})" class="text-blue-600 hover:bg-blue-50 px-3 py-1 rounded-lg text-sm font-semibold">Ajouter Histoire</button>
-                                    <button onclick="deleteLevel(${level.id})" class="text-red-500 hover:bg-red-50 p-2 rounded-lg"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </div>
-                            <div class="p-4 space-y-2">
-                                ${state.stories.filter(s => s.level_id === level.id).map(story => `
-                                    <div class="flex justify-between items-center p-4 border rounded-xl hover:bg-gray-50 group">
-                                        <span class="font-medium">${story.title_fr}</span>
-                                        <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <button onclick="editStoryContent(${story.id})" class="text-blue-500"><i class="fas fa-edit"></i></button>
-                                            <button onclick="deleteStory(${story.id})" class="text-red-400"><i class="fas fa-times-circle"></i></button>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-        }
-
-        // --- MODALS & ACTIONS ---
+        // --- UTILITAIRES ---
         function showModal(contentHtml) {
             const modal = document.getElementById('modal-container');
-            const inner = document.getElementById('modal-content');
-            inner.innerHTML = contentHtml;
+            document.getElementById('modal-content').innerHTML = contentHtml;
             modal.classList.remove('hidden');
         }
 
-        function closeModal() {
-            document.getElementById('modal-container').classList.add('hidden');
-        }
+        function closeModal() { document.getElementById('modal-container').classList.add('hidden'); }
 
-        function showAddLevel() {
-            showModal(`
-                <div class="p-6">
-                    <h2 class="text-2xl font-bold mb-6">Ajouter un Niveau</h2>
-                    <div class="space-y-4">
-                        <input id="lvl-fr" placeholder="Titre Français" type="text" class="w-full p-3 border rounded-xl">
-                        <input id="lvl-ar" placeholder="العنوان بالعربية" type="text" dir="rtl" class="w-full p-3 border rounded-xl rtl">
-                        <div class="flex gap-4 mt-8">
-                            <button onclick="closeModal()" class="flex-1 px-4 py-3 bg-gray-100 rounded-xl font-bold">Annuler</button>
-                            <button onclick="confirmAddLevel()" class="flex-1 px-4 py-3 bg-blue-600 text-white rounded-xl font-bold">Créer</button>
-                        </div>
-                    </div>
-                </div>
-            `);
-        }
-
-        function confirmAddLevel() {
-            const fr = document.getElementById('lvl-fr').value;
-            const ar = document.getElementById('lvl-ar').value;
-            if(!fr || !ar) return;
-            state.levels.push({ id: Date.now(), title_fr: fr, title_ar: ar, icon: 'fa-star', color: 'bg-yellow-500' });
-            saveData(); closeModal(); router.render();
-        }
-
-        function deleteLevel(id) {
-            if(confirm("Supprimer ce niveau ?")) {
-                state.levels = state.levels.filter(l => l.id !== id);
-                state.stories = state.stories.filter(s => s.level_id !== id);
-                saveData(); router.render();
-            }
-        }
-
-        function addStory(levelId) {
-            showModal(`
-                <div class="p-6 max-h-[80vh] overflow-y-auto">
-                    <h2 class="text-2xl font-bold mb-6">Nouvelle Histoire</h2>
-                    <div class="space-y-4">
-                        <input id="s-title-fr" placeholder="Titre Français" class="w-full p-3 border rounded-xl">
-                        <input id="s-title-ar" dir="rtl" placeholder="العنوان بالعربية" class="w-full p-3 border rounded-xl rtl">
-                        <textarea id="s-text-fr" placeholder="Texte en Français" class="w-full p-3 border rounded-xl h-32"></textarea>
-                        <textarea id="s-text-ar" dir="rtl" placeholder="النص بالعربية" class="w-full p-3 border rounded-xl h-32 rtl"></textarea>
-                        <textarea id="s-vocab" placeholder="Vocabulaire (ex: Pomme=تفاحة, Pain=خبز)" class="w-full p-3 border rounded-xl"></textarea>
-                    </div>
-                    <div class="flex gap-4 mt-8">
-                        <button onclick="closeModal()" class="flex-1 px-4 py-3 bg-gray-100 rounded-xl font-bold">Annuler</button>
-                        <button onclick="confirmAddStory(${levelId})" class="flex-1 px-4 py-3 bg-blue-600 text-white rounded-xl font-bold">Sauvegarder</button>
-                    </div>
-                </div>
-            `);
-        }
-
-        function confirmAddStory(levelId) {
-            const vocab = document.getElementById('s-vocab').value.split(',').filter(x => x.includes('=')).map(pair => {
-                const [fr, ar] = pair.split('=');
-                return { fr: fr.trim(), ar: ar.trim() };
-            });
-            state.stories.push({
-                id: Date.now(), level_id: levelId, 
-                title_fr: document.getElementById('s-title-fr').value,
-                title_ar: document.getElementById('s-title-ar').value,
-                text_fr: document.getElementById('s-text-fr').value,
-                text_ar: document.getElementById('s-text-ar').value,
-                vocabulary: vocab, comprehension: [], grammar: []
-            });
-            saveData(); closeModal(); router.render();
-        }
-
-        function deleteStory(id) {
-            state.stories = state.stories.filter(s => s.id !== id);
-            saveData(); router.render();
-        }
-
-        function editStoryContent(id) {
-            const story = state.stories.find(s => s.id === id);
-            showModal(`
-                <div class="p-6 max-h-[80vh] overflow-y-auto">
-                    <h2 class="text-2xl font-bold mb-4">Éditer : ${story.title_fr}</h2>
-                    <div class="space-y-6">
-                        <div class="bg-blue-50 p-4 rounded-xl">
-                            <h3 class="font-bold mb-2">Compréhension</h3>
-                            <button onclick="addMCQ(${id}, 'comprehension')" class="text-sm bg-blue-600 text-white px-3 py-1 rounded">Ajouter Question</button>
-                        </div>
-                        <div class="bg-purple-50 p-4 rounded-xl">
-                            <h3 class="font-bold mb-2">Grammaire</h3>
-                            <button onclick="addMCQ(${id}, 'grammar')" class="text-sm bg-purple-600 text-white px-3 py-1 rounded">Ajouter Règle</button>
-                        </div>
-                    </div>
-                    <button onclick="closeModal()" class="w-full mt-6 py-3 bg-gray-200 rounded-xl font-bold">Fermer</button>
-                </div>
-            `);
-        }
-
-        function addMCQ(id, type) {
-            if(type === 'comprehension') {
-                showModal(`
-                    <div class="p-6">
-                        <h3 class="font-bold mb-4">Question de Compréhension</h3>
-                        <input id="mcq-q" placeholder="Question" class="w-full p-3 border rounded mb-2">
-                        <input id="mcq-o1" placeholder="Option 1" class="w-full p-2 border rounded mb-2">
-                        <input id="mcq-o2" placeholder="Option 2" class="w-full p-2 border rounded mb-2">
-                        <input id="mcq-o3" placeholder="Option 3" class="w-full p-2 border rounded mb-2">
-                        <input id="mcq-correct" type="number" placeholder="Index correct (0, 1, 2)" class="w-full p-2 border rounded">
-                        <div class="flex gap-2 mt-4">
-                            <button onclick="editStoryContent(${id})" class="flex-1 py-2 bg-gray-200 rounded">Retour</button>
-                            <button onclick="confirmMCQ(${id}, 'comprehension')" class="flex-1 py-2 bg-blue-600 text-white rounded">Ajouter</button>
-                        </div>
-                    </div>
-                `);
-            } else {
-                showModal(`
-                    <div class="p-6">
-                        <h3 class="font-bold mb-4">Exercice de Grammaire</h3>
-                        <input id="g-text" placeholder="Phrase à trou" class="w-full p-3 border rounded mb-2">
-                        <input id="g-missing" placeholder="Réponse correcte" class="w-full p-2 border rounded mb-2">
-                        <input id="g-o1" placeholder="Faux Choix 1" class="w-full p-2 border rounded mb-2">
-                        <input id="g-o2" placeholder="Faux Choix 2" class="w-full p-2 border rounded mb-2">
-                        <textarea id="g-rule-fr" placeholder="Règle Français" class="w-full p-2 border rounded mb-2"></textarea>
-                        <textarea id="g-rule-ar" dir="rtl" placeholder="القاعدة بالعربية" class="w-full p-2 border rounded mb-2 rtl"></textarea>
-                        <div class="flex gap-2 mt-4">
-                            <button onclick="editStoryContent(${id})" class="flex-1 py-2 bg-gray-200 rounded">Retour</button>
-                            <button onclick="confirmMCQ(${id}, 'grammar')" class="flex-1 py-2 bg-purple-600 text-white rounded">Ajouter</button>
-                        </div>
-                    </div>
-                `);
-            }
-        }
-
-        function confirmMCQ(id, type) {
-            const story = state.stories.find(s => s.id === id);
-            if(type === 'comprehension') {
-                story.comprehension.push({ 
-                    q: document.getElementById('mcq-q').value, 
-                    options: [document.getElementById('mcq-o1').value, document.getElementById('mcq-o2').value, document.getElementById('mcq-o3').value],
-                    correct: parseInt(document.getElementById('mcq-correct').value)
-                });
-            } else {
-                story.grammar.push({ 
-                    text: document.getElementById('g-text').value, 
-                    missing: document.getElementById('g-missing').value, 
-                    options: [document.getElementById('g-missing').value, document.getElementById('g-o1').value, document.getElementById('g-o2').value].sort(() => 0.5 - Math.random()),
-                    rule_fr: document.getElementById('g-rule-fr').value,
-                    rule_ar: document.getElementById('g-rule-ar').value
-                });
-            }
-            saveData(); editStoryContent(id);
-        }
-
-        // --- UTILS ---
         function showSuccess(msg, sId) {
             showModal(`
                 <div class="p-8 text-center">
@@ -592,21 +384,12 @@
         function showHelp(fr, ar) {
             showModal(`
                 <div class="p-8">
-                    <div class="flex items-center gap-3 mb-6">
-                        <i class="fas fa-lightbulb text-yellow-500 text-2xl"></i>
-                        <h2 class="text-2xl font-bold text-gray-800">Règle de Grammaire</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i> Aide</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-xl"><p class="text-blue-900 font-medium">${fr}</p></div>
+                        <div class="p-4 bg-purple-50 rounded-xl text-right rtl" dir="rtl"><p class="text-purple-900 font-medium">${ar}</p></div>
                     </div>
-                    <div class="space-y-6">
-                        <div class="p-5 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl">
-                            <span class="text-xs font-bold text-blue-500 uppercase tracking-widest block mb-1">Français</span>
-                            <p class="text-blue-900 font-medium text-lg leading-relaxed">${fr}</p>
-                        </div>
-                        <div class="p-5 bg-purple-50 border-r-4 border-purple-500 rounded-l-xl text-right rtl" dir="rtl">
-                            <span class="text-xs font-bold text-purple-500 uppercase tracking-widest block mb-1">العربية</span>
-                            <p class="text-purple-900 font-medium text-lg leading-relaxed">${ar}</p>
-                        </div>
-                    </div>
-                    <button onclick="closeModal()" class="w-full mt-8 py-4 bg-gray-900 text-white rounded-2xl font-bold transition-transform active:scale-95 shadow-lg">J'ai compris !</button>
+                    <button onclick="closeModal()" class="w-full mt-8 py-4 bg-gray-900 text-white rounded-2xl font-bold">Compris !</button>
                 </div>
             `);
         }

@@ -436,9 +436,9 @@ const INITIAL_DATA = {
                     ]
                     },
                     {
-                    id: 7,
+                    id: 6,
                     level_id: 1,
-                    title_fr: "7-Pourquoi Amine dit « je parle »",
+                    title_fr: "6-Pourquoi Amine dit « je parle »",
                     title_ar: "لماذا يقول أمين « je parle »",
                     text_fr: "Amine apprend le français. Chaque matin, il parle avec ses amis. Il regarde des vidéos et écoute la radio. Un jour, Amine remarque quelque chose. Il dit : je parle, je regarde, j’écoute. Il comprend alors une règle simple : quand on parle de ce qu’on fait maintenant, on utilise le présent. Les verbes comme parler, regarder et écouter finissent par -er. Avec je, on enlève -er et on ajoute -e. Amine pratique tous les jours, et le français devient plus facile.",
                     text_ar: "أمين يتعلم اللغة الفرنسية. كل صباح، يتكلم مع أصدقائه. يشاهد فيديوهات ويستمع إلى الراديو. في يوم من الأيام، لاحظ أمين شيئًا. قال: je parle، je regarde، j’écoute. ففهم قاعدة بسيطة: عندما نتحدث عما نفعله الآن، نستخدم الحاضر. الأفعال مثل parler وregarder وécouter تنتهي بـ -er. مع je نحذف -er ونضيف -e. يتدرّب أمين كل يوم، وتصبح الفرنسية أسهل.",
@@ -522,9 +522,9 @@ const INITIAL_DATA = {
                     ]
                     },
                     {
-                        id: 8,
+                        id: 7,
                         level_id: 1,
-                        title_fr: "8-Le choix des jouets",
+                        title_fr: "7-Le choix des jouets",
                         title_ar: "اختيار الألعاب",
 
                         text_fr: "Lucas regarde les ballons. Il aime ceux qui sont rouges. Le vendeur lui montre plusieurs modèles. Lucas préfère ceux-ci car ils brillent. Il laisse ceux-là sur l'étagère.",
@@ -586,9 +586,9 @@ const INITIAL_DATA = {
                         ]
                     },
                     {
-                    id: 9,
+                    id: 8,
                     level_id: 1,
-                    title_fr: "9-Samir et Amina au magasin",
+                    title_fr: "8-Samir et Amina au magasin",
                     title_ar: "سمير وأمينة في المتجر",
 
                     text_fr: "Samir et Amina vont au magasin. Samir veut acheter une montre. Il regarde le prix et la qualité. Après réflexion, il est sûr de son choix. Amina regarde aussi une montre, mais elle hésite encore. Elle n’est pas sûre et préfère demander l’avis du vendeur.",
@@ -658,77 +658,117 @@ const INITIAL_DATA = {
                     ]
                     },
                     {
-    id: 10,
-    level_id: 3,
-    title_fr: "10-Une décision importante chez PCM",
-    title_ar: "قرار مهم في شركة PCM",
+                        id: 9,
+                        level_id: 3,
+                        title_fr: "9-Une décision importante chez PCM",
+                        title_ar: "قرار مهم في شركة PCM",
 
-    text_fr: "Dans l'entreprise, il faut valider les factures. Hier, il a fallu beaucoup de temps pour finir le rapport. Le comptable dit : 'Il faudra être plus rapide demain'. Pour réussir, il faudrait automatiser le processus avec SAP.",
-    text_ar: "في الشركة، يجب (il faut) تفعيل الفواتير. بالأمس، استغرق الأمر (il a fallu) الكثير من الوقت لإنهاء التقرير. يقول المحاسب: 'سوف يلزم (il faudra) أن نكون أسرع غداً'. للنجاح، قد يلزم (il faudrait) أتمتة العملية باستخدام SAP.",
+                        text_fr: "Dans l'entreprise, il faut valider les factures. Hier, il a fallu beaucoup de temps pour finir le rapport. Le comptable dit : 'Il faudra être plus rapide demain'. Pour réussir, il faudrait automatiser le processus avec SAP.",
+                        text_ar: "في الشركة، يجب (il faut) تفعيل الفواتير. بالأمس، استغرق الأمر (il a fallu) الكثير من الوقت لإنهاء التقرير. يقول المحاسب: 'سوف يلزم (il faudra) أن نكون أسرع غداً'. للنجاح، قد يلزم (il faudrait) أتمتة العملية باستخدام SAP.",
 
-    vocabulary: [
-        { fr: "Entreprise", ar: "شركة" },
-        { fr: "Facture", ar: "فاتورة" },
-        { fr: "Comptable", ar: "محاسب" },
-        { fr: "Rapport", ar: "تقرير" },
-        { fr: "Temps", ar: "وقت" },
-        { fr: "Valider", ar: "تفعيل / تصديق" },
-        { fr: "Finir", ar: "إنهاء" },
-        { fr: "Réussir", ar: "نجاح" },
-        { fr: "Rapide", ar: "سريع" },
-        { fr: "Demain", ar: "غداً" },
-        { fr: "Processus", ar: "عملية" },
-        { fr: "Hier", ar: "أمس" },
-        { fr: "Il faut", ar: "يجب (حاضر)" },
-        { fr: "Il a fallu", ar: "وجب (ماضي)" },
-        { fr: "Il faudra", ar: "سوف يجب (مستقبل)" },
-        { fr: "Il faudrait", ar: "ينبغي (شرط)" }
-    ],
+                        vocabulary: [
+                            { fr: "Entreprise", ar: "شركة" },
+                            { fr: "Facture", ar: "فاتورة" },
+                            { fr: "Comptable", ar: "محاسب" },
+                            { fr: "Rapport", ar: "تقرير" },
+                            { fr: "Temps", ar: "وقت" },
+                            { fr: "Valider", ar: "تفعيل / تصديق" },
+                            { fr: "Finir", ar: "إنهاء" },
+                            { fr: "Réussir", ar: "نجاح" },
+                            { fr: "Rapide", ar: "سريع" },
+                            { fr: "Demain", ar: "غداً" },
+                            { fr: "Processus", ar: "عملية" },
+                            { fr: "Hier", ar: "أمس" },
+                            { fr: "Il faut", ar: "يجب (حاضر)" },
+                            { fr: "Il a fallu", ar: "وجب (ماضي)" },
+                            { fr: "Il faudra", ar: "سوف يجب (مستقبل)" },
+                            { fr: "Il faudrait", ar: "ينبغي (شرط)" }
+                        ],
 
-    comprehension: [
-        {
-            q: "Que faut-il faire dans l'entreprise ?",
-            options: ["Acheter des montres", "Valider les factures", "Partir en vacances"],
-            correct: 1
-        },
-        {
-            q: "Quand a-t-il fallu beaucoup de temps ?",
-            options: ["Aujourd'hui", "Demain", "Hier"],
-            correct: 2
-        },
-        {
-            q: "Quelle est la solution proposée ?",
-            options: ["Dormir", "Automatiser avec SAP", "Changer de bureau"],
-            correct: 1
-        }
-    ],
+                        comprehension: [
+                            {
+                                q: "Que faut-il faire dans l'entreprise ?",
+                                options: ["Acheter des montres", "Valider les factures", "Partir en vacances"],
+                                correct: 1
+                            },
+                            {
+                                q: "Quand a-t-il fallu beaucoup de temps ?",
+                                options: ["Aujourd'hui", "Demain", "Hier"],
+                                correct: 2
+                            },
+                            {
+                                q: "Quelle est la solution proposée ?",
+                                options: ["Dormir", "Automatiser avec SAP", "Changer de bureau"],
+                                correct: 1
+                            }
+                        ],
 
-    grammar: [
-        {
-            text: "Demain, il ..... finir le travail.",
-            missing: "faudra",
-            options: ["fallait", "faudra"],
-            rule_fr: "On utilise le futur 'faudra' pour une obligation à venir.",
-            rule_ar: "نستخدم صيغة المستقبل 'faudra' للالتزام القادم."
-        },
-        {
-            text: "Hier, il ..... payer le fournisseur.",
-            missing: "a fallu",
-            options: ["faut", "a fallu"],
-            rule_fr: "Le passé composé 'a fallu' exprime une obligation terminée.",
-            rule_ar: "يعبر الماضي المركب 'a fallu' عن التزام انتهى."
-        },
-        {
-            text: "Pour améliorer SAP, il ..... configurer les règles.",
-            missing: "faudrait",
-            options: ["faudrait", "faut"],
-            rule_fr: "Le conditionnel 'faudrait' exprime un conseil ou une suggestion.",
-            rule_ar: "يعبر الصيغة الشرطية 'faudrait' عن نصيحة أو اقتراح."
-        }
-    ]
-}
-
-
-
-             ]
+                        grammar: [
+                            {
+                                text: "Demain, il ..... finir le travail.",
+                                missing: "faudra",
+                                options: ["fallait", "faudra"],
+                                rule_fr: "On utilise le futur 'faudra' pour une obligation à venir.",
+                                rule_ar: "نستخدم صيغة المستقبل 'faudra' للالتزام القادم."
+                            },
+                            {
+                                text: "Hier, il ..... payer le fournisseur.",
+                                missing: "a fallu",
+                                options: ["faut", "a fallu"],
+                                rule_fr: "Le passé composé 'a fallu' exprime une obligation terminée.",
+                                rule_ar: "يعبر الماضي المركب 'a fallu' عن التزام انتهى."
+                            },
+                            {
+                                text: "Pour améliorer SAP, il ..... configurer les règles.",
+                                missing: "faudrait",
+                                options: ["faudrait", "faut"],
+                                rule_fr: "Le conditionnel 'faudrait' exprime un conseil ou une suggestion.",
+                                rule_ar: "يعبر الصيغة الشرطية 'faudrait' عن نصيحة أو اقتراح."
+                            }
+                        ]
+                    },
+                    {
+                    id: 101,
+                    level_id: 1,
+                    title_fr: "Le petit chat",
+                    title_ar: "القط الصغير",
+                    text_fr: "Le petit chat joue dans le jardin. Il voit une souris grise. Il court vite pour l'attraper, mais la souris se cache derrière un arbre.",
+                    text_ar: "القط الصغير يلعب في الحديقة. يرى فأراً رمادياً. يركض بسرعة للإمساك به، لكن الفأر يختبئ خلف شجرة.",
+                    vocabulary: [
+                        { fr: "Chat", ar: "قط" },
+                        { fr: "Jardin", ar: "حديقة" },
+                        { fr: "Souris", ar: "فأر" },
+                        { fr: "Arbre", ar: "شجرة" }
+                    ],
+                    comprehension: [
+                        { q: "Où joue le chat ?", options: ["Dans la maison", "Dans le jardin", "Sur le toit"], correct: 1 },
+                        { q: "De quelle couleur est la souris ?", options: ["Noire", "Blanche", "Grise"], correct: 2 }
+                    ],
+                    grammar: [
+                        { text: "Le petit chat ___ dans le jardin.", missing: "joue", options: ["joue", "jouent", "jouer"], rule_fr: "Le verbe s'accorde avec le sujet 'Le petit chat' (3ème personne du singulier).", rule_ar: "الفعل يتبع الفاعل 'القط الصغير' (المفرد الغائب)." }
+                    ]
+                },
+                {
+                    id: 102,
+                    level_id: 1,
+                    title_fr: "Ma journée",
+                    title_ar: "يومي",
+                    text_fr: "Le matin, je me réveille à sept heures. Je prends mon petit déjeuner avec ma famille. Ensuite, je vais à l'école avec mon sac.",
+                    text_ar: "في الصباح، أستيقظ في الساعة السابعة. أتناول فطوري مع عائلتي. ثم، أذهب إلى المدرسة مع حقيبتي.",
+                    vocabulary: [
+                        { fr: "Matin", ar: "صباح" },
+                        { fr: "Famille", ar: "عائلة" },
+                        { fr: "École", ar: "مدرسة" },
+                        { fr: "Sac", ar: "حقيبة" }
+                    ],
+                    comprehension: [
+                        { q: "À quelle heure je me réveille ?", options: ["6h", "7h", "8h"], correct: 1 },
+                        { q: "Avec qui je prends le déjeuner ?", options: ["Mes amis", "Seul", "Ma famille"], correct: 2 }
+                    ],
+                    grammar: [
+                        { text: "Je ___ à l'école.", missing: "vais", options: ["vais", "va", "vont"], rule_fr: "C'est la conjugaison du verbe 'aller' au présent avec 'je'.", rule_ar: "هذا تصريف فعل 'ذهب' (aller) في المضارع مع الضمير 'أنا' (je)." }
+                    ]
+                }
+           ],
+            progress: {}
         };
