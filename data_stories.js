@@ -30,7 +30,10 @@ const INITIAL_DATA = {
                         { fr: "frais", ar: "طازج" },
                         { fr: "avec", ar: "مع" },
                         { fr: "avant", ar: "قبل" },
-                        { fr: "aller", ar: "ذهب" }
+                        { fr: "aller", ar: "ذهب" },
+                        { fr: "Elle/il", ar: "هي/هو" },
+                        { fr: "Ils/Elles", ar: "هم/هن" },
+                    
                     ],
                     comprehension: [
                         { q: "Que mange Sarah ?", options: ["Une poire", "Une pomme", "Un pain"], correct: 1 },
@@ -728,9 +731,9 @@ const INITIAL_DATA = {
                         ]
                     },
                     {
-                    id: 101,
+                    id: 10,
                     level_id: 1,
-                    title_fr: "Le petit chat",
+                    title_fr: "10-Le petit chat",
                     title_ar: "القط الصغير",
                     text_fr: "Le petit chat joue dans le jardin. Il voit une souris grise. Il court vite pour l'attraper, mais la souris se cache derrière un arbre.",
                     text_ar: "القط الصغير يلعب في الحديقة. يرى فأراً رمادياً. يركض بسرعة للإمساك به، لكن الفأر يختبئ خلف شجرة.",
@@ -749,9 +752,9 @@ const INITIAL_DATA = {
                     ]
                 },
                 {
-                    id: 102,
+                    id: 11,
                     level_id: 1,
-                    title_fr: "Ma journée",
+                    title_fr: "11-Ma journée",
                     title_ar: "يومي",
                     text_fr: "Le matin, je me réveille à sept heures. Je prends mon petit déjeuner avec ma famille. Ensuite, je vais à l'école avec mon sac.",
                     text_ar: "في الصباح، أستيقظ في الساعة السابعة. أتناول فطوري مع عائلتي. ثم، أذهب إلى المدرسة مع حقيبتي.",
@@ -759,7 +762,11 @@ const INITIAL_DATA = {
                         { fr: "Matin", ar: "صباح" },
                         { fr: "Famille", ar: "عائلة" },
                         { fr: "École", ar: "مدرسة" },
-                        { fr: "Sac", ar: "حقيبة" }
+                        { fr: "Sac", ar: "حقيبة" },
+                        { fr: "Petit déjeuner", ar: "فطور" },
+                        { fr: "Se réveiller", ar: "يستيقظ" },
+                        { fr: "Prendre", ar: "يتناول / يأخذ" },
+                        { fr: "Ensuite", ar: "ثم" }
                     ],
                     comprehension: [
                         { q: "À quelle heure je me réveille ?", options: ["6h", "7h", "8h"], correct: 1 },
