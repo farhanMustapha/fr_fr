@@ -7,6 +7,28 @@ const INITIAL_DATA = {
             ],
             stories: [
                 {
+                    id: 1,
+                    level_id: 1,
+                    title_fr: 'Ma Famille',
+                    title_ar: 'عائلتي',
+                    text_fr: 'Bonjour, je m\'appelle Lucas. J\'aime ma famille. Mon père est grand et ma mère est gentille.',
+                    text_ar: 'مرحباً، اسمي لوكاس. أنا أحب عائلتي. والدي طويل ووالدتي لطيفة.',
+                    vocabulary: [
+                        { fr: 'Bonjour', ar: 'مرحباً' },
+                        { fr: 'Famille', ar: 'عائلة' },
+                        { fr: 'Père', ar: 'أب' },
+                        { fr: 'Mère', ar: 'أم' }
+                    ],
+                    comprehension: [
+                        { q: 'Qui s\'appelle Lucas ?', options: ['Le garçon', 'Le père', 'La mère'], correct: 0 },
+                        { q: 'Comment est la mère ?', options: ['Grande', 'Gentille', 'Petite'], correct: 1 }
+                    ],
+                    grammar: [
+                        { text: 'Je ___ Lucas.', options: ['suis', 'es', 'est'], missing: 'suis', rule_fr: 'Le verbe être au présent.', rule_ar: 'فعل الكينونة في المضارع.' },
+                        { text: 'Mon père ___ grand.', options: ['suis', 'es', 'est'], missing: 'est', rule_fr: 'Le verbe être au présent (3ème personne).', rule_ar: 'فعل الكينونة للمفرد الغائب.' }
+                    ]
+                },
+                {
   id: 0,
   level_id: 1,
   title_fr: "0-La lecture quotidienne",
