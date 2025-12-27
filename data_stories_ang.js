@@ -12,6 +12,7 @@ const INITIAL_DATA = {
             title_fr: "1-Comprendre le périmètre de l'ERP",
             text_en: "An organization needs to choose the right scope for its business. Whether it is product-centric for manufacturing or service-centric for plumbing, SAP S/4HANA Cloud provides pre-defined Best Practices. The project team must identify which lines of business (LoB) are required.",
             text_fr: "Une organisation doit choisir le bon périmètre pour son activité. Qu'il s'agisse d'une approche centrée sur le produit pour la fabrication ou centrée sur le service pour la plomberie, SAP S/4HANA Cloud fournit des meilleures pratiques prédéfinies. L'équipe projet doit identifier les lignes de métier (LoB) nécessaires.",
+            video_url: "https://www.youtube.com/watch?v=X18JGqYaT8g",
             vocabulary: [
                 { en: "Scope", fr: "Périmètre / Étendue" },
                 { en: "Product-centric", fr: "Centré sur le produit" },
@@ -61,6 +62,7 @@ const INITIAL_DATA = {
             title_fr: "2-Le processus Fit-to-Standard",
             text_en: "During the Explore phase, experts demonstrate business processes in the Starter System. The goal is to avoid heavy customization. The Customer Executive Sponsors build the business case, while Project Managers set up the project in SAP Cloud ALM.",
             text_fr: "Pendant la phase Explore, les experts démontrent les processus métier dans le système Starter. L'objectif est d'éviter les personnalisations lourdes. Les sponsors exécutifs du client construisent le dossier commercial, tandis que les chefs de projet configurent le projet dans SAP Cloud ALM.",
+            video_url: "https://www.youtube.com/watch?v=X18JGqYaT8g",
             vocabulary: [
                 { en: "Requirements", fr: "Exigences / Besoins" },
                 { en: "Workshops", fr: "Ateliers" },
@@ -102,6 +104,7 @@ const INITIAL_DATA = {
             title_fr: "3-Environnements et Mises à jour",
             text_en: "SAP S/4HANA Cloud Public Edition follows a strict upgrade calendar. Major upgrades are released in February and August. The Test System is always upgraded first to allow regression testing before the Production System goes live.",
             text_fr: "SAP S/4HANA Cloud Public Edition suit un calendrier de mise à jour strict. Les mises à jour majeures sortent en février et août. Le système de Test est toujours mis à jour en premier pour permettre des tests de régression avant la mise en production.",
+           video_url: "https://www.youtube.com/watch?v=X18JGqYaT8g",
             vocabulary: [
                 { en: "Upgrade", fr: "Mise à jour / Montée de version" },
                 { en: "Landscape", fr: "Paysage système" },
@@ -135,7 +138,81 @@ const INITIAL_DATA = {
                     rule_fr: "Voix passive : 'is' + participe passé (upgraded)."
                 }
             ]
+        },
+        {
+    id: 4,
+    level_id: 1,
+    title_en: "4-The Power of Self-Discipline",
+    title_fr: "4-La puissance de l’autodiscipline",
+    text_en: "Self-discipline is the key to success in life. It helps you stay focused, build good habits, and achieve your goals. When you control your actions and choices, you become stronger every day. Start small, stay consistent, and watch your dreams turn into reality.",
+    text_fr: "L’autodiscipline est la clé du succès dans la vie. Elle vous aide à rester concentré, à construire de bonnes habitudes et à atteindre vos objectifs. Lorsque vous contrôlez vos actions et vos choix, vous devenez plus fort chaque jour. Commencez petit, soyez constant et regardez vos rêves devenir réalité.",
+    video_url: "https://www.youtube.com/watch?v=X18JGqYaT8g",
+    vocabulary: [
+        { en: "Self-discipline", fr: "Autodiscipline" },
+        { en: "Success", fr: "Succès" },
+        { en: "Focused", fr: "Concentré" },
+        { en: "Habits", fr: "Habitudes" },
+        { en: "Goals", fr: "Objectifs" },
+        { en: "Choices", fr: "Choix" },
+        { en: "Consistent", fr: "Constant / Régulier" },
+        { en: "Dreams", fr: "Rêves" },
+        { en: "Reality", fr: "Réalité" }
+    ],
+    comprehension: [
+        {
+            q: "What is the key to success according to the text?",
+            options: ["Talent", "Luck", "Self-discipline"],
+            correct: 2,
+            type: "single",
+            explanation: "The text clearly says: 'Self-discipline is the key to success in life.'"
+        },
+        {
+            q: "What does self-discipline help you do?",
+            options: [
+                "Stay focused and build good habits",
+                "Become rich quickly",
+                "Avoid making choices"
+            ],
+            correct: 0,
+            type: "single",
+            explanation: "Self-discipline helps you stay focused, build good habits, and achieve goals."
+        },
+        {
+            q: "What happens when you control your actions and choices?",
+            options: [
+                "You become weaker",
+                "You become stronger every day",
+                "Nothing changes"
+            ],
+            correct: 1,
+            type: "single",
+            explanation: "Controlling actions and choices makes you stronger every day."
         }
-        // Vous pouvez continuer ainsi pour les 90 questions...
+    ],
+    grammar: [
+        {
+            text: "Self-discipline is the key to ..... in life.",
+            missing: "success",
+            options: ["successful", "success", "succeed"],
+            rule_en: "'Success' is a noun used after 'key to'.",
+            rule_fr: "'Success' est un nom utilisé après l’expression 'key to'."
+        },
+        {
+            text: "It helps you ..... focused.",
+            missing: "stay",
+            options: ["staying", "stays", "stay"],
+            rule_en: "After 'help + object', we use the base form of the verb.",
+            rule_fr: "Après 'help + complément', on utilise la base verbale."
+        },
+        {
+            text: "When you control your actions, you ..... stronger.",
+            missing: "become",
+            options: ["becomes", "becoming", "become"],
+            rule_en: "With 'you', the verb is used without 's'.",
+            rule_fr: "Avec 'you', le verbe ne prend pas de 's'."
+        }
+    ]
+}
+
     ]
 };

@@ -18,22 +18,34 @@ const INITIAL_DATA = {
                         { fr: 'Famille', ar: 'عائلة' },
                         { fr: 'Père', ar: 'أب' },
                         { fr: 'Mère', ar: 'أم' },
-                        { fr: 'Grand', ar: 'طويل' },
+                        { fr: 'Grand', ar: 'ضخم' },
+                        { fr: 'long', ar: 'طويل' },
+                        { fr: 'longue', ar: 'طويلة' },
                         { fr: 'Gentille', ar: 'لطيفة' },
                         { fr: 'Aimer', ar: 'يحب' },
                         { fr: 'S\'appeler', ar: 'يسمى' },
                         { fr: 'Je', ar: 'أنا' },
                         { fr: 'Tu', ar: 'أنت' },
+                        { fr: 'Il/Elle', ar: 'هو/هي' },
+                        { fr: 'belle', ar: 'جميلة' },
                         { fr: 'Mon', ar: 'لي / الخاص بي' },
-                        { fr: 'Est', ar: 'يكون' }
+                        { fr: 'Est', ar: 'يكون' },
+                        { fr: 'mon livre', ar: 'كتابي' },
+                        { fr: 'ma maison', ar: 'منزلي' },
+                        { fr: 'tu es gentil', ar: 'أنت لطيف' },
+                        { fr: 'elle est belle', ar: 'هي جميلة' }
                     ],
                     comprehension: [
                         { q: 'Qui s\'appelle Lucas ?', options: ['Le garçon', 'Le père', 'La mère'], correct: 0 },
-                        { q: 'Comment est la mère ?', options: ['Grande', 'Gentille', 'Petite'], correct: 1 }
+                        { q: 'Comment est la mère ?', options: ['Grande', 'Gentille', 'Petite'], correct: 1 },
+                        { q: 'Qui est grand ?', options: ['Le père', 'La mère', 'Le frère'], correct: 0 }
                     ],
                     grammar: [
                         { text: 'Je ___ Lucas.', options: ['suis', 'es', 'est'], missing: 'suis', rule_fr: 'Le verbe être au présent.', rule_ar: 'فعل الكينونة في المضارع.' },
-                        { text: 'Mon père ___ grand.', options: ['suis', 'es', 'est'], missing: 'est', rule_fr: 'Le verbe être au présent (3ème personne).', rule_ar: 'فعل الكينونة للمفرد الغائب.' }
+                        { text: 'Mon père ___ grand.', options: ['suis', 'es', 'est'], missing: 'est', rule_fr: 'Le verbe être au présent (3ème personne).', rule_ar: 'فعل الكينونة للمفرد الغائب.' },
+                        { text: 'Ma mère ___ gentille.', options: ['suis', 'es', 'est'], missing: 'est', rule_fr: 'Le verbe être au présent (3ème personne).', rule_ar: 'فعل الكينونة للمفرد الغائب.' },
+                        { text: 'Tu ___ mon ami.', options: ['suis', 'es', 'est'], missing: 'es', rule_fr: 'Le verbe être au présent (2ème personne).', rule_ar: 'فعل الكينونة للمخاطب.' },
+                        { text:'j\'aime ___ famille.', options: ['mon', 'ma', 'mes'], missing: 'ma', rule_fr: "L'adjectif possessif pour 'famille' (féminin singulier).", rule_ar: "صفة الملكية لـ 'famille' (مؤنث مفرد)." }
                     ]
                 },
                 {
@@ -47,6 +59,11 @@ const INITIAL_DATA = {
 
                 vocabulary: [
                     { fr: "lecture", ar: "قراءة" },
+                    { fr: "nous", ar: "نحن" },
+                    { fr: "quotidien", ar: "يومي" },
+                    { fr: "vous", ar: "أنتم / أنتن" },
+                    { fr: "améliore", ar: "يُحسّن" },
+                    { fr: "et", ar: "و" },
                     { fr: "quotidienne", ar: "يومية" },
                     { fr: "vocabulaire", ar: "مفردات" },
                     { fr: "concentration", ar: "تركيز" },
@@ -805,9 +822,9 @@ const INITIAL_DATA = {
                         ]
                     },
                     {
-                    id: 12,
+                    id: 10,
                     level_id: 1,
-                    title_fr: "12-Le petit chat",
+                    title_fr: "10-Le petit chat",
                     title_ar: "القط الصغير",
                     text_fr: "Le petit chat joue dans le jardin. Il voit une souris grise. Il court vite pour l'attraper, mais la souris se cache derrière un arbre.",
                     text_ar: "القط الصغير يلعب في الحديقة. يرى فأراً رمادياً. يركض بسرعة للإمساك به، لكن الفأر يختبئ خلف شجرة.",
