@@ -9,7 +9,7 @@ const INITIAL_DATA = {
                 {
                     id: 1,
                     level_id: 1,
-                    title_fr: 'Ma Famille',
+                    title_fr: '1-Ma Famille',
                     title_ar: 'عائلتي',
                     text_fr: 'Bonjour, je m\'appelle Lucas. J\'aime ma famille. Mon père est grand et ma mère est gentille.',
                     text_ar: 'مرحباً، اسمي لوكاس. أنا أحب عائلتي. والدي طويل ووالدتي لطيفة.',
@@ -17,7 +17,15 @@ const INITIAL_DATA = {
                         { fr: 'Bonjour', ar: 'مرحباً' },
                         { fr: 'Famille', ar: 'عائلة' },
                         { fr: 'Père', ar: 'أب' },
-                        { fr: 'Mère', ar: 'أم' }
+                        { fr: 'Mère', ar: 'أم' },
+                        { fr: 'Grand', ar: 'طويل' },
+                        { fr: 'Gentille', ar: 'لطيفة' },
+                        { fr: 'Aimer', ar: 'يحب' },
+                        { fr: 'S\'appeler', ar: 'يسمى' },
+                        { fr: 'Je', ar: 'أنا' },
+                        { fr: 'Tu', ar: 'أنت' },
+                        { fr: 'Mon', ar: 'لي / الخاص بي' },
+                        { fr: 'Est', ar: 'يكون' }
                     ],
                     comprehension: [
                         { q: 'Qui s\'appelle Lucas ?', options: ['Le garçon', 'Le père', 'La mère'], correct: 0 },
@@ -29,62 +37,57 @@ const INITIAL_DATA = {
                     ]
                 },
                 {
-  id: 0,
-  level_id: 1,
-  title_fr: "0-La lecture quotidienne",
-  title_ar: "القراءة اليومية",
+                id: 2,
+                level_id: 1,
+                title_fr: "2-La lecture quotidienne",
+                title_ar: "القراءة اليومية",
 
-  text_fr: "La lecture quotidienne améliore le vocabulaire et la concentration. Lire quelques minutes par jour aide à mieux comprendre le monde, développer l’imagination et réduire le stress. Un livre peut devenir un ami fidèle et une source d’inspiration durable pour tous.",
-  text_ar: "القراءة اليومية تُحسّن المفردات والتركيز. قراءة بضع دقائق يوميًا تساعد على فهم العالم بشكل أفضل، وتنمية الخيال، وتقليل التوتر. يمكن أن يصبح الكتاب صديقًا وفيًّا ومصدر إلهام دائم للجميع.",
+                text_fr: "La lecture quotidienne améliore le vocabulaire et la concentration. Lire quelques minutes par jour aide à mieux comprendre le monde, développer l’imagination et réduire le stress. Un livre peut devenir un ami fidèle et une source d’inspiration durable pour tous.",
+                text_ar: "القراءة اليومية تُحسّن المفردات والتركيز. قراءة بضع دقائق يوميًا تساعد على فهم العالم بشكل أفضل، وتنمية الخيال، وتقليل التوتر. يمكن أن يصبح الكتاب صديقًا وفيًّا ومصدر إلهام دائم للجميع.",
 
-  vocabulary: [
-    { fr: "lecture", ar: "قراءة" },
-    { fr: "quotidienne", ar: "يومية" },
-    { fr: "vocabulaire", ar: "مفردات" },
-    { fr: "concentration", ar: "تركيز" },
-    { fr: "quelques minutes", ar: "بضع دقائق" },
-    { fr: "comprendre", ar: "يفهم" },
-    { fr: "monde", ar: "العالم" },
-    { fr: "imagination", ar: "الخيال" },
-    { fr: "réduire", ar: "يقلل" },
-    { fr: "stress", ar: "توتر" },
-    { fr: "livre", ar: "كتاب" },
-    { fr: "ami fidèle", ar: "صديق وفيّ" },
-    { fr: "source d’inspiration", ar: "مصدر إلهام" }
-  ],
+                vocabulary: [
+                    { fr: "lecture", ar: "قراءة" },
+                    { fr: "quotidienne", ar: "يومية" },
+                    { fr: "vocabulaire", ar: "مفردات" },
+                    { fr: "concentration", ar: "تركيز" },
+                    { fr: "quelques minutes", ar: "بضع دقائق" },
+                    { fr: "comprendre", ar: "يفهم" },
+                    { fr: "monde", ar: "العالم" },
+                    { fr: "imagination", ar: "الخيال" },
+                    { fr: "réduire", ar: "يقلل" },
+                    { fr: "stress", ar: "توتر" },
+                    { fr: "livre", ar: "كتاب" },
+                    { fr: "ami fidèle", ar: "صديق وفيّ" },
+                    { fr: "source d’inspiration", ar: "مصدر إلهام" }
+                ],
 
-  comprehension: [
-    {
-      q: "Qu’est-ce que la lecture quotidienne améliore ?",
-      options: ["Le sport", "Le vocabulaire et la concentration", "La vitesse"],
-      correct: 1
-    },
-    {
-      q: "Combien de temps faut-il lire par jour ?",
-      options: ["Quelques minutes", "Plusieurs heures", "Une seule fois par mois"],
-      correct: 0
-    },
-    {
-      q: "Que développe la lecture ?",
-      options: ["La fatigue", "L’imagination", "La peur"],
-      correct: 1
-    },
-    {
-      q: "Que peut devenir un livre ?",
-      options: ["Un ennemi", "Un ami fidèle", "Un objet inutile"],
-      correct: 1
-    }
-  ]
-},
-
-
-             
-                
-
+                comprehension: [
+                    {
+                    q: "Qu’est-ce que la lecture quotidienne améliore ?",
+                    options: ["Le sport", "Le vocabulaire et la concentration", "La vitesse"],
+                    correct: 1
+                    },
+                    {
+                    q: "Combien de temps faut-il lire par jour ?",
+                    options: ["Quelques minutes", "Plusieurs heures", "Une seule fois par mois"],
+                    correct: 0
+                    },
+                    {
+                    q: "Que développe la lecture ?",
+                    options: ["La fatigue", "L’imagination", "La peur"],
+                    correct: 1
+                    },
+                    {
+                    q: "Que peut devenir un livre ?",
+                    options: ["Un ennemi", "Un ami fidèle", "Un objet inutile"],
+                    correct: 1
+                    }
+                ]
+                },
                 {
-                    id: 1,
+                    id: 3,
                     level_id: 1,
-                    title_fr: "1-Le petit déjeuner de Sarah",
+                    title_fr: "3-Le petit déjeuner de Sarah",
                     title_ar: "فطور سارة",
                     text_fr: "Le matin, Sarah mange une pomme rouge. Elle boit un jus d'orange frais avec son frère. Ils sont très heureux avant d'aller à l'école.",
                     text_ar: "في الصباح، سارة تأكل تفاحة حمراء. تشرب عصير برتقال طازج مع أخيها. هما سعيدان جداً قبل الذهاب إلى المدرسة.",
@@ -184,9 +187,9 @@ const INITIAL_DATA = {
                     ]
                 },
                 {
-                        id: 2,
+                        id: 4,
                         level_id: 1,
-                        title_fr: "2-Une journée au jardin",
+                        title_fr: "4-Une journée au jardin",
                         title_ar: "يوم في الحديقة",
 
                         text_fr: "Aujourd'hui, il fait beau. Thomas va au jardin avec son petit chien. Il voit de grandes fleurs et un grand arbre. Il joue au ballon avec ses amis.",
@@ -296,9 +299,9 @@ const INITIAL_DATA = {
                         ]
                     },
                     {
-                    id: 3,
+                    id: 5,
                     level_id: 1,
-                    title_fr: "3-Sarah prépare un gâteau",
+                    title_fr: "5-Sarah prépare un gâteau",
                     title_ar: "سارة تحضر كعكة",
 
                     text_fr: "Aujourd'hui, Sarah doit préparer un gâteau. Pour cela, il faut des œufs. Comme elle n'en a plus, elle va au marché. Ensuite, elle rentre à la maison et elle s'y installe pour cuisiner.",
@@ -410,9 +413,9 @@ const INITIAL_DATA = {
                     
                     //-------------
                     {
-                    id: 4,
+                    id: 6,
                     level_id: 1,
-                    title_fr: "4-Le sac de Lina",
+                    title_fr: "6-Le sac de Lina",
                     title_ar: "حقيبة لينا",
 
                     text_fr: "Lina a un sac bleu. Dans son sac, il y a un livre et un stylo. Elle prend le sac pour aller à l'école.",
@@ -450,9 +453,9 @@ const INITIAL_DATA = {
                     ]
                     },
                     {
-                    id: 5,
+                    id: 7,
                     level_id: 2,
-                    title_fr: "1-Le week-end de Karim",
+                    title_fr: "7-Le week-end de Karim",
                     title_ar: "عطلة كريم",
 
                     text_fr: "Samedi, Karim est allé au cinéma avec ses amis. Ils ont regardé un film intéressant et ont mangé du pop-corn.",
@@ -480,9 +483,9 @@ const INITIAL_DATA = {
                     ]
                     },
                     {
-                    id: 6,
+                    id: 8,
                     level_id: 3,
-                    title_fr: "1-Un projet important",
+                    title_fr: "8-Un projet important",
                     title_ar: "مشروع مهم",
 
                     text_fr: "Si Marc avait plus de temps, il terminerait son projet plus rapidement, ce qui améliorerait ses résultats.",
@@ -510,9 +513,9 @@ const INITIAL_DATA = {
                     ]
                     },
                     {
-                    id: 6,
+                    id: 9,
                     level_id: 1,
-                    title_fr: "6-Pourquoi Amine dit « je parle »",
+                    title_fr: "9-Pourquoi Amine dit « je parle »",
                     title_ar: "لماذا يقول أمين « je parle »",
                     text_fr: "Amine apprend le français. Chaque matin, il parle avec ses amis. Il regarde des vidéos et écoute la radio. Un jour, Amine remarque quelque chose. Il dit : je parle, je regarde, j’écoute. Il comprend alors une règle simple : quand on parle de ce qu’on fait maintenant, on utilise le présent. Les verbes comme parler, regarder et écouter finissent par -er. Avec je, on enlève -er et on ajoute -e. Amine pratique tous les jours, et le français devient plus facile.",
                     text_ar: "أمين يتعلم اللغة الفرنسية. كل صباح، يتكلم مع أصدقائه. يشاهد فيديوهات ويستمع إلى الراديو. في يوم من الأيام، لاحظ أمين شيئًا. قال: je parle، je regarde، j’écoute. ففهم قاعدة بسيطة: عندما نتحدث عما نفعله الآن، نستخدم الحاضر. الأفعال مثل parler وregarder وécouter تنتهي بـ -er. مع je نحذف -er ونضيف -e. يتدرّب أمين كل يوم، وتصبح الفرنسية أسهل.",
@@ -596,9 +599,9 @@ const INITIAL_DATA = {
                     ]
                     },
                     {
-                        id: 7,
+                        id: 10,
                         level_id: 1,
-                        title_fr: "7-Le choix des jouets",
+                        title_fr: "10-Le choix des jouets",
                         title_ar: "اختيار الألعاب",
 
                         text_fr: "Lucas regarde les ballons. Il aime ceux qui sont rouges. Le vendeur lui montre plusieurs modèles. Lucas préfère ceux-ci car ils brillent. Il laisse ceux-là sur l'étagère.",
@@ -660,9 +663,9 @@ const INITIAL_DATA = {
                         ]
                     },
                     {
-                    id: 8,
+                    id: 11,
                     level_id: 1,
-                    title_fr: "8-Samir et Amina au magasin",
+                    title_fr: "11-Samir et Amina au magasin",
                     title_ar: "سمير وأمينة في المتجر",
 
                     text_fr: "Samir et Amina vont au magasin. Samir veut acheter une montre. Il regarde le prix et la qualité. Après réflexion, il est sûr de son choix. Amina regarde aussi une montre, mais elle hésite encore. Elle n’est pas sûre et préfère demander l’avis du vendeur.",
@@ -802,9 +805,9 @@ const INITIAL_DATA = {
                         ]
                     },
                     {
-                    id: 10,
+                    id: 12,
                     level_id: 1,
-                    title_fr: "10-Le petit chat",
+                    title_fr: "12-Le petit chat",
                     title_ar: "القط الصغير",
                     text_fr: "Le petit chat joue dans le jardin. Il voit une souris grise. Il court vite pour l'attraper, mais la souris se cache derrière un arbre.",
                     text_ar: "القط الصغير يلعب في الحديقة. يرى فأراً رمادياً. يركض بسرعة للإمساك به، لكن الفأر يختبئ خلف شجرة.",
