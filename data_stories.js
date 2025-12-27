@@ -6,6 +6,55 @@ const INITIAL_DATA = {
                 { id: 3, title_fr: 'Avancé', title_ar: 'متقدم', icon: 'fa-mountain', color: 'bg-purple-500' }
             ],
             stories: [
+                {
+  id: 3,
+  level_id: 1,
+  title_fr: "3-La lecture quotidienne",
+  title_ar: "القراءة اليومية",
+
+  text_fr: "La lecture quotidienne améliore le vocabulaire et la concentration. Lire quelques minutes par jour aide à mieux comprendre le monde, développer l’imagination et réduire le stress. Un livre peut devenir un ami fidèle et une source d’inspiration durable pour tous.",
+  text_ar: "القراءة اليومية تُحسّن المفردات والتركيز. قراءة بضع دقائق يوميًا تساعد على فهم العالم بشكل أفضل، وتنمية الخيال، وتقليل التوتر. يمكن أن يصبح الكتاب صديقًا وفيًّا ومصدر إلهام دائم للجميع.",
+
+  vocabulary: [
+    { fr: "lecture", ar: "قراءة" },
+    { fr: "quotidienne", ar: "يومية" },
+    { fr: "vocabulaire", ar: "مفردات" },
+    { fr: "concentration", ar: "تركيز" },
+    { fr: "quelques minutes", ar: "بضع دقائق" },
+    { fr: "comprendre", ar: "يفهم" },
+    { fr: "monde", ar: "العالم" },
+    { fr: "imagination", ar: "الخيال" },
+    { fr: "réduire", ar: "يقلل" },
+    { fr: "stress", ar: "توتر" },
+    { fr: "livre", ar: "كتاب" },
+    { fr: "ami fidèle", ar: "صديق وفيّ" },
+    { fr: "source d’inspiration", ar: "مصدر إلهام" }
+  ],
+
+  comprehension: [
+    {
+      q: "Qu’est-ce que la lecture quotidienne améliore ?",
+      options: ["Le sport", "Le vocabulaire et la concentration", "La vitesse"],
+      correct: 1
+    },
+    {
+      q: "Combien de temps faut-il lire par jour ?",
+      options: ["Quelques minutes", "Plusieurs heures", "Une seule fois par mois"],
+      correct: 0
+    },
+    {
+      q: "Que développe la lecture ?",
+      options: ["La fatigue", "L’imagination", "La peur"],
+      correct: 1
+    },
+    {
+      q: "Que peut devenir un livre ?",
+      options: ["Un ennemi", "Un ami fidèle", "Un objet inutile"],
+      correct: 1
+    }
+  ]
+},
+
 
              
                 
