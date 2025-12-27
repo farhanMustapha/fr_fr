@@ -22,6 +22,7 @@ const INITIAL_DATA = {
                         { fr: 'long', ar: 'طويل' },
                         { fr: 'longue', ar: 'طويلة' },
                         { fr: 'Gentille', ar: 'لطيفة' },
+                        { fr: 'Gentil', ar: 'لطيف' },
                         { fr: 'Aimer', ar: 'يحب' },
                         { fr: 'S\'appeler', ar: 'يسمى' },
                         { fr: 'Je', ar: 'أنا' },
@@ -99,6 +100,11 @@ const INITIAL_DATA = {
                     options: ["Un ennemi", "Un ami fidèle", "Un objet inutile"],
                     correct: 1
                     }
+                ],
+                grammar: [
+                    {text: "La lecture ..... améliore le vocabulaire.", missing: "quotidienne", options: ["quotidien", "quotidienne", "quotidiens"], rule_fr: "L'adjectif 'quotidienne' s'accorde avec 'lecture' (féminin singulier).", rule_ar: "الصفة 'quotidienne' تتطابق مع 'lecture' (مؤنث مفرد)." },
+                    {text: "Lire quelques ..... par jour aide à mieux comprendre.", missing: "minutes", options: ["minute", "minutes", "minuter"], rule_fr: "'Minutes' est au pluriel car il y a plusieurs minutes.", rule_ar: "'Minutes' في الجمع لأنه يوجد عدة دقائق." },
+                    {text: "Un livre peut devenir ..... ami fidèle.", missing: "un", options: ["un", "une", "des"], rule_fr: "'Un' est l'article indéfini masculin singulier.", rule_ar: "'Un' هي أداة تنكير للمذكر المفرد." },
                 ]
                 },
                 {
