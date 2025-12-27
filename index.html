@@ -1,447 +1,85 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr" dir="ltr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FrançaisFacile - Apprendre le Français pour Arabophones</title>
+    <title>FrançaisFacile - Apprendre le Français</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+Arabic:wght@300;400;700&display=swap');
-        
         body {
-            font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
+            font-family: 'Outfit', sans-serif;
             background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .font-arabic { font-family: 'Noto Sans Arabic', sans-serif; }
+        
+        /* Custom Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
 
-        .rtl { direction: rtl; }
-        .ltr { direction: ltr; }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-hover {
-            transition: all 0.3s ease;
-        }
-        .btn-hover:hover:not(.locked) {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        .locked {
-            opacity: 0.6;
-            cursor: not-allowed !important;
-            filter: grayscale(0.5);
-        }
-        
-        /* Classes pour les feedbacks */
-        .answer-correct {
-            background-color: #22c55e !important;
-            color: white !important;
-            border-color: #16a34a !important;
-        }
-        .answer-wrong {
-            background-color: #ef4444 !important;
-            color: white !important;
-            border-color: #dc2626 !important;
-        }
+        .animate-fade-in-down { animation: fadeInDown 0.6s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .shake { animation: shake 0.4s ease-in-out; }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen text-slate-800 antialiased selection:bg-blue-200 selection:text-blue-900">
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200/60 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center gap-2 cursor-pointer" onclick="router.navigate('home')">
-                    <div class="bg-blue-600 p-2 rounded-lg text-white">
-                        <i class="fas fa-book-open"></i>
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-3 cursor-pointer group" onclick="router.navigate('home')">
+                    <div class="bg-gradient-to-br from-blue-600 to-indigo-600 p-3 rounded-xl text-white shadow-lg shadow-blue-500/30 group-hover:rotate-12 transition-transform duration-300">
+                        <i class="fas fa-book-open text-lg"></i>
                     </div>
-                    <span class="text-xl font-bold text-gray-800">Français<span class="text-blue-600">Facile</span></span>
+                    <span class="text-2xl font-extrabold text-slate-800 tracking-tight">Français<span class="text-blue-600">Facile</span></span>
                 </div>
-                <div class="flex space-x-4">
-                    <button id="btn-user" class="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-blue-100 text-blue-700">
-                        <i class="fas fa-graduation-cap mr-1"></i> 
-                        <a href="home_ang.html">Anglais</a>
-                    </button>
+                <div class="flex items-center gap-4">
+                    <a href="admin.html" class="hidden md:flex text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors">
+                        <i class="fas fa-cog mr-2"></i> Admin
+                    </a>
+                    <a href="home_ang.html" class="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-semibold hover:bg-slate-200 hover:text-slate-900 transition-all text-sm flex items-center">
+                        <i class="fas fa-globe mr-2"></i> English
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main id="app-container" class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
+    <main id="app-container" class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 min-h-[calc(100vh-5rem)]">
         <!-- Content injected here -->
     </main>
+    
+    <!-- Footer -->
+    <footer class="py-8 text-center text-slate-400 text-sm">
+        <p>&copy; 2025 FrançaisFacile. Designed for Excellence.</p>
+    </footer>
 
     <!-- Modals -->
-    <div id="modal-container" class="fixed inset-0 bg-black bg-opacity-50 hidden z-[60] flex items-center justify-center p-4">
-        <div id="modal-content" class="bg-white rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300">
+    <div id="modal-container" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden z-[60] flex items-center justify-center p-4 transition-all">
+        <div id="modal-content" class="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl animate-fade-in-up">
             <!-- Modal content injected here -->
         </div>
     </div>
 
-    <script src="data_stories.js"></script>
-    
-    <script>
-        // --- DATA STRUCTURE (Self-contained) ---
-        // Definition of INITIAL_DATA to resolve the ReferenceError
-        
-
-        // --- INITIALISATION DES DONNÉES ---
-        let state;
-        try {
-            const savedData = localStorage.getItem('fr_easy_data');
-            // Ensure we use INITIAL_DATA if no saved data is found
-            state = savedData ? JSON.parse(savedData) : JSON.parse(JSON.stringify(INITIAL_DATA));
-            if (!state.progress) state.progress = {};
-            if (!state.levels) state.levels = INITIAL_DATA.levels;
-            if (!state.stories) state.stories = INITIAL_DATA.stories;
-        } catch (e) {
-            state = JSON.parse(JSON.stringify(INITIAL_DATA));
-        }
-
-        let isProcessing = false;
-
-        function saveData() {
-            localStorage.setItem('fr_easy_data', JSON.stringify(state));
-        }
-
-        // --- LOGIQUE DE PROGRESSION ---
-        function isStoryUnlocked(storyId, levelId) {
-            const levelStories = state.stories.filter(s => s.level_id === levelId);
-            const storyIndex = levelStories.findIndex(s => s.id === storyId);
-            if (storyIndex === 0) return true;
-            const previousStory = levelStories[storyIndex - 1];
-            const prog = state.progress[previousStory.id];
-            return prog && prog.vocab && prog.comp && prog.gram;
-        }
-
-        function updateProgress(storyId, type) {
-            if (!state.progress[storyId]) {
-                state.progress[storyId] = { vocab: false, comp: false, gram: false };
-            }
-            state.progress[storyId][type] = true;
-            saveData();
-        }
-
-        // --- ROUTING ---
-        const router = {
-            currentView: 'home',
-            params: {},
-            navigate(view, params = {}) {
-                this.currentView = view;
-                this.params = params;
-                this.render();
-                window.scrollTo(0,0);
-            },
-            render() {
-                const container = document.getElementById('app-container');
-                renderUser(container, this.currentView, this.params);
-            }
-        };
-
-        // --- RENDU UTILISATEUR ---
-        function renderUser(container, view, params) {
-            switch(view) {
-                case 'home':
-                    container.innerHTML = `
-                        <div class="text-center mb-10 animate-in slide-in-from-top duration-500">
-                            <h1 class="text-4xl font-bold text-gray-900 mb-2">Bienvenue ! 👋</h1>
-                            <p class="text-gray-600">Choisissez votre niveau pour commencer l'aventure.</p>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            ${state.levels.map(level => `
-                                <div onclick="router.navigate('stories', {levelId: ${level.id}})" class="glass-card p-8 rounded-3xl cursor-pointer btn-hover flex flex-col items-center text-center">
-                                    <div class="${level.color} w-20 h-20 rounded-2xl flex items-center justify-center text-white text-3xl mb-4 shadow-lg">
-                                        <i class="fas ${level.icon}"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-gray-800">${level.title_fr}</h3>
-                                    <span class="text-lg text-blue-600 font-bold rtl" dir="rtl">${level.title_ar}</span>
-                                    <p class="mt-4 text-sm text-gray-500">${state.stories.filter(s => s.level_id === level.id).length} Histoires</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                    break;
-
-                case 'stories':
-                    const level = state.levels.find(l => l.id === params.levelId);
-                    const stories = state.stories.filter(s => s.level_id === params.levelId);
-                    container.innerHTML = `
-                        <div class="mb-6 flex items-center gap-4">
-                            <button onclick="router.navigate('home')" class="p-2 hover:bg-gray-200 rounded-full transition-colors">
-                                <i class="fas fa-arrow-left"></i>
-                            </button>
-                            <h2 class="text-2xl font-bold text-gray-800">${level.title_fr} / ${level.title_ar}</h2>
-                        </div>
-                        <div class="space-y-4">
-                            ${stories.length > 0 ? stories.map((story, idx) => {
-                                const unlocked = isStoryUnlocked(story.id, level.id);
-                                const prog = state.progress[story.id] || {vocab:false, comp:false, gram:false};
-                                const allDone = prog.vocab && prog.comp && prog.gram;
-
-                                return `
-                                    <div onclick="${unlocked ? `router.navigate('read', {storyId: ${story.id}})` : ''}" 
-                                         class="bg-white p-6 rounded-2xl shadow-sm border ${unlocked ? 'border-gray-100 hover:border-blue-300' : 'border-gray-200 locked'} transition-all cursor-pointer flex justify-between items-center group">
-                                        <div class="flex items-center gap-4">
-                                            <div class="w-10 h-10 rounded-full flex items-center justify-center ${unlocked ? (allDone ? 'bg-green-100 text-green-600' : 'bg-blue-50 text-blue-500') : 'bg-gray-100 text-gray-400'}">
-                                                ${unlocked ? (allDone ? '<i class="fas fa-check"></i>' : `<span>${idx + 1}</span>`) : '<i class="fas fa-lock text-sm"></i>'}
-                                            </div>
-                                            <div>
-                                                <h3 class="text-xl font-semibold text-gray-800">${story.title_fr}</h3>
-                                                <p class="text-gray-500 rtl" dir="rtl">${story.title_ar}</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-3">
-                                            ${unlocked ? `
-                                                <div class="hidden sm:flex gap-1">
-                                                    <span class="w-2 h-2 rounded-full ${prog.vocab ? 'bg-green-400' : 'bg-gray-200'}" title="Vocabulaire"></span>
-                                                    <span class="w-2 h-2 rounded-full ${prog.comp ? 'bg-green-400' : 'bg-gray-200'}" title="Compréhension"></span>
-                                                    <span class="w-2 h-2 rounded-full ${prog.gram ? 'bg-green-400' : 'bg-gray-200'}" title="Grammaire"></span>
-                                                </div>
-                                                <i class="fas fa-chevron-right text-gray-300 group-hover:text-blue-500 transition-colors"></i>
-                                            ` : ''}
-                                        </div>
-                                    </div>
-                                `;
-                            }).join('') : `<p class="text-center py-10 text-gray-500">Aucune histoire disponible pour le moment.</p>`}
-                        </div>
-                    `;
-                    break;
-
-                case 'read':
-                    const story = state.stories.find(s => s.id === params.storyId);
-                    if (!story) { router.navigate('home'); return; }
-                    const p = state.progress[story.id] || {vocab:false, comp:false, gram:false};
-                    const wordCount = story.vocabulary ? story.vocabulary.length : 0;
-
-                    container.innerHTML = `
-                        <div class="mb-8 flex justify-between items-center">
-                            <button onclick="router.navigate('stories', {levelId: ${story.level_id}})" class="flex items-center gap-2 text-gray-600 hover:text-blue-600">
-                                <i class="fas fa-arrow-left"></i> Retour
-                            </button>
-                            <div class="flex gap-2">
-                                <span class="px-3 py-1 ${p.vocab ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'} rounded-full text-[10px] font-bold uppercase">Vocab</span>
-                                <span class="px-3 py-1 ${p.comp ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'} rounded-full text-[10px] font-bold uppercase">Comp</span>
-                                <span class="px-3 py-1 ${p.gram ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'} rounded-full text-[10px] font-bold uppercase">Gram</span>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden mb-8">
-                            <div class="p-8 lg:p-12">
-                                <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">${story.title_fr}</h1>
-                                <div class="space-y-8">
-                                    <div class="text-xl leading-relaxed text-gray-800 ltr">${story.text_fr}</div>
-                                    <div id="translation" class="hidden animate-in slide-in-from-bottom duration-300">
-                                        <hr class="mb-6">
-                                        <div class="text-xl leading-relaxed text-blue-800 rtl text-right" dir="rtl">${story.text_ar}</div>
-                                    </div>
-                                    <div class="flex justify-center">
-                                        <button onclick="toggleTranslation()" class="px-6 py-2 bg-blue-50 text-blue-600 rounded-xl font-medium hover:bg-blue-100 transition-colors">
-                                            <i class="fas fa-language mr-2"></i> Traduire / ترجمة
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-gray-50 p-6 grid grid-cols-1 md:grid-cols-3 gap-4 border-t">
-                                <button onclick="router.navigate('vocab', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center border-2 ${p.vocab ? 'border-green-200' : 'border-transparent'}">
-                                    <i class="fas fa-spell-check ${p.vocab ? 'text-green-500' : 'text-blue-500'} text-xl mb-2"></i>
-                                    <span class="font-semibold">Vocabulaire</span>
-                                    <span class="text-[10px] text-gray-400 mt-1">${wordCount} mots</span>
-                                    ${p.vocab ? '<span class="text-[10px] text-green-600 font-bold uppercase mt-1">Terminé</span>' : ''}
-                                </button>
-                                <button onclick="router.navigate('quiz_comp', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center border-2 ${p.comp ? 'border-green-200' : 'border-transparent'}">
-                                    <i class="fas fa-question-circle ${p.comp ? 'text-green-500' : 'text-orange-500'} text-xl mb-2"></i>
-                                    <span class="font-semibold">Compréhension</span>
-                                    ${p.comp ? '<span class="text-[10px] text-green-600 font-bold uppercase mt-1">Terminé</span>' : ''}
-                                </button>
-                                <button onclick="router.navigate('quiz_gram', {storyId: ${story.id}})" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center border-2 ${p.gram ? 'border-green-200' : 'border-transparent'}">
-                                    <i class="fas fa-graduation-cap ${p.gram ? 'text-green-500' : 'text-purple-500'} text-xl mb-2"></i>
-                                    <span class="font-semibold">Grammaire</span>
-                                    ${p.gram ? '<span class="text-[10px] text-green-600 font-bold uppercase mt-1">Terminé</span>' : ''}
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    break;
-
-                case 'vocab': renderVocabGame(container, params.storyId); break;
-                case 'quiz_comp': renderQuiz(container, params.storyId, 'comprehension'); break;
-                case 'quiz_gram': renderQuiz(container, params.storyId, 'grammar'); break;
-            }
-        }
-
-        function toggleTranslation() {
-            document.getElementById('translation').classList.toggle('hidden');
-        }
-
-        function renderVocabGame(container, storyId) {
-            const story = state.stories.find(s => s.id === storyId);
-            const vocab = story.vocabulary || [];
-            if(vocab.length === 0) { router.navigate('read', {storyId}); return; }
-
-            let currentIdx = 0;
-            isProcessing = false;
-
-            function showQuestion() {
-                const word = vocab[currentIdx];
-                const options = [word.ar, ...vocab.filter(v => v.ar !== word.ar).sort(() => 0.5-Math.random()).slice(0,2).map(v => v.ar)].sort(() => 0.5-Math.random());
-
-                container.innerHTML = `
-                    <div class="max-w-md mx-auto animate-in fade-in duration-500">
-                        <div class="mb-6 flex justify-between items-center">
-                            <button onclick="router.navigate('read', {storyId: ${storyId}})" class="text-gray-500"><i class="fas fa-times"></i> Quitter</button>
-                            <span class="font-bold text-blue-600">${currentIdx + 1} / ${vocab.length}</span>
-                        </div>
-                        <div class="bg-white p-8 rounded-3xl shadow-xl text-center mb-8">
-                            <p class="text-gray-500 text-sm mb-2 uppercase tracking-widest">Traduire en Arabe</p>
-                            <h2 class="text-4xl font-bold">${word.fr}</h2>
-                        </div>
-                        <div class="space-y-4">
-                            ${options.map(opt => `
-                                <button onclick="checkVocab(this, '${opt}', '${word.ar}', ${storyId})" class="vocab-btn w-full p-5 bg-white border-2 border-gray-100 rounded-2xl text-xl font-semibold hover:border-blue-400 transition-all rtl" dir="rtl">${opt}</button>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
-            window.checkVocab = (btn, selected, correct, sId) => {
-                if (isProcessing) return;
-                isProcessing = true;
-
-                if(selected === correct) {
-                    btn.classList.add('answer-correct');
-                    setTimeout(() => {
-                        currentIdx++;
-                        if(currentIdx >= vocab.length) {
-                            updateProgress(sId, 'vocab');
-                            showSuccess("Terminé ! Vocabulaire maîtrisé.", sId);
-                        } else {
-                            isProcessing = false;
-                            showQuestion();
-                        }
-                    }, 800);
-                } else {
-                    btn.classList.add('answer-wrong');
-                    const buttons = document.querySelectorAll('.vocab-btn');
-                    buttons.forEach(b => {
-                        if(b.innerText.trim() === correct) b.classList.add('answer-correct');
-                    });
-                    
-                    setTimeout(() => {
-                        isProcessing = false;
-                        showQuestion();
-                    }, 1200);
-                }
-            };
-            showQuestion();
-        }
-
-        function renderQuiz(container, storyId, type) {
-            const story = state.stories.find(s => s.id === storyId);
-            const questions = story[type] || [];
-            if(questions.length === 0) { router.navigate('read', {storyId}); return; }
-
-            let currentIdx = 0;
-            isProcessing = false;
-
-            function showQuestion() {
-                const q = questions[currentIdx];
-                container.innerHTML = `
-                    <div class="max-w-2xl mx-auto animate-in fade-in duration-500">
-                        <div class="mb-6 flex justify-between items-center">
-                            <button onclick="router.navigate('read', {storyId: ${storyId}})" class="text-gray-500"><i class="fas fa-times"></i> Quitter</button>
-                            <span class="font-bold text-blue-600">${currentIdx + 1} / ${questions.length}</span>
-                        </div>
-                        <div class="bg-white p-8 rounded-3xl shadow-xl mb-8 relative">
-                            <p class="text-gray-400 text-xs mb-4 uppercase tracking-widest">${type === 'grammar' ? 'Grammaire' : 'Compréhension'}</p>
-                            <h2 class="text-2xl font-bold text-gray-800 mb-6">${type === 'grammar' ? q.text : q.q}</h2>
-                            ${type === 'grammar' ? `<button onclick="showHelp('${q.rule_fr.replace(/'/g, "\\'")}', '${q.rule_ar.replace(/'/g, "\\'")}')" class="absolute top-6 right-6 text-purple-500 bg-purple-50 px-3 py-1 rounded-full text-sm font-bold"><i class="fas fa-info-circle mr-1"></i> Aide</button>` : ''}
-                        </div>
-                        <div class="grid grid-cols-1 gap-4">
-                            ${q.options.map((opt, idx) => `
-                                <button onclick="checkQuiz(this, ${idx}, ${type === 'grammar' ? `'${q.missing}'` : q.correct}, ${storyId}, '${type}')" class="quiz-btn w-full p-5 bg-white border-2 border-gray-100 rounded-2xl text-lg font-medium hover:border-blue-400 transition-all text-left flex justify-between items-center">
-                                    <span>${opt}</span><i class="fas fa-chevron-right text-gray-200"></i>
-                                </button>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
-            window.checkQuiz = (btn, idx, correct, sId, qType) => {
-                if (isProcessing) return;
-                isProcessing = true;
-
-                const q = questions[currentIdx];
-                let isCorrect = (qType === 'grammar') ? (q.options[idx] === correct) : (idx === correct);
-                
-                if(isCorrect) {
-                    btn.classList.add('answer-correct');
-                    setTimeout(() => {
-                        currentIdx++;
-                        if(currentIdx >= questions.length) {
-                            updateProgress(sId, qType === 'grammar' ? 'gram' : 'comp');
-                            showSuccess(`Terminé ! ${qType === 'grammar' ? 'Grammaire' : 'Compréhension'} validée.`, sId);
-                        } else {
-                            isProcessing = false;
-                            showQuestion();
-                        }
-                    }, 800);
-                } else {
-                    btn.classList.add('answer-wrong');
-                    const buttons = document.querySelectorAll('.quiz-btn');
-                    buttons.forEach((b, i) => {
-                        let isThisCorrect = (qType === 'grammar') ? (q.options[i] === correct) : (i === correct);
-                        if(isThisCorrect) b.classList.add('answer-correct');
-                    });
-
-                    setTimeout(() => {
-                        isProcessing = false;
-                        showQuestion();
-                    }, 1500);
-                }
-            };
-            showQuestion();
-        }
-
-        function showModal(contentHtml) {
-            const modal = document.getElementById('modal-container');
-            document.getElementById('modal-content').innerHTML = contentHtml;
-            modal.classList.remove('hidden');
-        }
-
-        function closeModal() { document.getElementById('modal-container').classList.add('hidden'); }
-
-        function showSuccess(msg, sId) {
-            showModal(`
-                <div class="p-8 text-center">
-                    <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl"><i class="fas fa-check"></i></div>
-                    <h2 class="text-2xl font-bold mb-2">Excellent !</h2>
-                    <p class="text-gray-600 mb-6 font-bold text-xl uppercase">${msg}</p>
-                    <button onclick="closeModal(); router.navigate('read', {storyId: ${sId}})" class="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold">Continuer</button>
-                </div>
-            `);
-        }
-
-        function showHelp(fr, ar) {
-            showModal(`
-                <div class="p-8">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i> Aide</h2>
-                    <div class="space-y-4">
-                        <div class="p-4 bg-blue-50 rounded-xl"><p class="text-blue-900 font-medium">${fr}</p></div>
-                        <div class="p-4 bg-purple-50 rounded-xl text-right rtl" dir="rtl"><p class="text-purple-900 font-medium">${ar}</p></div>
-                    </div>
-                    <button onclick="closeModal()" class="w-full mt-8 py-4 bg-gray-900 text-white rounded-2xl font-bold">Compris !</button>
-                </div>
-            `);
-        }
-
-        window.onload = () => router.render();
-    </script>
+    <script src="data_stories_fr.js"></script>
+    <script src="app.js"></script>
     <script src="compteur.js"></script>
 </body>
 </html>
