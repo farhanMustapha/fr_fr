@@ -524,7 +524,26 @@ const INITIAL_DATA = {
                         { fr: "Plus de", ar: "أكثر من" },
                         { fr: "Temps", ar: "وقت" }
                         ],
-                        
+                    comprehension: [
+                        {
+                        q: "Que ferait Marc s'il avait plus de temps ?",    
+                        options: [
+                            "Il irait en vacances",
+                            "Il terminerait son projet",
+                            "Il améliorerait ses résultats"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        q: "Qu'est-ce que Marc aimerait faire s'il avait plus de temps ?",
+                        options: [
+                            "Il aimerait voyager",
+                            "Il aimerait terminer son projet",
+                            "Il aimerait améliorer ses résultats"
+                        ],
+                        correct: 1
+                    }
+                    ],
                     grammar: [
                     {
                         text: "Si Marc ..... plus de temps, il terminerait le projet.",
@@ -872,7 +891,83 @@ const INITIAL_DATA = {
                     grammar: [
                         { text: "Je ___ à l'école.", missing: "vais", options: ["vais", "va", "vont"], rule_fr: "C'est la conjugaison du verbe 'aller' au présent avec 'je'.", rule_ar: "هذا تصريف فعل 'ذهب' (aller) في المضارع مع الضمير 'أنا' (je)." }
                     ]
+                },
+                {
+                id: 12,
+                level_id: 3,
+                title_fr: "12-Le téléphone perdu",
+                title_ar: "الهاتف المفقود",
+
+                text_fr: "Hier soir, Yassine a perdu son téléphone dans le bus. Il a cherché partout et a demandé au chauffeur, mais personne ne l’a trouvé. Plus tard, un ami lui a dit que quelqu’un aurait pris le téléphone après son départ. Yassine n’est pas sûr : il sait qu’il a perdu son téléphone, mais il ne sait pas si quelqu’un l’a vraiment volé.",
+                text_ar: "البارحة مساءً، ياسين فقد هاتفه في الحافلة. بحث في كل مكان وسأل السائق، لكن لم يجده أحد. لاحقًا، قال له صديق إن شخصًا ربما أخذ الهاتف بعد نزوله. ياسين غير متأكد: هو متأكد أنه فقد هاتفه، لكنه لا يعرف إن كان أحد قد سرقه فعلًا.",
+
+                vocabulary: [
+                    { fr: "hier soir", ar: "البارحة مساءً" },
+                    { fr: "perdre", ar: "يفقد" },
+                    { fr: "téléphone", ar: "هاتف" },
+                    { fr: "bus", ar: "حافلة" },
+                    { fr: "chercher", ar: "يبحث" },
+                    { fr: "chauffeur", ar: "سائق" },
+                    { fr: "personne", ar: "لا أحد" },
+                    { fr: "ami", ar: "صديق" },
+                    { fr: "quelqu’un", ar: "شخص ما" },
+                    { fr: "prendre", ar: "يأخذ" },
+                    { fr: "être sûr", ar: "متأكد" },
+                    { fr: "voler", ar: "يسرق" }
+                ],
+
+                comprehension: [
+                    {
+                    q: "Qu’est-ce que Yassine a perdu ?",
+                    options: ["Son sac", "Son téléphone", "Son portefeuille"],
+                    correct: 1
+                    },
+                    {
+                    q: "Où a-t-il perdu son téléphone ?",
+                    options: ["À la maison", "Dans le bus", "Au travail"],
+                    correct: 1
+                    },
+                    {
+                    q: "Qu’est-ce que l’ami de Yassine a dit ?",
+                    options: [
+                        "Le téléphone est cassé",
+                        "Quelqu’un aurait pris le téléphone",
+                        "Le chauffeur a trouvé le téléphone"
+                    ],
+                    correct: 1
+                    },
+                    {
+                    q: "Yassine est-il sûr que quelqu’un a volé le téléphone ?",
+                    options: ["Oui", "Non", "Parfois"],
+                    correct: 1
+                    }
+                ],
+
+                grammar: [
+                    {
+                    text: "Yassine ..... son téléphone dans le bus.",
+                    missing: "a perdu",
+                    options: ["a perdu", "aurait perdu", "perd"],
+                    rule_fr: "Le passé composé exprime un fait certain et confirmé.",
+                    rule_ar: "الماضي المركب يُستعمل للتعبير عن حدث مؤكد."
+                    },
+                    {
+                    text: "Quelqu’un ..... le téléphone après son départ.",
+                    missing: "aurait pris",
+                    options: ["a pris", "aurait pris", "prend"],
+                    rule_fr: "Le conditionnel passé exprime une hypothèse ou une information non confirmée.",
+                    rule_ar: "الشرط الماضي يُستعمل للتعبير عن احتمال أو خبر غير مؤكد."
+                    },
+                    {
+                    text: "Il ..... sûr de ce qui s’est passé.",
+                    missing: "n’est pas",
+                    options: ["est", "n’est pas", "sera"],
+                    rule_fr: "La forme négative s’utilise pour exprimer le doute.",
+                    rule_ar: "صيغة النفي تُستعمل للتعبير عن الشك."
+                    }
+                ]
                 }
+
            ],
             progress: {}
         };
