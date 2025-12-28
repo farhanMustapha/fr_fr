@@ -6,6 +6,105 @@ const INITIAL_DATA = {
                 { id: 3, title_fr: 'Avancé', title_ar: 'متقدم', icon: 'fa-mountain', color: 'bg-purple-500' }
             ],
             stories: [
+
+                               {
+  id: 13,
+  level_id: 3,
+  title_fr: "13-Les temps du passé, du présent et du futur",
+  title_ar: "الأزمنة: الماضي، الحاضر والمستقبل",
+
+  text_fr: "Aujourd'hui, je vais au travail à pied car il fait beau. Hier, j'allais en voiture, mais il y avait trop de circulation. La semaine dernière, je suis allé voir un film avec des amis. Demain, j'irai en ville pour faire des courses. Si j'étais allé plus tôt, j'aurais évité les embouteillages. À l'avenir, j'irai plus souvent à pied pour éviter le stress de la circulation.",
+  text_ar: "اليوم أذهب إلى العمل مشيًا لأن الطقس جميل. أمس، كنت أذهب بالسيارة، لكن كان هناك ازدحام كبير. الأسبوع الماضي، ذهبت لمشاهدة فيلم مع الأصدقاء. غدًا، سأذهب إلى المدينة للقيام بالتسوق. لو ذهبتُ أبكر، لكنتُ تجنبتُ الازدحام. في المستقبل، سأذهب أكثر مشيًا لتفادي ضغط الازدحام.",
+
+  vocabulary: [
+    { fr: "Aujourd'hui", ar: "اليوم" },
+    { fr: "Hier", ar: "أمس" },
+    { fr: "Demain", ar: "غدًا" },
+    { fr: "La semaine dernière", ar: "الأسبوع الماضي" },
+    { fr: "À l'avenir", ar: "في المستقبل" },
+    { fr: "Circulation", ar: "حركة المرور" },
+    { fr: "Embouteillages", ar: "الازدحام" },
+    { fr: "Éviter", ar: "يتجنب" },
+    { fr: "Stress", ar: "الضغط / التوتر" },
+    { fr: "Faire des courses", ar: "التسوق" }
+  ],
+
+  comprehension: [
+    {
+      q: "Comment la personne va-t-elle au travail aujourd'hui ?",
+      options: [
+        "En voiture",
+        "À pied",
+        "En bus"
+      ],
+      correct: 1
+    },
+    {
+      q: "Pourquoi allait-elle en voiture hier ?",
+      options: [
+        "Parce qu'il faisait beau",
+        "Parce qu'il n'y avait pas de circulation",
+        "C'était son habitude malgré la circulation"
+      ],
+      correct: 2
+    },
+    {
+      q: "Que fera-t-elle demain ?",
+      options: [
+        "Regarder un film",
+        "Aller au travail",
+        "Faire des courses en ville"
+      ],
+      correct: 2
+    }
+  ],
+
+  grammar: [
+    {
+      text: "Si j\'étais allé plus tôt, j'..... évité les embouteillages.",
+      missing: "aurais",
+      options: ["suis", "aurais", "avais"],
+
+      rule_fr:
+        "Cette phrase utilise le conditionnel passé, employé pour exprimer un regret ou une situation irréelle dans le passé.\n\n"
+        + "🔹 Structure complète :\n"
+        + "Si + plus-que-parfait → conditionnel passé\n\n"
+        + "Dans l'exemple :\n"
+        + "- « si j'étais allé » : plus-que-parfait\n"
+        + "  → auxiliaire « être » à l'imparfait (étais) + participe passé (allé)\n"
+        + "- « j'aurais évité » : conditionnel passé\n"
+        + "  → auxiliaire « avoir » au conditionnel présent (aurais) + participe passé (évité)\n\n"
+        + "👉 Pourquoi on utilise « étais allé » ?\n"
+        + "Parce qu'on parle d'une action qui ne s'est PAS produite dans le passé. On imagine une autre réalité.\n\n"
+        + "⚠️ Erreurs fréquentes :\n"
+        + "- ❌ Si j'aurais été allé...\n"
+        + "- ❌ Si je suis allé plus tôt...\n"
+        + "Après « si », on n'utilise JAMAIS le conditionnel.\n\n"
+        + "🔹 Autres exemples utiles :\n"
+        + "- Si j'avais étudié, j'aurais réussi l'examen.\n"
+        + "- Si nous étions partis plus tôt, nous aurions évité le retard.",
+
+      rule_ar:
+        "هذه الجملة تعبّر عن ندم أو فرضية غير حقيقية في الماضي.\n\n"
+        + "🔹 القاعدة العامة:\n"
+        + "Si + plus-que-parfait → conditionnel passé\n\n"
+        + "في المثال:\n"
+        + "- « si j'étais allé » : الماضي الأسبق\n"
+        + "  → فعل مساعد في imparfait (étais) + اسم المفعول (allé)\n"
+        + "- « j'aurais évité » : الشرط في الماضي\n"
+        + "  → فعل مساعد في conditionnel (aurais) + اسم المفعول (évité)\n\n"
+        + "👉 لماذا نستعمل « étais allé »؟\n"
+        + "لأننا نتحدث عن حدث لم يقع فعلاً، بل نتصوره بطريقة مختلفة.\n\n"
+        + "⚠️ أخطاء شائعة:\n"
+        + "- ❌ Si j'aurais...\n"
+        + "- ❌ Si je suis allé...\n"
+        + "ممنوع استعمال conditionnel بعد « si ».\n\n"
+        + "🔹 أمثلة إضافية:\n"
+        + "- لو درستُ جيدًا، لكنتُ نجحتُ.\n"
+        + "- لو خرجنا أبكر، لكنا تجنبنا التأخير."
+    }
+  ]
+},
                 {
                     id: 1,
                     level_id: 1,
@@ -967,6 +1066,8 @@ const INITIAL_DATA = {
                     }
                 ]
                 }
+ 
+
 
            ],
             progress: {}
