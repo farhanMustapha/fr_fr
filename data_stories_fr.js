@@ -7,104 +7,228 @@ const INITIAL_DATA = {
             ],
             stories: [
 
-                               {
-  id: 13,
-  level_id: 3,
-  title_fr: "13-Les temps du passé, du présent et du futur",
-  title_ar: "الأزمنة: الماضي، الحاضر والمستقبل",
-
-  text_fr: "Aujourd'hui, je vais au travail à pied car il fait beau. Hier, j'allais en voiture, mais il y avait trop de circulation. La semaine dernière, je suis allé voir un film avec des amis. Demain, j'irai en ville pour faire des courses. Si j'étais allé plus tôt, j'aurais évité les embouteillages. À l'avenir, j'irai plus souvent à pied pour éviter le stress de la circulation.",
-  text_ar: "اليوم أذهب إلى العمل مشيًا لأن الطقس جميل. أمس، كنت أذهب بالسيارة، لكن كان هناك ازدحام كبير. الأسبوع الماضي، ذهبت لمشاهدة فيلم مع الأصدقاء. غدًا، سأذهب إلى المدينة للقيام بالتسوق. لو ذهبتُ أبكر، لكنتُ تجنبتُ الازدحام. في المستقبل، سأذهب أكثر مشيًا لتفادي ضغط الازدحام.",
-
-  vocabulary: [
-    { fr: "Aujourd'hui", ar: "اليوم" },
-    { fr: "Hier", ar: "أمس" },
-    { fr: "Demain", ar: "غدًا" },
-    { fr: "La semaine dernière", ar: "الأسبوع الماضي" },
-    { fr: "À l'avenir", ar: "في المستقبل" },
-    { fr: "Circulation", ar: "حركة المرور" },
-    { fr: "Embouteillages", ar: "الازدحام" },
-    { fr: "Éviter", ar: "يتجنب" },
-    { fr: "Stress", ar: "الضغط / التوتر" },
-    { fr: "Faire des courses", ar: "التسوق" }
-  ],
-
-  comprehension: [
-    {
-      q: "Comment la personne va-t-elle au travail aujourd'hui ?",
-      options: [
-        "En voiture",
-        "À pied",
-        "En bus"
-      ],
-      correct: 1
-    },
-    {
-      q: "Pourquoi allait-elle en voiture hier ?",
-      options: [
-        "Parce qu'il faisait beau",
-        "Parce qu'il n'y avait pas de circulation",
-        "C'était son habitude malgré la circulation"
-      ],
-      correct: 2
-    },
-    {
-      q: "Que fera-t-elle demain ?",
-      options: [
-        "Regarder un film",
-        "Aller au travail",
-        "Faire des courses en ville"
-      ],
-      correct: 2
-    }
-  ],
-
-  grammar: [
-    {
-      text: "Si j\'étais allé plus tôt, j'..... évité les embouteillages.",
-      missing: "aurais",
-      options: ["suis", "aurais", "avais"],
-
-      rule_fr:
-        "Cette phrase utilise le conditionnel passé, employé pour exprimer un regret ou une situation irréelle dans le passé.\n\n"
-        + "🔹 Structure complète :\n"
-        + "Si + plus-que-parfait → conditionnel passé\n\n"
-        + "Dans l'exemple :\n"
-        + "- « si j'étais allé » : plus-que-parfait\n"
-        + "  → auxiliaire « être » à l'imparfait (étais) + participe passé (allé)\n"
-        + "- « j'aurais évité » : conditionnel passé\n"
-        + "  → auxiliaire « avoir » au conditionnel présent (aurais) + participe passé (évité)\n\n"
-        + "👉 Pourquoi on utilise « étais allé » ?\n"
-        + "Parce qu'on parle d'une action qui ne s'est PAS produite dans le passé. On imagine une autre réalité.\n\n"
-        + "⚠️ Erreurs fréquentes :\n"
-        + "- ❌ Si j'aurais été allé...\n"
-        + "- ❌ Si je suis allé plus tôt...\n"
-        + "Après « si », on n'utilise JAMAIS le conditionnel.\n\n"
-        + "🔹 Autres exemples utiles :\n"
-        + "- Si j'avais étudié, j'aurais réussi l'examen.\n"
-        + "- Si nous étions partis plus tôt, nous aurions évité le retard.",
-
-      rule_ar:
-        "هذه الجملة تعبّر عن ندم أو فرضية غير حقيقية في الماضي.\n\n"
-        + "🔹 القاعدة العامة:\n"
-        + "Si + plus-que-parfait → conditionnel passé\n\n"
-        + "في المثال:\n"
-        + "- « si j'étais allé » : الماضي الأسبق\n"
-        + "  → فعل مساعد في imparfait (étais) + اسم المفعول (allé)\n"
-        + "- « j'aurais évité » : الشرط في الماضي\n"
-        + "  → فعل مساعد في conditionnel (aurais) + اسم المفعول (évité)\n\n"
-        + "👉 لماذا نستعمل « étais allé »؟\n"
-        + "لأننا نتحدث عن حدث لم يقع فعلاً، بل نتصوره بطريقة مختلفة.\n\n"
-        + "⚠️ أخطاء شائعة:\n"
-        + "- ❌ Si j'aurais...\n"
-        + "- ❌ Si je suis allé...\n"
-        + "ممنوع استعمال conditionnel بعد « si ».\n\n"
-        + "🔹 أمثلة إضافية:\n"
-        + "- لو درستُ جيدًا، لكنتُ نجحتُ.\n"
-        + "- لو خرجنا أبكر، لكنا تجنبنا التأخير."
-    }
-  ]
+                {
+    id: 2,
+    level_id: 2,
+    title_fr: '2-Le livre dont je parle',
+    title_ar: 'الكتاب الذي أتحدث عنه',
+    text_fr: 'C\'est un projet important. C\'est le projet dont je suis responsable dans SAP (Manage Journal Entries). Le client dont nous parlons est satisfait.',
+    text_ar: 'هذا مشروع مهم. إنه المشروع الذي أنا مسؤول عنه في ساب. العميل الذي نتحدث عنه راضٍ.',
+    vocabulary: [
+        { fr: 'Important', ar: 'مهم' },
+        { fr: 'Projet', ar: 'مشروع' },
+        { fr: 'Dont', ar: 'الذي (للمجرور بـ de)' },
+        { fr: 'Responsable', ar: 'مسؤول' },
+        { fr: 'Satisfait', ar: 'راضٍ' },
+        { fr: 'Client', ar: 'عميل' }
+    ],
+    comprehension: [
+        { q: 'De quoi Lucas est-il responsable ?', options: ['D\'un projet', 'D\'une voiture', 'D\'un client'], correct: 0 },
+        { q: 'Comment est le client ?', options: ['Fatigué', 'Satisfait', 'En colère'], correct: 1 }
+    ],
+    grammar: [
+        { 
+            text: 'C\'est l\'outil ___ j\'ai besoin.', 
+            options: ['que', 'dont', 'où'], 
+            missing: 'dont', 
+            rule_fr: "On utilise 'dont' car on dit : avoir besoin DE quelque chose.", 
+            rule_ar: "نستخدم 'dont' لأن الفعل يتطلب حرف الجر 'de'." 
+        }
+    ]
 },
+{
+    id: 3,
+    level_id: 2,
+    title_fr: '3-Les fleurs cueillies',
+    title_ar: 'الزهور المقطوفة',
+    text_fr: 'Les factures que j\'ai reçues sont payées. Les fleurs que tu as cueillies sont jolies. Je les ai vues ce matin.',
+    text_ar: 'الفواتير التي استلمتها مدفوعة. الزهور التي قطفتها جميلة. لقد رأيتها هذا الصباح.',
+    vocabulary: [
+        { fr: 'Facture', ar: 'فاتورة' },
+        { fr: 'Reçue', ar: 'مستلمة' },
+        { fr: 'Payée', ar: 'مدفوعة' },
+        { fr: 'Cueillir', ar: 'يقطف' },
+        { fr: 'Jolie', ar: 'جميلة' }
+    ],
+    comprehension: [
+        { q: 'Qu\'est-ce qui est payé ?', options: ['Les fleurs', 'Les factures', 'Rien'], correct: 1 },
+        { q: 'Quand a-t-il vu les fleurs ?', options: ['Hier', 'Ce matin', 'Demain'], correct: 1 }
+    ],
+    grammar: [
+        { 
+            text: 'Les lettres que j\'ai ___ .', 
+            options: ['écrit', 'écrite', 'écrites'], 
+            missing: 'écrites', 
+            rule_fr: "Accord avec le COD 'lettres' (féminin pluriel) placé avant le verbe.", 
+            rule_ar: "التوافق مع المفعول به المقدم (جمع مؤنث)." 
+        }
+    ]
+},
+{
+    id: 4,
+    level_id: 2,
+    title_fr: '4-Il faut que tu fasses',
+    title_ar: 'يجب أن تفعل',
+    text_fr: 'Il faut que tu fasses tes devoirs. Je veux que tu sois heureux. Quoi que tu dises, je t\'écoute.',
+    text_ar: 'يجب أن تقوم بواجباتك. أريدك أن تكون سعيداً. مهما قلت، أنا أسمعك.',
+    vocabulary: [
+        { fr: 'Devoirs', ar: 'واجبات' },
+        { fr: 'Heureux', ar: 'سعيد' },
+        { fr: 'Écouter', ar: 'يسمع / يصغي' },
+        { fr: 'Vouloir', ar: 'يريد' },
+        { fr: 'Faire', ar: 'يفعل' }
+    ],
+    comprehension: [
+        { q: 'Que doit faire la personne ?', options: ['Dormir', 'Ses devoirs', 'Manger'], correct: 1 },
+        { q: 'Comment le narrateur veut-il que tu sois ?', options: ['Triste', 'Heureux', 'Grand'], correct: 1 }
+    ],
+    grammar: [
+        { 
+            text: 'Il faut que tu ___ (venir).', 
+            options: ['viens', 'viennes', 'vint'], 
+            missing: 'viennes', 
+            rule_fr: "Le subjonctif présent après 'Il faut que'.", 
+            rule_ar: "صيغة المنصوب (Subjonctif) بعد عبارة 'يجب أن'." 
+        }
+    ]
+},
+
+              {
+                id: 13,
+                level_id: 3,
+                title_fr: "13-Les temps du passé, du présent et du futur",
+                title_ar: "الأزمنة: الماضي، الحاضر والمستقبل",
+
+                text_fr: "Aujourd'hui, je vais au travail à pied car il fait beau. Hier, j'allais en voiture, mais il y avait trop de circulation. La semaine dernière, je suis allé voir un film avec des amis. Demain, j'irai en ville pour faire des courses. Si j'étais allé plus tôt, j'aurais évité les embouteillages. À l'avenir, j'irai plus souvent à pied pour éviter le stress de la circulation.",
+                text_ar: "اليوم أذهب إلى العمل مشيًا لأن الطقس جميل. أمس، كنت أذهب بالسيارة، لكن كان هناك ازدحام كبير. الأسبوع الماضي، ذهبت لمشاهدة فيلم مع الأصدقاء. غدًا، سأذهب إلى المدينة للقيام بالتسوق. لو ذهبتُ أبكر، لكنتُ تجنبتُ الازدحام. في المستقبل، سأذهب أكثر مشيًا لتفادي ضغط الازدحام.",
+
+                vocabulary: [
+                    { fr: "Aujourd'hui", ar: "اليوم" },
+                    { fr: "Hier", ar: "أمس" },
+                    { fr: "Demain", ar: "غدًا" },
+                    { fr: "La semaine dernière", ar: "الأسبوع الماضي" },
+                    { fr: "À l'avenir", ar: "في المستقبل" },
+                    { fr: "Circulation", ar: "حركة المرور" },
+                    { fr: "Embouteillages", ar: "الازدحام" },
+                    { fr: "Éviter", ar: "يتجنب" },
+                    { fr: "Stress", ar: "الضغط / التوتر" },
+                    { fr: "Faire des courses", ar: "التسوق" }
+                ],
+
+                comprehension: [
+                    {
+                    q: "Comment la personne va-t-elle au travail aujourd'hui ?",
+                    options: [
+                        "En voiture",
+                        "À pied",
+                        "En bus"
+                    ],
+                    correct: 1
+                    },
+                    {
+                    q: "Pourquoi allait-elle en voiture hier ?",
+                    options: [
+                        "Parce qu'il faisait beau",
+                        "Parce qu'il n'y avait pas de circulation",
+                        "C'était son habitude malgré la circulation"
+                    ],
+                    correct: 2
+                    },
+                    {
+                    q: "Que fera-t-elle demain ?",
+                    options: [
+                        "Regarder un film",
+                        "Aller au travail",
+                        "Faire des courses en ville"
+                    ],
+                    correct: 2
+                    }
+                ],
+
+                grammar: [
+                    {
+                    text: "Si je ..... allé plus tôt,",
+                    missing: "étais",
+                    options: ["suis", "étais", "avais"],
+
+                    rule_fr:
+                        "Dans cette partie, on utilise le plus-que-parfait après « si ».\n\n"
+                        + "🔹 Structure :\n"
+                        + "Si + imparfait de l’auxiliaire + participe passé\n\n"
+                        + "Exemple analysé :\n"
+                        + "- « étais allé »\n"
+                        + "  → auxiliaire « être » à l’imparfait (étais)\n"
+                        + "  → participe passé (allé)\n\n"
+                        + "👉 Pourquoi « étais » ?\n"
+                        + "Parce que l’action (aller plus tôt) est imaginaire et concerne le passé.\n"
+                        + "On parle d’une condition NON réalisée.\n\n"
+                        + "⚠️ Erreurs fréquentes :\n"
+                        + "- ❌ Si je suis allé plus tôt\n"
+                        + "- ❌ Si j’aurais été allé\n"
+                        + "Après « si », on n’utilise JAMAIS le futur ni le conditionnel.\n\n"
+                        + "🔹 Autres exemples :\n"
+                        + "- Si j’avais compris la règle, …\n"
+                        + "- Si nous étions partis plus tôt, …",
+
+                    rule_ar:
+                        "هنا نستعمل الماضي الأسبق (plus-que-parfait) بعد « si ».\n\n"
+                        + "🔹 القاعدة:\n"
+                        + "Si + imparfait + participe passé\n\n"
+                        + "في المثال:\n"
+                        + "- « étais allé »\n"
+                        + "  → الفعل المساعد être في الماضي الناقص (étais)\n"
+                        + "  → اسم المفعول (allé)\n\n"
+                        + "👉 لماذا « étais »؟\n"
+                        + "لأننا نتكلم عن شرط لم يحدث في الماضي، بل نتخيله.\n\n"
+                        + "⚠️ أخطاء شائعة:\n"
+                        + "- ❌ Si je suis allé\n"
+                        + "- ❌ Si j’aurais été\n"
+                        + "ممنوع استعمال المستقبل أو الشرط بعد « si ».\n\n"
+                        + "🔹 أمثلة:\n"
+                        + "- لو فهمتُ الدرس، …\n"
+                        + "- لو خرجنا أبكر، …"
+                    },
+
+                    {
+                    text: "…, j'..... évité les embouteillages.",
+                    missing: "aurais",
+                    options: ["ai", "avais", "aurais"],
+
+                    rule_fr:
+                        "Cette partie utilise le conditionnel passé pour exprimer le résultat imaginaire.\n\n"
+                        + "🔹 Structure :\n"
+                        + "Auxiliaire au conditionnel présent + participe passé\n\n"
+                        + "Exemple :\n"
+                        + "- « j’aurais évité »\n"
+                        + "  → auxiliaire « avoir » au conditionnel présent (aurais)\n"
+                        + "  → participe passé (évité)\n\n"
+                        + "👉 Pourquoi « aurais » ?\n"
+                        + "Parce que le résultat dépend d’une condition qui ne s’est pas réalisée.\n"
+                        + "C’est une conséquence irréelle dans le passé.\n\n"
+                        + "🔹 Autres exemples :\n"
+                        + "- J’aurais réussi si j’avais étudié.\n"
+                        + "- Nous aurions gagné avec plus de temps.\n\n"
+                        + "⚠️ À retenir :\n"
+                        + "Le conditionnel passé n’apparaît JAMAIS après « si », seulement dans la conséquence.",
+
+                    rule_ar:
+                        "هنا نستعمل الشرط في الماضي (conditionnel passé) للتعبير عن النتيجة غير الحقيقية.\n\n"
+                        + "🔹 القاعدة:\n"
+                        + "فعل مساعد في الشرط + اسم المفعول\n\n"
+                        + "في المثال:\n"
+                        + "- « j’aurais évité »\n"
+                        + "  → avoir في صيغة الشرط (aurais)\n"
+                        + "  → اسم المفعول (évité)\n\n"
+                        + "👉 لماذا « aurais »؟\n"
+                        + "لأن النتيجة مرتبطة بشرط لم يقع فعلاً.\n\n"
+                        + "🔹 أمثلة:\n"
+                        + "- لكنتُ نجحتُ لو درستُ.\n"
+                        + "- لكنا وصلنا في الوقت لو خرجنا مبكرًا.\n\n"
+                        + "⚠️ تذكير مهم:\n"
+                        + "الشرط لا يأتي بعد « si » بل في جواب الشرط فقط."
+                    }
+                ]
+                },
                 {
                     id: 1,
                     level_id: 1,
