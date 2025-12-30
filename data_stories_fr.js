@@ -8,7 +8,53 @@ const INITIAL_DATA = {
             stories: [
 
                 {
-    id: 2,
+    id: 4,
+    level_id: 2,
+    title_fr: "4-Les pronoms",
+    title_ar: "الضمائر مع سارة",
+    text_fr: "Je comprends Fatima, donc je la comprends. Je donne une fleur à Fatima, donc je lui donne une fleur. Je travaille avec Fatima, donc je travaille avec elle.",
+    text_ar: "أنا أفهم فاطمة، إذاً أنا أفهمها. أنا أعطي زهرة لفاطمة، إذاً أنا أعطيها زهرة. أنا أعمل مع فاطمة، إذاً أنا أعمل معها.",
+    vocabulary: [
+        { fr: "comprendre", ar: "فهم" },
+        { fr: "donner", ar: "أعطى" },
+        { fr: "travailler", ar: "عمل" },
+        { fr: "une fleur", ar: "زهرة" },
+        { fr: "avec", ar: "مع" },
+        { fr: "la (pronom)", ar: "ها (للغائب المباشر)" },
+        { fr: "lui (pronom)", ar: "لها (للمخاطب غير المباشر)" },
+        { fr: "elle (pronom)", ar: "هي / معها" }
+    ],
+    comprehension: [
+        { q: "Comment dit-on 'Je comprends Fatima' avec un pronom ?", options: ["Je lui comprends", "Je la comprends", "Je elle comprends"], correct: 1 },
+        { q: "Avec qui travaille l'auteur ?", options: ["Sarah", "Fatima", "Son frère"], correct: 1 }
+    ],
+    grammar: [
+        { 
+            text: "Je comprends Fatima $\rightarrow$ Je ..... comprends.", 
+            missing: "la", 
+            options: ["la", "lui", "elle"], 
+            rule_fr: "Fatima est un COD (Complément d'Objet Direct). On utilise 'la' pour remplacer un nom féminin direct.",
+            rule_ar: "فاطمة هنا مفعول به مباشر. نستخدم 'la' للتعويض عن اسم مؤنث مباشر."
+        },
+        { 
+            text: "Je donne une fleur à Fatima $\rightarrow$ Je ..... donne une fleur.", 
+            missing: "lui", 
+            options: ["la", "lui", "elle"], 
+            rule_fr: " 'À Fatima' est un COI (Complément d'Objet Indirect). On utilise 'lui' pour remplacer 'à + personne'.",
+            rule_ar: "'À Fatima' مفعول به غير مباشر. نستخدم 'lui' للتعويض عن 'à + شخص'."
+        },
+        { 
+            text: "Je travaille avec Fatima $\rightarrow$ Je travaille avec .....", 
+            missing: "elle", 
+            options: ["la", "lui", "elle"], 
+            rule_fr: "Après une préposition comme 'avec', on utilise le pronom tonique 'elle' pour le féminin.",
+            rule_ar: "بعد حرف جر مثل 'avec'، نستخدم الضمير المنفصل 'elle' للمؤنث."
+        }
+    ]
+},
+
+                {
+    id: 1,
     level_id: 2,
     title_fr: '2-Le livre dont je parle',
     title_ar: 'الكتاب الذي أتحدث عنه',
@@ -37,7 +83,7 @@ const INITIAL_DATA = {
     ]
 },
 {
-    id: 3,
+    id: 2,
     level_id: 2,
     title_fr: '3-Les fleurs cueillies',
     title_ar: 'الزهور المقطوفة',
@@ -65,7 +111,7 @@ const INITIAL_DATA = {
     ]
 },
 {
-    id: 4,
+    id: 3,
     level_id: 2,
     title_fr: '4-Il faut que tu fasses',
     title_ar: 'يجب أن تفعل',
