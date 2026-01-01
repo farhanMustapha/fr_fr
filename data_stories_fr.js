@@ -17,6 +17,8 @@ const INITIAL_DATA = {
         { fr: "implémentation", ar: "تنفيذ" },
         { fr: "preconiser", ar: "يوصي" },
         { fr: "installation", ar: "تثبيت" },
+        { fr: "audacieux", ar: "جريء" },
+        { fr: "audace", ar: "جرأة" },
         { fr: "configuration", ar: "تهيئة / إعداد" },
         { fr: "déploiement", ar: "نشر" },
         { fr: "analyse", ar: "تحليل" },
