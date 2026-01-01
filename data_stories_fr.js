@@ -6,6 +6,67 @@ const INITIAL_DATA = {
                 { id: 3, title_fr: 'Avancé', title_ar: 'متقدم', icon: 'fa-mountain', color: 'bg-purple-500' }
             ],
             stories: [
+                {
+    id: 7,
+    level_id: 2,
+    title_fr: "L’implémentation SAP avec Ahmed",
+    title_ar: "تنفيذ نظام SAP مع أحمد",
+    text_fr: "Ahmed participe à l’implémentation d’une solution SAP. Il installe le système, le configure et le déploie. Il analyse les besoins de l’entreprise, adapte le système, migre les données et forme les utilisateurs. Dans CBC, il assigne l’environnement de déploiement pour configurer les processus métier. Il commence par DEV pour la configuration et les premiers tests, passe ensuite à TEST pour valider les processus avec des données réalistes, puis termine par PROD pour une utilisation réelle par les employés.",
+    text_ar: "يشارك أحمد في تنفيذ حل SAP. يقوم بتثبيت النظام، تهيئته ونشره. يحلل احتياجات الشركة، يكيّف النظام، يرحّل البيانات ويدرّب المستخدمين. في CBC، يقوم بربط بيئة النشر بمساحة العمل لإعداد العمليات التجارية. يبدأ ببيئة DEV للإعداد والاختبارات الأولى، ثم TEST للتحقق من العمليات ببيانات واقعية، وأخيرًا PROD للاستخدام الفعلي من طرف موظفي الشركة.",
+    vocabulary: [
+        { fr: "implémentation", ar: "تنفيذ" },
+        { fr: "preconiser", ar: "يوصي" },
+        { fr: "installation", ar: "تثبيت" },
+        { fr: "configuration", ar: "تهيئة / إعداد" },
+        { fr: "déploiement", ar: "نشر" },
+        { fr: "analyse", ar: "تحليل" },
+        { fr: "migration des données", ar: "ترحيل البيانات" },
+        { fr: "formation", ar: "تكوين / تدريب" },
+        { fr: "environnement DEV", ar: "بيئة التطوير" },
+        { fr: "environnement TEST", ar: "بيئة الاختبار" },
+        { fr: "environnement PROD", ar: "بيئة الإنتاج" },
+        { fr: "CBC (Central Business Configuration)", ar: "إعداد الأعمال المركزي" }
+    ],
+    comprehension: [
+        {
+            q: "Quelle est la première étape utilisée par Ahmed ?",
+            options: ["TEST", "PROD", "DEV"],
+            correct: 2
+        },
+        {
+            q: "Pourquoi utilise-t-on l’environnement TEST ?",
+            options: [
+                "Pour l’utilisation réelle",
+                "Pour la configuration initiale",
+                "Pour valider les processus métier avec des données réalistes"
+            ],
+            correct: 2
+        }
+    ],
+    grammar: [
+        {
+            text: "Ahmed ..... le système avant de le déployer.",
+            missing: "configure",
+            options: ["configure", "utilise", "vend"],
+            rule_fr: "Avant le déploiement, le système doit être configuré.",
+            rule_ar: "قبل النشر، يجب تهيئة النظام."
+        },
+        {
+            text: "L’environnement ..... est utilisé pour les premiers tests.",
+            missing: "DEV",
+            options: ["PROD", "DEV", "TEST"],
+            rule_fr: "DEV est l’environnement dédié à la configuration et aux tests initiaux.",
+            rule_ar: "بيئة DEV مخصصة للإعداد والاختبارات الأولية."
+        },
+        {
+            text: "PROD est utilisé pour une utilisation ..... par les employés.",
+            missing: "réelle",
+            options: ["fictive", "réelle", "temporaire"],
+            rule_fr: "L’environnement PROD sert à l’exploitation réelle du système.",
+            rule_ar: "بيئة PROD مخصصة للاستخدام الفعلي للنظام."
+        }
+    ]
+},
 
                 {
     id: 4,
@@ -52,6 +113,7 @@ const INITIAL_DATA = {
         }
     ]
 },
+
 
                 {
     id: 1,
