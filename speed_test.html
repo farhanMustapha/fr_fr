@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Vitesse - Ostadi</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .timer-box {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 2rem 0;
+            font-variant-numeric: tabular-nums;
+            transition: color 0.3s;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .timer-box.danger {
+            color: var(--danger);
+            animation: pulse 1s infinite;
+        }
+
+        .timer-box.success {
+            color: var(--success);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 99px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s linear;
+        }
+
+        .word-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            margin-bottom: 2rem;
+            border: 2px solid var(--primary-light);
+        }
+
+        .french-word {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .option-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--secondary);
+            font-family: var(--font-arabic);
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .option-btn:active {
+            transform: translateY(0);
+        }
+
+        .option-btn.correct {
+            background-color: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .option-btn.wrong {
+            background-color: var(--danger);
+            color: white;
+            border-color: var(--danger);
+        }
+
+        /* Overlay Styles */
+        .game-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: white;
+            animation: slideUp 0.5s ease;
+        }
+
+        .big-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .french-word {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .timer-box {
+                font-size: 2.5rem;
+                margin: 0.5rem 0;
+            }
+
+            .word-card {
+                padding: 1.25rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .option-btn {
+                padding: 0.75rem;
+                font-size: 1.1rem;
+            }
+
+            .progress-bar {
+                margin-bottom: 0.75rem;
+                height: 8px;
+            }
+
+            /* Ensure the game container fits nicely within viewport minus nav */
+            main.container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                min-height: calc(100vh - 6rem);
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="max-w-7xl mx-auto" style="padding: 0 1rem;">
+            <div class="flex justify-between items-center" style="height: 5rem;">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='home_fr.html'">
+                    <div class="logo-box">
+                        <span style="font-size: 1.25rem;">⚡</span>
+                    </div>
+                    <span class="text-xl font-bold" style="color: var(--dark);">Test de Vitesse</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="home_fr.html" class="btn btn-secondary text-sm">
+                        <span>↩️ Retour</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container"
+        style="min-height: calc(100vh - 5rem); display: flex; align-items: center; justify-content: center;">
+
+        <div id="start-screen" class="text-center">
+            <div class="card" style="max-width: 500px; margin: auto;">
+                <h1>⏱️ Test de Vitesse</h1>
+                <p class="text-lg text-secondary mb-8">
+                    Testez votre vocabulaire contre la montre !<br>
+                    <strong>Départ :</strong> 10 secondes<br>
+                    <strong>Bonne réponse :</strong> <span class="text-success">+5s</span><br>
+                    <strong>Mauvaise réponse :</strong> <span class="text-danger">-2s</span><br>
+                    <strong>Objectif :</strong> Atteindre <span class="text-primary">60s</span>
+                </p>
+                <button onclick="startGame()" class="btn btn-primary" style="font-size: 1.5rem; padding: 1rem 3rem;">
+                    C'est parti ! 🚀
+                </button>
+            </div>
+        </div>
+
+        <div id="game-ui" class="game-container hidden">
+
+            <div class="progress-bar">
+                <div id="timer-bar" class="progress-fill" style="width: 16.66%;"></div>
+            </div>
+
+            <div id="timer-display" class="timer-box">10.0</div>
+
+            <div class="word-card">
+                <div class="text-sm text-secondary uppercase tracking-wider mb-2">Comment dit-on en en Arabe ?</div>
+                <div id="question-word" class="french-word">Loading...</div>
+            </div>
+
+            <div id="options-container" class="options-grid">
+                <!-- Options injected here -->
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Game Over Overlay -->
+    <div id="game-over-modal" class="game-overlay hidden">
+        <div class="overlay-content">
+            <span class="big-icon">😢</span>
+            <h1>Pas grave !</h1>
+            <p class="text-xl mb-8">La prochaine fois sera la bonne.</p>
+            <button onclick="location.reload()" class="btn btn-primary">Réessayer 🔄</button>
+            <button onclick="window.location.href='home_fr.html'" class="btn btn-secondary"
+                style="margin-left: 1rem;">Quitter</button>
+        </div>
+    </div>
+
+    <!-- Win Overlay -->
+    <div id="win-modal" class="game-overlay hidden">
+        <div class="overlay-content">
+            <span class="big-icon">🏆</span>
+            <h1>Bravo ! Bon travail !</h1>
+            <p class="text-xl mb-8">Vous avez maîtrisé le temps !</p>
+            <button onclick="location.reload()" class="btn btn-success">Encore une fois ? 🚀</button>
+            <button onclick="window.location.href='home_fr.html'" class="btn btn-secondary"
+                style="margin-left: 1rem;">Quitter</button>
+        </div>
+    </div>
+
+    <script src="data_stories_fr.js"></script>
+    <script>
+        // Game State
+        let timer = 10.0;
+        let isPlaying = false;
+        let gameInterval;
+        let allVocabulary = [];
+        let currentRightAnswer = null;
+
+        // Initialize Vocabulary
+        function initVocab() {
+            if (typeof INITIAL_DATA === 'undefined' || !INITIAL_DATA.stories) {
+                console.error("Data not loaded");
+                return;
+            }
+            // Extract all vocab from all stories
+            INITIAL_DATA.stories.forEach(story => {
+                if (story.vocabulary) {
+                    allVocabulary.push(...story.vocabulary);
+                }
+            });
+        }
+
+        function startGame() {
+            initVocab();
+            if (allVocabulary.length < 4) {
+                alert("Pas assez de vocabulaire pour jouer !");
+                return;
+            }
+
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('game-ui').classList.remove('hidden');
+
+            isPlaying = true;
+            timer = 10.0;
+            updateTimerDisplay();
+
+            gameInterval = setInterval(() => {
+                if (!isPlaying) return;
+
+                timer -= 0.1; // Decrease by 100ms
+
+                if (timer <= 0) {
+                    endGame(false);
+                } else if (timer >= 60) {
+                    endGame(true);
+                } else {
+                    updateTimerDisplay();
+                }
+            }, 100);
+
+            nextQuestion();
+        }
+
+        function updateTimerDisplay() {
+            const display = document.getElementById('timer-display');
+            const bar = document.getElementById('timer-bar');
+
+            // Format to 1 decimal place
+            display.textContent = Math.max(0, timer).toFixed(1);
+
+            // Visual feedback
+            if (timer < 5) display.classList.add('danger');
+            else display.classList.remove('danger');
+
+            // Bar width (capped at 100% for 60s)
+            const percentage = Math.min(100, (timer / 60) * 100);
+            bar.style.width = percentage + '%';
+
+            // Color shift based on timer
+            if (timer > 50) bar.style.backgroundColor = 'var(--success)';
+            else if (timer < 10) bar.style.backgroundColor = 'var(--danger)';
+            else bar.style.backgroundColor = 'var(--primary)';
+        }
+
+        function nextQuestion() {
+            // Pick random word
+            const idx = Math.floor(Math.random() * allVocabulary.length);
+            const questionItem = allVocabulary[idx];
+            currentRightAnswer = questionItem;
+
+            document.getElementById('question-word').textContent = questionItem.fr;
+
+            // Generate wrong options
+            const options = [questionItem];
+            while (options.length < 4) {
+                const randomItem = allVocabulary[Math.floor(Math.random() * allVocabulary.length)];
+                // Avoid duplicates
+                if (!options.find(o => o.fr === randomItem.fr && o.ar === randomItem.ar)) {
+                    options.push(randomItem);
+                }
+            }
+
+            // Shuffle options
+            options.sort(() => Math.random() - 0.5);
+
+            // Render buttons
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = opt.ar;
+                btn.onclick = () => handleAnswer(opt, btn);
+                container.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(selected, btnElement) {
+            if (!isPlaying) return;
+
+            const isCorrect = selected.fr === currentRightAnswer.fr;
+
+            if (isCorrect) {
+                // Visual Success
+                btnElement.classList.add('correct');
+                timer += 5;
+                // Cap timer visual prevents instant win jump, but logic check is in loop
+
+                // Trigger confetti for fun
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 50,
+                        spread: 60,
+                        origin: { y: 0.7 },
+                        colors: ['#22c55e', '#ffffff']
+                    });
+                }
+
+                // Next question after short delay
+                setTimeout(nextQuestion, 300);
+
+            } else {
+                // Visual Error
+                btnElement.classList.add('wrong');
+                timer -= 2;
+
+                // Shake effect on timer
+                const timerDisplay = document.getElementById('timer-display');
+                timerDisplay.classList.add('shake');
+                setTimeout(() => timerDisplay.classList.remove('shake'), 500);
+            }
+
+            updateTimerDisplay(); // Immediate update to show jump
+        }
+
+        function endGame(win) {
+            isPlaying = false;
+            clearInterval(gameInterval);
+
+            if (win) {
+                document.getElementById('win-modal').classList.remove('hidden');
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 200,
+                        spread: 100,
+                        origin: { y: 0.6 }
+                    });
+                }
+            } else {
+                document.getElementById('game-over-modal').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>
