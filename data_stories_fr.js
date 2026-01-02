@@ -7,6 +7,43 @@ const INITIAL_DATA = {
             ],
             stories: [
                 {
+    id: 11,
+    level_id: 1,
+    theme: "Valeurs",
+    title_fr: "Les valeurs importantes",
+    title_ar: "القيم المهمة",
+    text_fr: "Dans ma religion, le respect, l’honnêteté et la propreté sont des valeurs importantes. J’aide les autres et je parle avec gentillesse.",
+    text_ar: "في ديني، الاحترام والصدق والنظافة قيم مهمة. أساعد الآخرين وأتحدث بلطف.",
+    vocabulary: [
+        { fr: "respect", ar: "الاحترام" },
+        { fr: "honnêteté", ar: "الصدق" },
+        { fr: "propreté", ar: "النظافة" },
+        { fr: "aider", ar: "يساعد" },
+        { fr: "gentillesse", ar: "اللطف" }
+    ],
+    comprehension: [
+        {
+            q: "Quelles sont les valeurs importantes ?",
+            options: [
+                "La vitesse et la force",
+                "Le respect et l’honnêteté",
+                "L’argent"
+            ],
+            correct: 1
+        }
+    ],
+    grammar: [
+        {
+            text: "J’..... les autres.",
+            missing: "aide",
+            options: ["aide", "ignore", "quitte"],
+            rule_fr: "Le verbe « aider » exprime une action positive.",
+            rule_ar: "فعل « يساعد » يدل على عمل إيجابي."
+        }
+    ]
+},
+
+                {
     id: 9,
     level_id: 1,
     title_fr: "Ma religion et ma pratique quotidienne",
