@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Coach de Conjugaison Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .card { transition: all 0.3s ease; }
+        .hidden { display: none; }
+        .pronoun-badge { background: #e2e8f0; color: #475569; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; min-width: 85px; text-align: center; }
+        .tab-active { border-bottom: 3px solid #4f46e5; color: #4f46e5; background-color: #eef2ff; }
+        
+        /* Custom scrollbar for tabs */
+        .tabs-container::-webkit-scrollbar { height: 4px; }
+        .tabs-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+<div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <header class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-indigo-600 flex justify-center items-center gap-3">
+            <i class="fas fa-graduation-cap"></i> Conjugaison Pro
+        </h1>
+        <p class="text-slate-500 mt-2">Apprenez avec vos propres règles et verbes.</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="flex justify-center mb-8 bg-white p-1 rounded-xl shadow-sm border border-slate-200">
+        <button onclick="switchTab('practice')" id="nav-practice" class="flex-1 py-2 px-4 rounded-lg font-semibold transition bg-indigo-600 text-white">
+            S'entraîner
+        </button>
+        <button onclick="switchTab('manage')" id="nav-manage" class="flex-1 py-2 px-4 rounded-lg font-semibold transition text-slate-600 hover:bg-slate-50">
+            Mes Verbes
+        </button>
+    </div>
+
+    <!-- PRACTICE SCREEN -->
+    <div id="screen-practice" class="space-y-6">
+        <div id="empty-state" class="hidden text-center p-12 bg-white rounded-2xl shadow-sm border-2 border-dashed border-slate-200">
+            <i class="fas fa-layer-group text-4xl text-slate-300 mb-4"></i>
+            <p class="text-slate-500">Votre liste est vide. Ajoutez des verbes pour commencer !</p>
+            <button onclick="switchTab('manage')" class="mt-4 text-indigo-600 font-bold hover:underline">Ajouter un verbe</button>
+        </div>
+
+        <div id="practice-options" class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-wrap gap-4 items-center justify-center">
+            <span class="text-sm font-bold text-slate-500 uppercase">Temps à réviser :</span>
+            <select id="practice-tense-filter" onchange="initQuiz()" class="p-2 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="all">Tous les temps mélangés</option>
+                <option value="present">Présent</option>
+                <option value="imparfait">Imparfait</option>
+                <option value="futur">Futur Simple</option>
+                <option value="passe_compose">Passé Composé</option>
+                <option value="passe_simple">Passé Simple</option>
+                <option value="plus_que_parfait">Plus-que-parfait</option>
+                <option value="conditionnel">Conditionnel Présent</option>
+                <option value="subjonctif">Subjonctif Présent</option>
+            </select>
+            <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold" id="score-display">Score: 0</span>
+        </div>
+
+        <div id="quiz-card" class="card bg-white p-8 rounded-2xl shadow-xl border border-slate-100 text-center">
+            <div class="mb-6">
+                <span class="px-4 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-black uppercase tracking-widest" id="display-tense">PRÉSENT</span>
+            </div>
+            
+            <h2 class="text-5xl font-bold text-slate-800 mb-2" id="display-verb">---</h2>
+            <p class="text-slate-400 mb-8 italic" id="display-group">Groupe</p>
+
+            <div class="flex flex-col items-center gap-4">
+                <div class="flex items-center gap-4 w-full max-w-md">
+                    <span class="text-3xl font-light text-slate-500 min-w-[100px] text-right" id="display-pronoun">Je</span>
+                    <input type="text" id="user-answer" 
+                           class="w-full text-2xl p-3 border-b-4 border-slate-200 focus:border-indigo-500 outline-none transition text-indigo-600 font-semibold"
+                           placeholder="..." autocomplete="off">
+                </div>
+                <button onclick="checkAnswer()" id="btn-check" class="w-full max-w-md mt-4 bg-indigo-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition active:scale-95">
+                    Vérifier
+                </button>
+                <button onclick="nextQuestion()" id="btn-next" class="hidden w-full max-w-md mt-4 bg-slate-800 text-white py-4 rounded-xl font-bold text-lg hover:bg-slate-900 transition">
+                    Suivant <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+            
+            <div id="feedback" class="mt-6 min-h-[60px] flex flex-col items-center justify-center"></div>
+        </div>
+    </div>
+
+    <!-- MANAGE SCREEN -->
+    <div id="screen-manage" class="hidden space-y-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-slate-800">Ajouter / Modifier un verbe</h3>
+                <button onclick="clearForm()" class="text-xs text-indigo-600 font-bold hover:underline">Réinitialiser le formulaire</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Nom du verbe</label>
+                    <input type="text" id="new-verb-name" placeholder="ex: Aller" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 font-bold">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Groupe</label>
+                    <select id="new-verb-group" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="1er groupe">1er groupe (-er)</option>
+                        <option value="2ème groupe">2ème groupe (-ir)</option>
+                        <option value="3ème groupe">3ème groupe (irrégulier)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Tense Tabs for Entry -->
+            <div class="tabs-container flex border-b border-slate-100 mb-4 overflow-x-auto whitespace-nowrap">
+                <button onclick="setEntryTense('present')" id="tab-ent-present" class="px-4 py-2 font-bold text-xs tab-active transition-all">PRÉSENT</button>
+                <button onclick="setEntryTense('imparfait')" id="tab-ent-imparfait" class="px-4 py-2 font-bold text-xs text-slate-400 hover:text-indigo-500 transition-all">IMPARFAIT</button>
+                <button onclick="setEntryTense('futur')" id="tab-ent-futur" class="px-4 py-2 font-bold text-xs text-slate-400 hover:text-indigo-500 transition-all">FUTUR</button>
+                <button onclick="setEntryTense('passe_compose')" id="tab-ent-passe_compose" class="px-4 py-2 font-bold text-xs text-slate-400 hover:text-indigo-500 transition-all">PASSÉ COMPOSÉ</button>
+                <button onclick="setEntryTense('passe_simple')" id="tab-ent-passe_simple" class="px-4 py-2 font-bold text-xs text-slate-400 hover:text-indigo-500 transition-all">PASSÉ SIMPLE</button>
+                <button onclick="setEntryTense('plus_que_parfait')" id="tab-ent-plus_que_parfait" class="px-4 py-2 font-bold text-xs text-slate-400 hover:text-indigo-500 transition-all">PLUS-QUE-PARFAIT</button>
+                <button onclick="setEntryTense('conditionnel')" id="tab-ent-conditionnel" class="px-4 py-2 font-bold text-xs text-slate-400 hover:text-indigo-500 transition-all">CONDITIONNEL</button>
+                <button onclick="setEntryTense('subjonctif')" id="tab-ent-subjonctif" class="px-4 py-2 font-bold text-xs text-slate-400 hover:text-indigo-500 transition-all">SUBJONCTIF</button>
+            </div>
+
+            <!-- Rule Input -->
+            <div class="mb-4">
+                <label class="block text-xs font-bold text-indigo-500 uppercase mb-1">Règle pour ce temps (ex: terminaisons, auxiliaire...)</label>
+                <input type="text" id="new-verb-rule" placeholder="Règle de conjugaison..." class="w-full p-2 bg-indigo-50 border border-indigo-100 rounded outline-none focus:ring-1 focus:ring-indigo-400 italic">
+            </div>
+
+            <!-- Inputs -->
+            <div id="entry-fields" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 mb-6">
+                <!-- Form fields generated by JS -->
+            </div>
+
+            <button onclick="saveVerb()" class="w-full bg-emerald-500 text-white py-4 rounded-xl font-bold hover:bg-emerald-600 transition shadow-lg shadow-emerald-100">
+                <i class="fas fa-save mr-2"></i>Enregistrer le verbe
+            </button>
+        </div>
+
+        <!-- Verb List -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-4 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+                <h3 class="font-bold text-slate-700 uppercase text-xs tracking-wider">Mes Verbes Enregistrés (<span id="verb-count">0</span>)</h3>
+            </div>
+            <div id="verb-list" class="divide-y divide-slate-100 max-h-[400px] overflow-y-auto"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- Initial Examples ---
+    const exampleVerbs = [
+        {
+            id: 1,
+            name: "Aimer",
+            group: "1er groupe",
+            conjugations: {
+                present: ["aime", "aimes", "aime", "aimons", "aimez", "aiment"],
+                imparfait: ["aimais", "aimais", "aimait", "aimions", "aimiez", "aimaient"],
+                futur: ["aimerai", "aimeras", "aimera", "aimerons", "aimerez", "aimeront"],
+                passe_compose: ["ai aimé", "as aimé", "a aimé", "avons aimé", "avez aimé", "ont aimé"],
+                passe_simple: ["aimai", "aimas", "aima", "aimâmes", "aimâtes", "aimèrent"],
+                plus_que_parfait: ["avais aimé", "avais aimé", "avait aimé", "avions aimé", "aviez aimé", "avaient aimé"],
+                conditionnel: ["aimerais", "aimerais", "aimerait", "aimerions", "aimeriez", "aimeraient"],
+                subjonctif: ["aime", "aimes", "aime", "aimions", "aimiez", "aiment"]
+            },
+            rules: {
+                present: "Terminaisons en -er : e, es, e, ons, ez, ent.",
+                futur: "Radical de l'infinitif + ai, as, a, ons, ez, ont.",
+                passe_compose: "Auxiliaire Avoir au présent + participe passé en -é."
+            }
+        },
+        {
+            id: 2,
+            name: "Finir",
+            group: "2ème groupe",
+            conjugations: {
+                present: ["finis", "finis", "finit", "finissons", "finissez", "finissent"],
+                imparfait: ["finissais", "finissais", "finissait", "finissions", "finissiez", "finissaient"],
+                futur: ["finirai", "finiras", "finira", "finirons", "finirez", "finiront"],
+                passe_compose: ["ai fini", "as fini", "a fini", "avons fini", "avez fini", "ont fini"],
+                passe_simple: ["finis", "finis", "finit", "finîmes", "finîtes", "finirent"],
+                plus_que_parfait: ["avais fini", "avais fini", "avait fini", "avions fini", "aviez fini", "avaient fini"],
+                conditionnel: ["finirais", "finirais", "finirait", "finirions", "finiriez", "finiraient"],
+                subjonctif: ["finisse", "finisses", "finisse", "finissions", "finissiez", "finissent"]
+            },
+            rules: {
+                present: "Terminaisons : is, is, it, issons, issez, issent.",
+                passe_compose: "Auxiliaire Avoir + participe passé en -i."
+            }
+        },
+        {
+            id: 3,
+            name: "Être",
+            group: "3ème groupe",
+            conjugations: {
+                present: ["suis", "es", "est", "sommes", "êtes", "sont"],
+                imparfait: ["étais", "étais", "était", "étions", "étiez", "étaient"],
+                futur: ["serai", "seras", "sera", "serons", "serez", "seront"],
+                passe_compose: ["ai été", "as été", "a été", "avons été", "avez été", "ont été"],
+                passe_simple: ["fus", "fus", "fut", "fûmes", "fûtes", "furent"],
+                plus_que_parfait: ["avais été", "avais été", "avait été", "avions été", "aviez été", "avaient été"],
+                conditionnel: ["serais", "serais", "serait", "serions", "seriez", "seraient"],
+                subjonctif: ["sois", "sois", "soit", "soyons", "soyez", "soient"]
+            },
+            rules: {
+                present: "Verbe irrégulier indispensable à connaître par cœur.",
+                futur: "Le radical devient 'ser-' + terminaisons du futur."
+            }
+        }
+    ];
+
+    // --- State & Constants ---
+    let verbs = JSON.parse(localStorage.getItem('myVerbsV4'));
+    
+    if (!verbs || verbs.length === 0) {
+        verbs = exampleVerbs;
+        localStorage.setItem('myVerbsV4', JSON.stringify(verbs));
+    }
+
+    let currentQuiz = null;
+    let score = 0;
+    let activeEntryTense = 'present';
+    
+    const initialDraft = {
+        present: ["", "", "", "", "", ""],
+        imparfait: ["", "", "", "", "", ""],
+        futur: ["", "", "", "", "", ""],
+        passe_compose: ["", "", "", "", "", ""],
+        passe_simple: ["", "", "", "", "", ""],
+        plus_que_parfait: ["", "", "", "", "", ""],
+        conditionnel: ["", "", "", "", "", ""],
+        subjonctif: ["", "", "", "", "", ""]
+    };
+
+    const initialRules = {
+        present: "", imparfait: "", futur: "", passe_compose: "", 
+        passe_simple: "", plus_que_parfait: "", conditionnel: "", subjonctif: ""
+    };
+
+    let draftVerb = JSON.parse(JSON.stringify(initialDraft));
+    let draftRules = JSON.parse(JSON.stringify(initialRules));
+
+    const pronouns = ["Je", "Tu", "Il / Elle", "Nous", "Vous", "Ils / Elles"];
+    const tenses = {
+        present: "Présent",
+        imparfait: "Imparfait",
+        futur: "Futur Simple",
+        passe_compose: "Passé Composé",
+        passe_simple: "Passé Simple",
+        plus_que_parfait: "Plus-que-parfait",
+        conditionnel: "Conditionnel Présent",
+        subjonctif: "Subjonctif Présent"
+    };
+
+    // --- Tab & Navigation ---
+
+    function switchTab(tab) {
+        document.getElementById('screen-practice').classList.toggle('hidden', tab !== 'practice');
+        document.getElementById('screen-manage').classList.toggle('hidden', tab !== 'manage');
+        
+        const navP = document.getElementById('nav-practice');
+        const navM = document.getElementById('nav-manage');
+        
+        if (tab === 'practice') {
+            navP.className = "flex-1 py-2 px-4 rounded-lg font-semibold transition bg-indigo-600 text-white";
+            navM.className = "flex-1 py-2 px-4 rounded-lg font-semibold transition text-slate-600 hover:bg-slate-50";
+            initQuiz();
+        } else {
+            navM.className = "flex-1 py-2 px-4 rounded-lg font-semibold transition bg-indigo-600 text-white";
+            navP.className = "flex-1 py-2 px-4 rounded-lg font-semibold transition text-slate-600 hover:bg-slate-50";
+            renderVerbList();
+            setEntryTense('present');
+        }
+    }
+
+    // --- Manage Verbs Logic ---
+
+    function setEntryTense(tense) {
+        saveInputsToDraft();
+        activeEntryTense = tense;
+        
+        Object.keys(tenses).forEach(t => {
+            const el = document.getElementById(`tab-ent-${t}`);
+            if (t === tense) {
+                el.classList.add('tab-active');
+                el.classList.remove('text-slate-400');
+            } else {
+                el.classList.remove('tab-active');
+                el.classList.add('text-slate-400');
+            }
+        });
+
+        // Update rule field
+        document.getElementById('new-verb-rule').value = draftRules[activeEntryTense] || "";
+
+        const container = document.getElementById('entry-fields');
+        container.innerHTML = "";
+        pronouns.forEach((p, idx) => {
+            container.innerHTML += `
+                <div class="flex items-center gap-3">
+                    <span class="pronoun-badge">${p}</span>
+                    <input type="text" class="conj-input-field w-full p-2 border border-slate-200 rounded outline-none focus:border-indigo-400" 
+                           data-index="${idx}" value="${draftVerb[activeEntryTense][idx] || ""}">
+                </div>
+            `;
+        });
+    }
+
+    function saveInputsToDraft() {
+        const inputs = document.querySelectorAll('.conj-input-field');
+        if (inputs.length > 0) {
+            inputs.forEach(input => {
+                const idx = parseInt(input.getAttribute('data-index'));
+                draftVerb[activeEntryTense][idx] = input.value.trim().toLowerCase();
+            });
+        }
+        const ruleInput = document.getElementById('new-verb-rule');
+        if (ruleInput) {
+            draftRules[activeEntryTense] = ruleInput.value.trim();
+        }
+    }
+
+    function clearForm() {
+        document.getElementById('new-verb-name').value = "";
+        draftVerb = JSON.parse(JSON.stringify(initialDraft));
+        draftRules = JSON.parse(JSON.stringify(initialRules));
+        setEntryTense('present');
+    }
+
+    function saveVerb() {
+        saveInputsToDraft();
+        const name = document.getElementById('new-verb-name').value.trim();
+        const group = document.getElementById('new-verb-group').value;
+
+        if (!name) {
+            showMessage("Veuillez entrer le nom du verbe.", "error");
+            return;
+        }
+
+        const allEmpty = Object.values(draftVerb).every(arr => arr.every(val => val === ""));
+        if (allEmpty) {
+            showMessage("Veuillez remplir au moins un temps.", "error");
+            return;
+        }
+
+        const newVerb = {
+            id: Date.now(),
+            name: name,
+            group: group,
+            conjugations: JSON.parse(JSON.stringify(draftVerb)),
+            rules: JSON.parse(JSON.stringify(draftRules))
+        };
+
+        verbs.push(newVerb);
+        localStorage.setItem('myVerbsV4', JSON.stringify(verbs));
+        
+        clearForm();
+        renderVerbList();
+        showMessage("Verbe enregistré !", "success");
+    }
+
+    function deleteVerb(id) {
+        verbs = verbs.filter(v => v.id !== id);
+        localStorage.setItem('myVerbsV4', JSON.stringify(verbs));
+        renderVerbList();
+    }
+
+    function renderVerbList() {
+        const container = document.getElementById('verb-list');
+        document.getElementById('verb-count').innerText = verbs.length;
+        container.innerHTML = "";
+
+        if (verbs.length === 0) {
+            container.innerHTML = `<div class="p-8 text-center text-slate-400">Aucun verbe enregistré.</div>`;
+            return;
+        }
+
+        verbs.forEach(v => {
+            const filledTenses = Object.keys(tenses).filter(t => v.conjugations[t].some(x => x !== ""));
+            
+            container.innerHTML += `
+                <div class="p-4 flex justify-between items-center group">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-slate-800">${v.name}</h4>
+                        <div class="flex flex-wrap gap-1 mt-1">
+                            ${filledTenses.map(t => `<span class="text-[8px] bg-indigo-50 text-indigo-600 px-1 rounded uppercase font-bold">${t.replace('_', ' ').substring(0, 4)}</span>`).join('')}
+                            <span class="text-[9px] text-slate-400 ml-1 uppercase font-semibold border-l pl-2">${v.group}</span>
+                        </div>
+                    </div>
+                    <button onclick="deleteVerb(${v.id})" class="text-slate-300 hover:text-red-500 transition ml-4">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            `;
+        });
+    }
+
+    // --- Quiz Logic ---
+
+    function initQuiz() {
+        if (verbs.length === 0) {
+            document.getElementById('quiz-card').classList.add('hidden');
+            document.getElementById('empty-state').classList.remove('hidden');
+            return;
+        }
+        document.getElementById('quiz-card').classList.remove('hidden');
+        document.getElementById('empty-state').classList.add('hidden');
+        nextQuestion();
+    }
+
+    function nextQuestion() {
+        const input = document.getElementById('user-answer');
+        input.value = "";
+        input.disabled = false;
+        input.className = "w-full text-2xl p-3 border-b-4 border-slate-200 focus:border-indigo-500 outline-none transition text-indigo-600 font-semibold";
+        document.getElementById('feedback').innerHTML = "";
+        document.getElementById('btn-check').classList.remove('hidden');
+        document.getElementById('btn-next').classList.add('hidden');
+
+        const filter = document.getElementById('practice-tense-filter').value;
+        let possibleQuestions = [];
+
+        verbs.forEach(v => {
+            Object.keys(tenses).forEach(tenseKey => {
+                if (filter === 'all' || filter === tenseKey) {
+                    v.conjugations[tenseKey].forEach((ans, idx) => {
+                        if (ans && ans.trim() !== "") {
+                            possibleQuestions.push({
+                                verbName: v.name,
+                                group: v.group,
+                                tenseName: tenses[tenseKey],
+                                pronoun: pronouns[idx],
+                                answer: ans,
+                                rule: (v.rules && v.rules[tenseKey]) ? v.rules[tenseKey] : null
+                            });
+                        }
+                    });
+                }
+            });
+        });
+
+        if (possibleQuestions.length === 0) {
+            document.getElementById('feedback').innerHTML = "<span class='text-slate-400 text-sm'>Aucun exercice disponible pour ce filtre. Ajoutez des conjugaisons !</span>";
+            document.getElementById('display-verb').innerText = "---";
+            return;
+        }
+
+        currentQuiz = possibleQuestions[Math.floor(Math.random() * possibleQuestions.length)];
+
+        document.getElementById('display-verb').innerText = currentQuiz.verbName;
+        document.getElementById('display-tense').innerText = currentQuiz.tenseName;
+        document.getElementById('display-group').innerText = currentQuiz.group;
+        document.getElementById('display-pronoun').innerText = currentQuiz.pronoun;
+        input.focus();
+    }
+
+    function checkAnswer() {
+        const userAns = document.getElementById('user-answer').value.trim().toLowerCase();
+        const input = document.getElementById('user-answer');
+        const feedback = document.getElementById('feedback');
+
+        if (!userAns) return;
+
+        input.disabled = true;
+        document.getElementById('btn-check').classList.add('hidden');
+        document.getElementById('btn-next').classList.remove('hidden');
+
+        if (userAns === currentQuiz.answer) {
+            feedback.innerHTML = `<div class="text-emerald-500 font-bold"><i class="fas fa-check-circle mr-2"></i>Excellent !</div>`;
+            input.classList.replace('border-slate-200', 'border-emerald-500');
+            score += 10;
+        } else {
+            let feedbackHTML = `
+                <div class="text-red-500 font-bold mb-1"><i class="fas fa-times-circle mr-2"></i>Non, c'était : <span class="text-lg">${currentQuiz.answer}</span></div>
+            `;
+            
+            if (currentQuiz.rule) {
+                feedbackHTML += `<div class="text-slate-500 text-sm italic bg-slate-50 p-2 rounded border border-slate-100"><i class="fas fa-lightbulb mr-1 text-amber-400"></i>Rappel : ${currentQuiz.rule}</div>`;
+            }
+            
+            feedback.innerHTML = feedbackHTML;
+            input.classList.replace('border-slate-200', 'border-red-500');
+            score = Math.max(0, score - 5);
+        }
+
+        document.getElementById('score-display').innerText = `Score: ${score}`;
+    }
+
+    function showMessage(text, type) {
+        const div = document.createElement('div');
+        div.className = `fixed bottom-4 right-4 p-4 rounded-xl shadow-2xl text-white font-bold transition-all z-50 ${type === 'success' ? 'bg-emerald-500' : 'bg-red-500'}`;
+        div.innerText = text;
+        document.body.appendChild(div);
+        setTimeout(() => {
+            div.style.opacity = "0";
+            setTimeout(() => div.remove(), 500);
+        }, 2500);
+    }
+
+    document.getElementById('user-answer').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            if (!document.getElementById('btn-next').classList.contains('hidden')) nextQuestion(); else checkAnswer();
+        }
+    });
+
+    window.onload = () => {
+        renderVerbList();
+        initQuiz();
+        setEntryTense('present');
+    };
+</script>
+
+</body>
+</html>

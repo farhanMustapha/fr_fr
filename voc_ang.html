@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Vocabulaire Anglais-Arabe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .correct {
+            background-color: #10b981 !important; /* Vert */
+            color: white;
+            border-color: #059669;
+        }
+        .wrong {
+            background-color: #ef4444 !important; /* Rouge */
+            color: white;
+            border-color: #dc2626;
+        }
+        .hidden {
+            display: none;
+        }
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">Vocabulaire</h1>
+            <div class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full font-semibold">
+                Score: <span id="score">0</span>
+            </div>
+        </div>
+
+        <!-- Question Section -->
+        <div id="quiz-container">
+            <div class="mb-8 text-center">
+                <p class="text-sm text-gray-500 uppercase tracking-wide mb-1">Traduisez le mot :</p>
+                <h2 id="word-to-translate" class="text-4xl font-extrabold text-blue-600">...</h2>
+            </div>
+
+            <!-- Options -->
+            <div id="options" class="grid grid-cols-1 gap-3 mb-6">
+                <!-- Les boutons seront générés ici -->
+            </div>
+
+            <!-- Controls -->
+            <button id="next-btn" class="hidden w-full bg-gray-800 text-white py-3 rounded-lg font-bold hover:bg-gray-700 transition-colors">
+                Question suivante →
+            </button>
+        </div>
+
+        <!-- End Screen -->
+        <div id="end-screen" class="hidden text-center py-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Quiz terminé !</h2>
+            <p class="text-xl mb-6 text-gray-600">Votre score final est de <span id="final-score">0</span> / <span id="total-questions">0</span></p>
+            <button onclick="location.reload()" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-500">
+                Recommencer
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            { question: "Book", answers: ["كتاب", "سيارة", "تفاحة", "قلم"], correct: 0 },
+            { question:"with the following", answers: ["مع ما يلي", "بدون", "تحت", "فوق"], correct: 0 },
+            { question: "House", answers: ["مدرسة", "بيت", "حديقة", "بحر"], correct: 1 },
+            { question: "Apple", answers: ["موز", "برتقال", "تفاحة", "عنب"], correct: 2 },
+            { question: "Teacher", answers: ["طبيب", "مهندس", "مدرس", "طالب"], correct: 2 }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const wordElement = document.getElementById('word-to-translate');
+        const optionsElement = document.getElementById('options');
+        const nextButton = document.getElementById('next-btn');
+        const scoreElement = document.getElementById('score');
+        const quizContainer = document.getElementById('quiz-container');
+        const endScreen = document.getElementById('end-screen');
+
+        function loadQuestion() {
+            resetState();
+            let currentQuestion = quizData[currentQuestionIndex];
+            wordElement.innerText = currentQuestion.question;
+
+            currentQuestion.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.innerText = answer;
+                // Style par défaut des boutons
+                button.className = "w-full py-3 px-4 border-2 border-gray-200 rounded-lg text-lg font-medium text-gray-700 hover:bg-gray-50 hover:border-blue-300 transition-all text-right pr-6";
+                button.addEventListener('click', () => selectAnswer(index));
+                optionsElement.appendChild(button);
+            });
+        }
+
+        function resetState() {
+            nextButton.classList.add('hidden');
+            while (optionsElement.firstChild) {
+                optionsElement.removeChild(optionsElement.firstChild);
+            }
+        }
+
+        function selectAnswer(index) {
+            const correctIndex = quizData[currentQuestionIndex].correct;
+            const buttons = optionsElement.querySelectorAll('button');
+            
+            // Désactiver tous les boutons pour empêcher de changer de réponse
+            buttons.forEach(btn => btn.disabled = true);
+
+            if (index === correctIndex) {
+                buttons[index].classList.add('correct');
+                score++;
+                scoreElement.innerText = score;
+            } else {
+                buttons[index].classList.add('wrong');
+                buttons[correctIndex].classList.add('correct');
+            }
+            
+            nextButton.classList.remove('hidden');
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showEndScreen();
+            }
+        });
+
+        function showEndScreen() {
+            quizContainer.classList.add('hidden');
+            endScreen.classList.remove('hidden');
+            document.getElementById('final-score').innerText = score;
+            document.getElementById('total-questions').innerText = quizData.length;
+        }
+
+        // Initialisation au chargement de la page
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>

@@ -7,6 +7,109 @@ const INITIAL_DATA = {
             ],
             stories: [
                 {
+    id: 9,
+    level_id: 1,
+    title_fr: "Ma religion et ma pratique quotidienne",
+    title_ar: "ديني وممارستي اليومية",
+    text_fr: "Je suis musulman. Je fais les ablutions cinq fois par jour pour la prière. La propreté est une chose essentielle, et la prière est le pilier de la religion. Nous, les musulmans, avons un beau livre qui s’appelle le Coran. Quand tu le lis, tu ressens la tranquillité et la sérénité.",
+    text_ar: "أنا مسلم، أتوضأ خمس مرات في اليوم من أجل الصلاة. الطهارة أمر ضروري، والصلاة هي عماد الدين. نحن المسلمين لدينا كتاب جميل اسمه القرآن، وعندما تقرأه تشعر بالطمأنينة والسكينة.",
+    vocabulary: [
+        { fr: "musulman", ar: "مسلم" },
+        { fr: "ablutions", ar: "الوضوء" },
+        { fr: "prière", ar: "الصلاة" },
+        { fr: "propreté", ar: "الطهارة / النظافة" },
+        { fr: "pilier", ar: "عماد / ركن" },
+        { fr: "religion", ar: "الدين" },
+        { fr: "Coran", ar: "القرآن" },
+        { fr: "tranquillité", ar: "طمأنينة" },
+        { fr: "sérénité", ar: "سكينة" }
+    ],
+    comprehension: [
+        {
+            q: "Combien de fois fait-il les ablutions par jour ?",
+            options: ["Deux fois", "Trois fois", "Cinq fois"],
+            correct: 2
+        },
+        {
+            q: "Que ressent-on en lisant le Coran ?",
+            options: [
+                "La fatigue",
+                "La tranquillité et la sérénité",
+                "La peur"
+            ],
+            correct: 1
+        }
+    ],
+    grammar: [
+        {
+            text: "Je ..... les ablutions avant la prière.",
+            missing: "fais",
+            options: ["fais", "lis", "mange"],
+            rule_fr: "On utilise le verbe « faire » avec le mot ablutions.",
+            rule_ar: "يُستعمل الفعل « يفعل » مع كلمة الوضوء."
+        },
+        {
+            text: "La prière est le ..... de la religion.",
+            missing: "pilier",
+            options: ["livre", "pilier", "moment"],
+            rule_fr: "La prière est considérée comme un pilier fondamental de la religion.",
+            rule_ar: "تُعتبر الصلاة ركناً أساسياً من أركان الدين."
+        }
+    ]
+},
+
+                {
+    id: 8,
+    level_id: 1,
+    title_fr: "Ma routine du matin",
+    title_ar: "روتيني الصباحي",
+    text_fr: "Je me réveille le matin après avoir dormi, je me lave le visage puis je l’essuie avec une serviette bleue. Ensuite, je me brosse les dents avec une brosse à dents rouge et je prends mon petit-déjeuner sur une table verte.",
+    text_ar: "أستيقظ في الصباح من النوم، أغسل وجهي ثم أمسحه بمنشفة زرقاء، وبعد ذلك أنظف أسناني بفرشاة حمراء، ثم أتناول فطوري على طاولة خضراء.",
+    vocabulary: [
+        { fr: "se réveiller", ar: "يستيقظ" },
+        { fr: "le matin", ar: "في الصباح" },
+        { fr: "le visage", ar: "الوجه" },
+        { fr: "serviette", ar: "منشفة" },
+        { fr: "se brosser les dents", ar: "ينظف أسنانه" },
+        { fr: "brosse à dents", ar: "فرشاة الأسنان" },
+        { fr: "petit-déjeuner", ar: "الفطور" },
+        { fr: "table", ar: "طاولة" }
+    ],
+    comprehension: [
+        {
+            q: "Que fait-il après s’être réveillé ?",
+            options: [
+                "Il prend son petit-déjeuner",
+                "Il se lave le visage",
+                "Il se brosse les dents"
+            ],
+            correct: 1
+        },
+        {
+            q: "De quelle couleur est la serviette ?",
+            options: ["Rouge", "Bleue", "Verte"],
+            correct: 1
+        }
+    ],
+    grammar: [
+        {
+            text: "Je me ..... le visage le matin.",
+            missing: "lave",
+            options: ["lave", "mange", "regarde"],
+            rule_fr: "Le verbe « laver » est utilisé pour parler de l’hygiène.",
+            rule_ar: "يُستعمل فعل « يغسل » للتعبير عن النظافة."
+        },
+        {
+            text: "Je me ..... les dents avec une brosse à dents.",
+            missing: "brosse",
+            options: ["brosse", "essuie", "range"],
+            rule_fr: "L’expression correcte est « se brosser les dents ».",
+            rule_ar: "التعبير الصحيح هو « ينظف أسنانه »."
+        }
+    ]
+},
+
+                {
     id: 7,
     level_id: 2,
     title_fr: "L’implémentation SAP avec Ahmed",
