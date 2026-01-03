@@ -7,6 +7,122 @@ const INITIAL_DATA = {
             ],
             stories: [
                 {
+    id: 14,
+    level_id: 1,
+    theme: "Famille",
+    title_fr: "Ma famille",
+    title_ar: "عائلتي",
+    text_fr: "Aujourd’hui, je vous parle de ma famille. Ma famille est très petite. Elle se compose de mon père et de ma mère. Mon père est grand et il a un gros ventre. Il a une longue barbe et une moustache recourbée comme les cornes d’un taureau. Ma mère est gentille, mais si on n’écoute pas ce qu’elle dit, elle devient nerveuse. Elle cuisine très bien et passe la plupart de son temps dans la cuisine et à prendre soin de nous.",
+    text_ar: "اليوم سأتحدثكم عن عائلتي. عائلتي صغيرة جدًا، تتكون من أبي وأمي. أبي كبير الحجم وله بطن منتفخة، لديه لحية طويلة وشارب مقوس مثل قرون الثور. أما أمي فهي لطيفة، لكن إذا لم نسمع كلامها تصبح عصبية. تطبخ طبخًا لذيذًا جدًا وتقضي معظم وقتها في المطبخ وفي رعايتنا.",
+    vocabulary: [
+        { fr: "famille", ar: "عائلة" },
+        { fr: "père", ar: "أب" },
+        { fr: "mère", ar: "أم" },
+        { fr: "se composer de", ar: "يتكون من" },
+        { fr: "barbe", ar: "لحية" },
+        { fr: "moustache", ar: "شارب" },
+        { fr: "gentille", ar: "لطيفة" },
+        { fr: "nerveuse", ar: "عصبية" },
+        { fr: "cuisiner", ar: "يطبخ" },
+        { fr: "prendre soin", ar: "يعتني" }
+    ],
+    comprehension: [
+        {
+            q: "De qui se compose la famille ?",
+            options: [
+                "Du père et de la mère",
+                "Des amis",
+                "Des voisins"
+            ],
+            correct: 0
+        },
+        {
+            q: "Comment est la mère ?",
+            options: [
+                "Toujours en colère",
+                "Gentille et elle cuisine bien",
+                "Elle ne cuisine pas"
+            ],
+            correct: 1
+        }
+    ],
+    grammar: [
+        {
+            text: "Ma famille ..... de mon père et de ma mère.",
+            missing: "se compose",
+            options: ["se compose", "part", "oublie"],
+            rule_fr: "L’expression « se composer de » sert à décrire les éléments d’un groupe.",
+            rule_ar: "تُستعمل عبارة « يتكون من » لذكر مكونات مجموعة."
+        },
+        {
+            text: "Ma mère ..... très bien.",
+            missing: "cuisine",
+            options: ["cuisine", "dessine", "court"],
+            rule_fr: "Le verbe « cuisiner » exprime la préparation des repas.",
+            rule_ar: "فعل « يطبخ » يدل على إعداد الطعام."
+        }
+    ]
+},
+
+                {
+    id: 13,
+    level_id: 1,
+    theme: "Vie quotidienne",
+    title_fr: "Mon dimanche",
+    title_ar: "يوم الأحد",
+    text_fr: "Chaque dimanche, je me réveille tôt. Je range ma chambre, je prends mon petit-déjeuner et je prépare mon sac. J’appelle mes amis et nous allons au stade pour jouer au football toute la journée. Quand je rentre, je suis très fatigué.",
+    text_ar: "كل يوم أحد أستيقظ باكرًا. أقوم بترتيب غرفتي، أتناول فطوري وأجهز حقيبتي. أتصل بأصدقائي ونذهب إلى الملعب للعب كرة القدم طوال اليوم. عندما أعود أكون متعبًا جدًا.",
+    vocabulary: [
+        { fr: "dimanche", ar: "الأحد" },
+        { fr: "se réveiller tôt", ar: "يستيقظ باكرًا" },
+        { fr: "ranger", ar: "يرتب" },
+        { fr: "chambre", ar: "غرفة" },
+        { fr: "petit-déjeuner", ar: "الفطور" },
+        { fr: "préparer", ar: "يجهز" },
+        { fr: "appeler", ar: "يتصل" },
+        { fr: "amis", ar: "أصدقاء" },
+        { fr: "stade", ar: "الملعب" },
+        { fr: "football", ar: "كرة القدم" },
+        { fr: "fatigué", ar: "متعب" }
+    ],
+    comprehension: [
+        {
+            q: "Que fait-il le dimanche matin ?",
+            options: [
+                "Il dort tard",
+                "Il range sa chambre",
+                "Il regarde la télévision"
+            ],
+            correct: 1
+        },
+        {
+            q: "Pourquoi est-il fatigué à la fin de la journée ?",
+            options: [
+                "Parce qu’il travaille",
+                "Parce qu’il joue au football toute la journée",
+                "Parce qu’il voyage"
+            ],
+            correct: 1
+        }
+    ],
+    grammar: [
+        {
+            text: "Je ..... ma chambre le dimanche.",
+            missing: "range",
+            options: ["range", "quitte", "oublie"],
+            rule_fr: "Le verbe « ranger » signifie mettre en ordre.",
+            rule_ar: "فعل « يرتب » يعني تنظيم الأشياء."
+        },
+        {
+            text: "Je suis très ..... le soir.",
+            missing: "fatigué",
+            options: ["fatigué", "content", "rapide"],
+            rule_fr: "« Fatigué » est un adjectif qui exprime l’état physique.",
+            rule_ar: "« متعب » صفة تعبّر عن الحالة الجسدية."
+        }
+    ]
+},
+                {
     id: 11,
     level_id: 1,
     theme: "Valeurs",
