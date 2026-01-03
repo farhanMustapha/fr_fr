@@ -7,6 +7,62 @@ const INITIAL_DATA = {
             ],
             stories: [
                 {
+    id: 15,
+    level_id: 2,
+    theme: "Développement personnel",
+    title_fr: "Organisation et persévérance",
+    title_ar: "التنظيم والمثابرة",
+    text_fr: "Chaque matin, je m’efforce d’organiser ma journée avec rigueur et sérénité, car une bonne planification me permet de rester concentré et efficace. Malgré les imprévus et les responsabilités quotidiennes, je fais de mon mieux pour garder un esprit positif et persévérer face aux difficultés. En fin de journée, je prends un moment pour réfléchir, apprécier les efforts accomplis et me préparer mentalement aux défis du lendemain.",
+    text_ar: "كل صباح، أسعى إلى تنظيم يومي بانضباط وهدوء، لأن التخطيط الجيد يساعدني على البقاء مركزًا وفعّالًا. رغم المفاجآت والمسؤوليات اليومية، أبذل قصارى جهدي للحفاظ على عقلية إيجابية والمثابرة أمام الصعوبات. وفي نهاية اليوم، آخذ لحظة للتفكير وتقدير الجهود المبذولة والاستعداد نفسيًا لتحديات اليوم التالي.",
+    vocabulary: [
+        { fr: "s’efforcer de", ar: "يسعى إلى" },
+        { fr: "rigueur", ar: "انضباط / دقة" },
+        { fr: "sérénité", ar: "هدوء / سكينة" },
+        { fr: "planification", ar: "تخطيط" },
+        { fr: "imprévus", ar: "مفاجآت" },
+        { fr: "responsabilités", ar: "مسؤوليات" },
+        { fr: "persévérer", ar: "يثابر" },
+        { fr: "efforts accomplis", ar: "الجهود المبذولة" },
+        { fr: "défis", ar: "تحديات" }
+    ],
+    comprehension: [
+        {
+            q: "Pourquoi la planification est-elle importante ?",
+            options: [
+                "Pour éviter de travailler",
+                "Pour rester concentré et efficace",
+                "Pour finir la journée plus tôt"
+            ],
+            correct: 1
+        },
+        {
+            q: "Que fait-il en fin de journée ?",
+            options: [
+                "Il commence un nouveau travail",
+                "Il réfléchit et se prépare pour le lendemain",
+                "Il sort avec ses amis"
+            ],
+            correct: 1
+        }
+    ],
+    grammar: [
+        {
+            text: "Je m’..... d’organiser ma journée.",
+            missing: "efforce",
+            options: ["efforce", "arrête", "oublie"],
+            rule_fr: "L’expression « s’efforcer de » signifie faire de son mieux.",
+            rule_ar: "عبارة « يسعى إلى » تعني بذل أقصى جهد."
+        },
+        {
+            text: "Je ..... face aux difficultés.",
+            missing: "persévère",
+            options: ["persévère", "abandonne", "recule"],
+            rule_fr: "« Persévérer » signifie continuer malgré les obstacles.",
+            rule_ar: "« يثابر » تعني الاستمرار رغم الصعوبات."
+        }
+    ]
+},
+                {
     id: 14,
     level_id: 1,
     theme: "Famille",
