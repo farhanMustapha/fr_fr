@@ -132,7 +132,44 @@
     ],
     comprehension: [],
     grammar: []
+},
+{
+    id: 10,
+    level_id: 3,
+    title_en: "Goods Receipt and Consumable Materials",
+    title_ar: "استلام البضائع والمواد الاستهلاكية",
+    text_en: "When the goods are received, check to ensure the delivery date is correct. Consumable material received last month will be charged to the previous month.",
+    text_ar: "عند استلام البضائع، تحقق للتأكد من صحة تاريخ التسليم. سيتم تحميل المواد الاستهلاكية المستلمة في الشهر السابق على الشهر السابق.",
+    video_url: "",
+    vocabulary: [
+        { en: "Consumable material", ar: "مواد استهلاكية" },
+        { en: "Goods receipt", ar: "استلام البضائع" },
+        { en: "Delivery date", ar: "تاريخ التسليم" },
+        { en: "Previous month", ar: "الشهر السابق" },
+        { en: "Will be charged to", ar: "سيتم تحميله على" },
+        { en: "Check to ensure", ar: "تحقق للتأكد" }
+    ],
+    comprehension: [],
+    grammar: []
+},
+{
+    id: 11,
+    level_id: 3,
+    title_en: "Role Assignment and Accounting Documents",
+    title_ar: "تعيين الدور والمستندات المحاسبية",
+    text_en: "You have now assigned to your user the role needed. You won't see some documents until a subsequent accounting document is posted.",
+    text_ar: "لقد قمت الآن بتعيين الدور المطلوب للمستخدم الخاص بك. لن ترى بعض المستندات حتى يتم ترحيل مستند محاسبي لاحق.",
+    video_url: "",
+    vocabulary: [
+        { en: "Subsequent accounting document", ar: "مستند محاسبي لاحق" },
+        { en: "You have now assigned to your user the role needed", ar: "لقد قمت الآن بتعيين الدور المطلوب للمستخدم الخاص بك" },
+        { en: "You won't see", ar: "لن ترى" }
+    ],
+    comprehension: [],
+    grammar: []
 }
+
+
                 
                  
                
