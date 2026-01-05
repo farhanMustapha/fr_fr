@@ -167,7 +167,35 @@
     ],
     comprehension: [],
     grammar: []
+},
+{
+    id: 12,
+    level_id: 1,
+    title_en: "Colors in Nature",
+    title_ar: "الألوان في الطبيعة",
+    text_en: "In the morning, the sun shines bright. The trees are green and the flowers are colorful. After the rain, a rainbow appears in the sky. At night, the sky is dark and calm. In winter, white snow falls softly.",
+    text_ar: "في الصباح تشرق الشمس بقوة. الأشجار خضراء والزهور ملونة. بعد المطر يظهر قوس قزح في السماء. في الليل تكون السماء مظلمة وهادئة. في الشتاء يتساقط الثلج الأبيض بهدوء.",
+    video_url: "",
+    vocabulary: [
+        { en: "Morning", ar: "الصباح" },
+        { en: "Bright", ar: "مشرق" },
+        { en: "Sun", ar: "الشمس" },
+        { en: "Shines", ar: "تشرق" },
+        { en: "Trees", ar: "الأشجار" },
+        { en: "Green", ar: "أخضر" },
+        { en: "Colorful", ar: "ملون" },
+        { en: "Flowers", ar: "الزهور" },
+        { en: "Rainbow", ar: "قوس قزح" },
+        { en: "Night", ar: "الليل" },
+        { en: "Dark", ar: "مظلم" },
+        { en: "Snow", ar: "الثلج" },
+        { en: "Winter", ar: "الشتاء" },
+        { en: "Falls softly", ar: "يتساقط بهدوء" }
+    ],
+    comprehension: [],
+    grammar: []
 }
+
 
 
                 
