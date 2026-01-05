@@ -6,6 +6,34 @@
             ],
             stories: [
                 {
+    id: 13,
+    level_id: 1,
+    title_en: "Learning Little by Little",
+    title_ar: "التعلم خطوة بخطوة",
+    text_en: "Focus on your goals and keep walking. Wherever you are, try to find a safe place to think and grow. Maybe progress feels slow, but learning is a process. Repeat the same word many times and follow the key ideas. Slowly, little by little, you will see progress.",
+    text_ar: "ركز على أهدافك واستمر في المشي. أينما كنت، حاول أن تجد مكانًا آمنًا للتفكير والنمو. ربما يبدو التقدم بطيئًا، لكن التعلم عملية. كرر نفس الكلمة مرات عديدة واتبع الأفكار الأساسية. ببطء، خطوة بخطوة، سترى التقدم.",
+    video_url: "",
+    vocabulary: [
+        { en: "Focus", ar: "يركز" },
+        { en: "Grow", ar: "ينمو" },
+        { en: "Maybe", ar: "ربما" },
+        { en: "Walking", ar: "المشي" },
+        { en: "Wherever you are", ar: "أينما كنت" },
+        { en: "Safe place", ar: "مكان آمن" },
+        { en: "Progress", ar: "تقدم" },
+        { en: "Word", ar: "كلمة" },
+        { en: "Process", ar: "عملية" },
+        { en: "Slowly", ar: "ببطء" },
+        { en: "Many times", ar: "مرات عديدة" },
+        { en: "Key ideas", ar: "الأفكار الأساسية" },
+        { en: "Follow", ar: "يتبع" },
+        { en: "Little by little", ar: "خطوة بخطوة" }
+    ],
+    comprehension: [],
+    grammar: []
+},
+
+                {
     id: 4,
     level_id: 2,
     title_en: "Advanced Communication",
