@@ -6,6 +6,25 @@
             ],
             stories: [
                 {
+    id: 14,
+    level_id: 1,
+    title_en: "Hello I'm Khaled",
+    title_ar: "مرحبا اسمي خالد",
+    text_en: "Ahmed: Hello.\nKhaled: Hello, I'm Khaled.\nWhat is your name?\nAhmed: I'm Ahmed.\nKhaled: Nice to meet you, Ahmed.\nAhmed: Nice to meet you too.\nKhaled: Goodbye.",
+    text_ar: "أحمد: مرحبًا.\nخالد: مرحبًا، اسمي خالد.\nما اسمك؟\nأحمد: أنا أحمد.\nخالد: سعيد بلقائك يا أحمد.\nأحمد: سعيد بلقائك أيضًا.\nخالد: إلى اللقاء.",
+    video_url: "",
+    vocabulary: [
+        { en: "Hello", ar: "مرحبًا" },
+        { en: "I'm", ar: "أنا" },
+        { en: "What is your name?", ar: "ما اسمك؟" },
+        { en: "Nice to meet you", ar: "سعيد بلقائك" },
+        { en: "Goodbye", ar: "إلى اللقاء" }
+    ],
+    comprehension: [],
+    grammar: []
+},
+
+                {
     id: 13,
     level_id: 1,
     title_en: "Learning Little by Little",

@@ -1611,7 +1611,43 @@ const INITIAL_DATA = {
                     rule_ar: "صيغة النفي تُستعمل للتعبير عن الشك."
                     }
                 ]
-                }
+                },
+                {
+      "id": 191,
+      "level_id": 1,
+      "theme": "",
+      "title_fr": "un oisillon",
+      "title_ar": "فرخًا",
+      "text_fr": "Un petit garçon trouva un oisillon tombé du nid. Il le prit délicatement, le ramena chez lui et le nourrit chaque jour. L’oiseau grandit, apprit à voler et, un jour, s’envola par la fenêtre. Le garçon fut triste, mais il savait qu’il avait fait une bonne action.",
+      "text_ar": "وجد طفل صغير فرخًا سقط من عشه. حمله بلطف وأخذه إلى منزله وأطعمه كل يوم. كبر الطائر وتعلم الطيران، وفي أحد الأيام طار من النافذة. شعر الطفل بالحزن، لكنه كان يعلم أنه قام بعمل جيد.",
+      "vocabulary": [
+        {
+          "fr": "un oisillon",
+          "ar": "فرخًا"
+        },
+        {
+          "fr": "trouver",
+          "ar": "وجد"
+        },
+        {
+          "fr": "délicatement",
+          "ar": "بلطف"
+        }
+      ],
+      "comprehension": [
+        {
+          "q": "Pourquoi le garçon était-il triste à la fin de l’histoire ?",
+          "options": [
+            "A) Parce que l’oiseau est tombé du nid",
+            "B) Parce que l’oiseau s’est envolé par la fenêtre",
+            "C) Parce que l’oiseau ne mangeait plus",
+            "D) Parce que ses parents étaient en colère"
+          ],
+          "correct": 1
+        }
+      ],
+      "grammar": []
+    }
  
 
 
