@@ -14,11 +14,11 @@
     text_ar: "أحمد: مرحبًا.\nخالد: مرحبًا، اسمي خالد.\nما اسمك؟\nأحمد: أنا أحمد.\nخالد: سعيد بلقائك يا أحمد.\nأحمد: سعيد بلقائك أيضًا.\nخالد: إلى اللقاء.",
     video_url: "",
     vocabulary: [
-        { en: "Hello", ar: "مرحبًا" },
-        { en: "I'm", ar: "أنا" },
-        { en: "What is your name?", ar: "ما اسمك؟" },
-        { en: "Nice to meet you", ar: "سعيد بلقائك" },
-        { en: "Goodbye", ar: "إلى اللقاء" }
+        { ar: "Hello", en: "مرحبًا" },
+        { ar: "I'm", en: "أنا" },
+        { ar: "What is your name?", en: "ما اسمك؟" },
+        { ar: "Nice to meet you", en: "سعيد بلقائك" },
+        { ar: "Goodbye", en: "إلى اللقاء" }
     ],
     comprehension: [],
     grammar: []
@@ -33,20 +33,20 @@
     text_ar: "ركز على أهدافك واستمر في المشي. أينما كنت، حاول أن تجد مكانًا آمنًا للتفكير والنمو. ربما يبدو التقدم بطيئًا، لكن التعلم عملية. كرر نفس الكلمة مرات عديدة واتبع الأفكار الأساسية. ببطء، خطوة بخطوة، سترى التقدم.",
     video_url: "",
     vocabulary: [
-        { en: "Focus", ar: "يركز" },
-        { en: "Grow", ar: "ينمو" },
-        { en: "Maybe", ar: "ربما" },
-        { en: "Walking", ar: "المشي" },
-        { en: "Wherever you are", ar: "أينما كنت" },
-        { en: "Safe place", ar: "مكان آمن" },
-        { en: "Progress", ar: "تقدم" },
-        { en: "Word", ar: "كلمة" },
-        { en: "Process", ar: "عملية" },
-        { en: "Slowly", ar: "ببطء" },
-        { en: "Many times", ar: "مرات عديدة" },
-        { en: "Key ideas", ar: "الأفكار الأساسية" },
-        { en: "Follow", ar: "يتبع" },
-        { en: "Little by little", ar: "خطوة بخطوة" }
+        { ar: "Focus", en: "يركز" },
+        { ar: "Grow", en: "ينمو" },
+        { ar: "Maybe", en: "ربما" },
+        { ar: "Walking", en: "المشي" },
+        { ar: "Wherever you are", en: "أينما كنت" },
+        { ar: "Safe place", en: "مكان آمن" },
+        { ar: "Progress", en: "تقدم" },
+        { ar: "Word", en: "كلمة" },
+        { ar: "Process", en: "عملية" },
+        { ar: "Slowly", en: "ببطء" },
+        { ar: "Many times", en: "مرات عديدة" },
+        { ar: "Key ideas", en: "الأفكار الأساسية" },
+        { ar: "Follow", en: "يتبع" },
+        { ar: "Little by little", en: "خطوة بخطوة" }
     ],
     comprehension: [],
     grammar: []
@@ -61,10 +61,10 @@
     text_ar: "من وجهة نظري، يعد مواءمة العمليات مع متطلبات العمل أمرًا ضروريًا لضمان الكفاءة والوضوح على المدى الطويل.",
     video_url: "",
     vocabulary: [
-        { en: "Perspective", ar: "وجهة نظر" },
-        { en: "Aligning", ar: "مواءمة / توافق" },
-        { en: "Efficiency", ar: "كفاءة" },
-        { en: "Clarity", ar: "وضوح" }
+        { ar: "Perspective", en: "وجهة نظر" },
+        { ar: "Aligning", en: "مواءمة / توافق" },
+        { ar: "Efficiency", en: "كفاءة" },
+        { ar: "Clarity", en: "وضوح" }
     ],
     comprehension: [],
     grammar: []
