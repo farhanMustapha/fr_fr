@@ -241,6 +241,29 @@
     ],
     comprehension: [],
     grammar: []
+},
+{
+    "id": 15,
+    "level_id": 1,
+    "title_en": "The wolf and the sheep",
+    "title_ar": "الذئب والخروف",
+    "text_en": "One day a sheep was eating sweet grass away from her flock of sheep. She didn't notice a wolf walking nearer to her. When she saw the wolf, she started pleading “please, don't eat me. My stomach is full of grass. You can wait for a while to make my meat taste much better. The grass in my stomach will be digested quickly if you let me dance.” While the sheep was dancing she had a new idea, “I can dance faster if you take my bell and ring it so hard.” The wolf took the bell and started to ring it so hard. The shepherd heard the sound and ran quickly to save the sheep’s life.",
+    "text_ar": "في يوم ما كان خروف يأكل عشب حلو بعيداً عن قطيع الخراف. هي لم تلاحظ ذئب يمشي بالقرب منها. عندما رأت الذئب، بدأت التوسل \"من فضلك، لا تأكلني. معدتي مليئة بالعشب. يمكنك الانتظار لفترة لكي تجعل مذاق لحمي أفضل كثيراً. العشب في معدتي سوف يتم هضمه بسرعة إذا تركتني أرقص.\" بينما كان الخروف يرقص كان لديه فكرة جديدة، \"أنا أستطيع الرقص بسرعة لو أخذت جرسي ويرن بقوة.\" أخذ الذئب الجرس وبدأ في رنه بقوة. سمع الراعي الصوت وقام بالجري بسرعة لإنقاذ حياة الخروف.",
+    "video_url": "",
+    "vocabulary": [
+        { "ar": "One day", "en": "في يوم ما" },
+        { "ar": "Sheep", "en": "خروف" },
+        { "ar": "Sweet grass", "en": "عشب حلو" },
+        { "ar": "Flock", "en": "قطيع" },
+        { "ar": "Notice", "en": "تلاحظ" },
+        { "ar": "Pleading", "en": "التوسل" },
+        { "ar": "Stomach", "en": "معدة" },
+        { "ar": "Digested", "en": "يتم هضمه" },
+        { "ar": "Bell", "en": "جرس" },
+        { "ar": "Shepherd", "en": "الراعي" }
+    ],
+    "comprehension": [],
+    "grammar": []
 }
 
 
